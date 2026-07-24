@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/service-areas/layout,_N_T_/service-areas/marysville/layout,_N_T_/service-areas/marysville/page,_N_T_/service-areas/marysville"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/service-areas/marysville/__PAGE__",
+    "/service-areas/marysville",
+    "/service-areas",
+    "/_index",
+    "/_head"
+  ]
+}

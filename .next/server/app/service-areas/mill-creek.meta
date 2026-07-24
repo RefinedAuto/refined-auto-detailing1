@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/service-areas/layout,_N_T_/service-areas/mill-creek/layout,_N_T_/service-areas/mill-creek/page,_N_T_/service-areas/mill-creek"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/service-areas/mill-creek/__PAGE__",
+    "/service-areas/mill-creek",
+    "/service-areas",
+    "/_index",
+    "/_head"
+  ]
+}
