@@ -1,15 +1,13 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { Phone, Mail, MapPin, Clock, MessageSquare, ArrowRight } from "lucide-react";
-import { COMPANY } from "@/lib/utils";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Contact Us | Refined Auto Detailing — Snohomish County WA",
-  description:
-    "Contact Refined Auto Detailing for mobile auto detailing in Snohomish County, WA. Call, text, or email us for a free quote. Fast response guaranteed.",
-};
+import Link from "next/link";
+import { Phone, Mail, MapPin, Clock, MessageSquare, ArrowRight, CheckCircle } from "lucide-react";
+import { COMPANY } from "@/lib/utils";
+import { useForm } from "@formspree/react";
 
 export default function ContactPage() {
+  const [state, handleSubmit] = useForm("mojgblgp");
+
   return (
     <div className="bg-dark-950 pt-32">
       <section className="section-padding">
@@ -65,9 +63,14 @@ export default function ContactPage() {
               </div>
 
               <div className="flex gap-4">
-                <Link href="/quote" className="flex-1 bg-gold-500 hover:bg-gold-400 text-black font-bold py-4 rounded-full text-center transition-all text-sm">
-                  Get Instant Quote
-                </Link>
+                <a
+                  href={COMPANY.bookingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 bg-gold-500 hover:bg-gold-400 text-black font-bold py-4 rounded-full text-center transition-all text-sm"
+                >
+                  Book Now
+                </a>
                 <a href={`sms:${COMPANY.phone}`} className="flex-1 glass hover:border-gold-500/30 text-white font-semibold py-4 rounded-full text-center transition-all text-sm flex items-center justify-center gap-2">
                   <MessageSquare size={15} /> Text Us
                 </a>
@@ -76,65 +79,87 @@ export default function ContactPage() {
 
             {/* Right — contact form */}
             <div className="glass border border-white/10 rounded-3xl p-8">
-              <h2 className="text-white font-bold text-xl mb-6">Send Us a Message</h2>
-              <form className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-white/40 text-xs uppercase tracking-widest mb-2 block">First Name</label>
-                    <input
-                      type="text"
-                      placeholder="John"
-                      className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/20 text-sm outline-none transition-colors"
-                    />
+              {state.succeeded ? (
+                <div className="flex flex-col items-center justify-center h-full py-12 text-center">
+                  <div className="w-16 h-16 bg-gold-500/10 border border-gold-500/30 rounded-full flex items-center justify-center mb-6">
+                    <CheckCircle size={32} className="text-gold-500" />
                   </div>
-                  <div>
-                    <label className="text-white/40 text-xs uppercase tracking-widest mb-2 block">Last Name</label>
-                    <input
-                      type="text"
-                      placeholder="Smith"
-                      className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/20 text-sm outline-none transition-colors"
-                    />
-                  </div>
+                  <h3 className="text-white font-black text-2xl mb-3">Message Sent!</h3>
+                  <p className="text-white/50">We&apos;ll get back to you within the hour.</p>
                 </div>
-                <div>
-                  <label className="text-white/40 text-xs uppercase tracking-widest mb-2 block">Email</label>
-                  <input
-                    type="email"
-                    placeholder="john@example.com"
-                    className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/20 text-sm outline-none transition-colors"
-                  />
-                </div>
-                <div>
-                  <label className="text-white/40 text-xs uppercase tracking-widest mb-2 block">Phone</label>
-                  <input
-                    type="tel"
-                    placeholder="(425) 000-0000"
-                    className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/20 text-sm outline-none transition-colors"
-                  />
-                </div>
-                <div>
-                  <label className="text-white/40 text-xs uppercase tracking-widest mb-2 block">Vehicle</label>
-                  <input
-                    type="text"
-                    placeholder="2023 Tesla Model 3"
-                    className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/20 text-sm outline-none transition-colors"
-                  />
-                </div>
-                <div>
-                  <label className="text-white/40 text-xs uppercase tracking-widest mb-2 block">Message</label>
-                  <textarea
-                    rows={4}
-                    placeholder="Tell us what you need..."
-                    className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/20 text-sm outline-none transition-colors resize-none"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-gold-500 hover:bg-gold-400 text-black font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-2"
-                >
-                  Send Message <ArrowRight size={18} />
-                </button>
-              </form>
+              ) : (
+                <>
+                  <h2 className="text-white font-bold text-xl mb-6">Send Us a Message</h2>
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <input type="hidden" name="_subject" value="New Contact Form Message — Refined Auto Detailing" />
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="text-white/40 text-xs uppercase tracking-widest mb-2 block">First Name</label>
+                        <input
+                          type="text"
+                          name="first_name"
+                          placeholder="John"
+                          required
+                          className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/20 text-sm outline-none transition-colors"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-white/40 text-xs uppercase tracking-widest mb-2 block">Last Name</label>
+                        <input
+                          type="text"
+                          name="last_name"
+                          placeholder="Smith"
+                          className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/20 text-sm outline-none transition-colors"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="text-white/40 text-xs uppercase tracking-widest mb-2 block">Email</label>
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="john@example.com"
+                        required
+                        className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/20 text-sm outline-none transition-colors"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-white/40 text-xs uppercase tracking-widest mb-2 block">Phone</label>
+                      <input
+                        type="tel"
+                        name="phone"
+                        placeholder="(425) 000-0000"
+                        className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/20 text-sm outline-none transition-colors"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-white/40 text-xs uppercase tracking-widest mb-2 block">Vehicle</label>
+                      <input
+                        type="text"
+                        name="vehicle"
+                        placeholder="2023 Tesla Model 3"
+                        className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/20 text-sm outline-none transition-colors"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-white/40 text-xs uppercase tracking-widest mb-2 block">Message</label>
+                      <textarea
+                        name="message"
+                        rows={4}
+                        placeholder="Tell us what you need..."
+                        className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/20 text-sm outline-none transition-colors resize-none"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      disabled={state.submitting}
+                      className="w-full bg-gold-500 hover:bg-gold-400 text-black font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-60"
+                    >
+                      {state.submitting ? "Sending..." : "Send Message"} <ArrowRight size={18} />
+                    </button>
+                  </form>
+                </>
+              )}
             </div>
           </div>
         </div>

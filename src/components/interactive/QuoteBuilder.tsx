@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
+import { useForm as useFormspree } from "@formspree/react";
 import { Car, Truck, ArrowRight, ArrowLeft, CheckCircle, Sparkles } from "lucide-react";
 import { formatCurrency } from "@/lib/utils";
 
@@ -49,6 +50,8 @@ export default function QuoteBuilder() {
     formState: { errors, isSubmitting },
   } = useForm<LeadFormData>({ resolver: zodResolver(leadSchema) });
 
+  const [formspreeState, submitToFormspree] = useFormspree("mojgblgp");
+
   const calculateEstimate = () => {
     const base = basePricing[vehicleType][service];
     const addonsTotal = selectedAddons.reduce((sum, id) => {
@@ -65,14 +68,27 @@ export default function QuoteBuilder() {
   };
 
   const onSubmitLead = async (data: LeadFormData) => {
-    await new Promise((r) => setTimeout(r, 1000));
     const total = calculateEstimate();
+    const selectedServiceLabel = services.find(s => s.type === service)?.label;
+    const selectedVehicleLabel = vehicles.find(v => v.type === vehicleType)?.label;
+    const selectedAddonNames = selectedAddons.map(id => addons.find(a => a.id === id)?.name).join(", ");
+
+    await submitToFormspree({
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      vehicle: selectedVehicleLabel,
+      service: selectedServiceLabel,
+      addons: selectedAddonNames || "None",
+      estimate: `$${total}`,
+      _subject: `New Quote Request — ${selectedServiceLabel} (${selectedVehicleLabel})`,
+    });
+
     setEstimate(total);
     setLeadCaptured(true);
     toast.success("Your quote has been sent! We'll be in touch shortly.", {
       duration: 5000,
     });
-    console.log("Lead captured:", { ...data, vehicleType, service, selectedAddons, estimate: total });
   };
 
   const vehicles: { type: VehicleType; label: string; icon: React.ComponentType<{ size?: number }> }[] = [
