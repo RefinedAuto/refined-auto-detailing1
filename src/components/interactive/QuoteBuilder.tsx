@@ -7,9 +7,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
-import { useForm as useFormspree } from "@formspree/react";
+import { useSubmit } from "@formspree/react";
 import { Car, Truck, ArrowRight, ArrowLeft, CheckCircle, Sparkles } from "lucide-react";
-import { formatCurrency } from "@/lib/utils";
+import { formatCurrency, COMPANY } from "@/lib/utils";
 
 type VehicleType = "sedan" | "suv" | "large";
 type ServiceType = "exterior_wash" | "basic_detail" | "essential" | "elite";
@@ -50,7 +50,7 @@ export default function QuoteBuilder() {
     formState: { errors, isSubmitting },
   } = useForm<LeadFormData>({ resolver: zodResolver(leadSchema) });
 
-  const [formspreeState, submitToFormspree] = useFormspree("mojgblgp");
+  const submitToFormspree = useSubmit<Record<string, string>>("mojgblgp");
 
   const calculateEstimate = () => {
     const base = basePricing[vehicleType][service];
@@ -69,11 +69,11 @@ export default function QuoteBuilder() {
 
   const onSubmitLead = async (data: LeadFormData) => {
     const total = calculateEstimate();
-    const selectedServiceLabel = services.find(s => s.type === service)?.label;
-    const selectedVehicleLabel = vehicles.find(v => v.type === vehicleType)?.label;
+    const selectedServiceLabel = services.find(s => s.type === service)!.label;
+    const selectedVehicleLabel = vehicles.find(v => v.type === vehicleType)!.label;
     const selectedAddonNames = selectedAddons.map(id => addons.find(a => a.id === id)?.name).join(", ");
 
-    await submitToFormspree({
+    const result = await submitToFormspree({
       name: data.name,
       email: data.email,
       phone: data.phone,
@@ -83,6 +83,13 @@ export default function QuoteBuilder() {
       estimate: `$${total}`,
       _subject: `New Quote Request — ${selectedServiceLabel} (${selectedVehicleLabel})`,
     });
+
+    if (result.kind === "error") {
+      toast.error(`Couldn't send your quote. Please call or text us at ${COMPANY.phone}.`, {
+        duration: 8000,
+      });
+      return;
+    }
 
     setEstimate(total);
     setLeadCaptured(true);
@@ -155,7 +162,7 @@ export default function QuoteBuilder() {
             ))}
           </div>
 
-          <div className="glass border border-white/10 rounded-3xl p-8">
+          <div className="glass border border-white/10 rounded-3xl p-5 sm:p-8">
             <AnimatePresence mode="wait">
               {/* Step 1: Vehicle Type */}
               {step === 1 && (
@@ -167,19 +174,20 @@ export default function QuoteBuilder() {
                 >
                   <h3 className="text-white font-bold text-xl mb-2">What vehicle are we detailing?</h3>
                   <p className="text-white/40 text-sm mb-6">Select your vehicle type</p>
-                  <div className="grid grid-cols-3 gap-3 mb-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
                     {vehicles.map(({ type, label, icon: Icon }) => (
                       <button
                         key={type}
                         onClick={() => setVehicleType(type)}
-                        className={`flex flex-col items-center gap-3 p-5 rounded-2xl border transition-all duration-200 ${
+                        aria-pressed={vehicleType === type}
+                        className={`flex flex-row sm:flex-col items-center gap-3 p-4 sm:p-5 rounded-2xl border transition-all duration-200 ${
                           vehicleType === type
                             ? "border-gold-500 bg-gold-500/10 text-gold-500"
                             : "border-white/10 text-white/60 hover:border-white/30"
                         }`}
                       >
                         <Icon size={28} />
-                        <span className="text-sm font-medium">{label}</span>
+                        <span className="text-sm font-medium text-left sm:text-center">{label}</span>
                       </button>
                     ))}
                   </div>
@@ -406,7 +414,7 @@ export default function QuoteBuilder() {
                       Book Online Now
                     </a>
                     <a
-                      href="tel:4253865190"
+                      href="tel:+14253865190"
                       className="inline-flex items-center gap-2 glass border border-white/10 hover:border-gold-500/30 text-white font-bold px-8 py-4 rounded-full transition-all"
                     >
                       Call (425) 386-5190

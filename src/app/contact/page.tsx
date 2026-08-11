@@ -24,7 +24,7 @@ export default function ContactPage() {
               </p>
 
               <div className="space-y-6 mb-12">
-                <a href={`tel:${COMPANY.phone}`} className="flex items-center gap-5 group">
+                <a href={`tel:${COMPANY.phoneHref}`} className="flex items-center gap-5 group">
                   <div className="w-12 h-12 glass-gold rounded-xl flex items-center justify-center">
                     <Phone size={18} className="text-gold-500" />
                   </div>
@@ -71,7 +71,7 @@ export default function ContactPage() {
                 >
                   Book Now
                 </a>
-                <a href={`sms:${COMPANY.phone}`} className="flex-1 glass hover:border-gold-500/30 text-white font-semibold py-4 rounded-full text-center transition-all text-sm flex items-center justify-center gap-2">
+                <a href={`sms:${COMPANY.phoneHref}`} className="flex-1 glass hover:border-gold-500/30 text-white font-semibold py-4 rounded-full text-center transition-all text-sm flex items-center justify-center gap-2">
                   <MessageSquare size={15} /> Text Us
                 </a>
               </div>
@@ -150,6 +150,11 @@ export default function ContactPage() {
                         className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/20 text-sm outline-none transition-colors resize-none"
                       />
                     </div>
+                    {state.errors && (
+                      <p className="text-red-400 text-sm" role="alert">
+                        Something went wrong sending your message. Please call or text us at {COMPANY.phone}.
+                      </p>
+                    )}
                     <button
                       type="submit"
                       disabled={state.submitting}

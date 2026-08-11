@@ -76,7 +76,7 @@ export default function CeramicCoatingPage() {
               </a>
             </div>
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10">
-              <Image src="/images/IMG_3438.JPG" alt="Audi Q3 ceramic coating result" fill className="object-cover" priority />
+              <Image src="/images/IMG_3438.JPG" alt="Audi Q3 ceramic coating result" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" priority />
             </div>
           </div>
 

@@ -143,13 +143,15 @@ export default function VehicleExplorer() {
                 <button
                   key={hotspot.id}
                   onClick={() => setActiveHotspot(hotspot.id === activeHotspot ? null : hotspot.id)}
+                  aria-label={`Learn about ${hotspot.label} detailing`}
+                  aria-pressed={activeHotspot === hotspot.id}
                   className={`absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-200 ${
                     activeHotspot === hotspot.id ? "z-10" : "z-0"
                   }`}
                   style={{ top: hotspot.position.top, left: hotspot.position.left }}
                 >
                   <div
-                    className={`relative w-10 h-10 rounded-full flex items-center justify-center text-lg transition-all duration-200 ${
+                    className={`relative w-11 h-11 rounded-full flex items-center justify-center text-lg transition-all duration-200 ${
                       activeHotspot === hotspot.id
                         ? "bg-gold-500 shadow-gold scale-125"
                         : "bg-gold-500/20 border border-gold-500/50 hover:bg-gold-500/40 hover:scale-110"
@@ -189,7 +191,7 @@ export default function VehicleExplorer() {
                   key="empty"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="flex flex-col items-center justify-center h-full glass rounded-2xl p-12 text-center"
+                  className="flex flex-col items-center justify-center h-full glass rounded-2xl p-8 sm:p-12 text-center"
                 >
                   <div className="text-5xl mb-4">👆</div>
                   <p className="text-white/40 text-base">
@@ -213,7 +215,7 @@ export default function VehicleExplorer() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
-                  className="glass border border-gold-500/20 rounded-2xl p-8"
+                  className="glass border border-gold-500/20 rounded-2xl p-5 sm:p-8"
                 >
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center gap-3">

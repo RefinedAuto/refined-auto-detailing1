@@ -16,6 +16,7 @@ export function formatCurrency(amount: number): string {
 export const COMPANY = {
   name: "Refined Auto Detailing",
   phone: "(425) 386-5190",
+  phoneHref: "+14253865190",
   email: "detailing.refinedauto@gmail.com",
   website: "detailingrefinedauto.com",
   bookingUrl: "https://refinedautodetailing.setmore.com",

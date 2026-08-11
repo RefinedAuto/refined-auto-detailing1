@@ -34,7 +34,7 @@ export default function MarysvillePage() {
               <Link href="/quote" className="bg-gold-500 hover:bg-gold-400 text-black font-bold px-8 py-4 rounded-full transition-all shadow-gold flex items-center gap-2">
                 Book in Marysville <ArrowRight size={18} />
               </Link>
-              <a href="tel:(425) 386-5190" className="glass hover:border-gold-500/30 text-white px-8 py-4 rounded-full transition-all">
+              <a href="tel:+14253865190" className="glass hover:border-gold-500/30 text-white px-8 py-4 rounded-full transition-all">
                 (425) 386-5190
               </a>
             </div>

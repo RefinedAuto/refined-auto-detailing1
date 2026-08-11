@@ -92,7 +92,7 @@ export default function Footer() {
             <h3 className="text-white font-semibold text-sm tracking-widest uppercase mb-6">Contact</h3>
             <ul className="space-y-4">
               <li>
-                <a href={`tel:${COMPANY.phone}`} className="flex items-center gap-3 text-white/50 hover:text-gold-500 text-sm transition-colors">
+                <a href={`tel:${COMPANY.phoneHref}`} className="flex items-center gap-3 text-white/50 hover:text-gold-500 text-sm transition-colors">
                   <Phone size={14} className="text-gold-500 shrink-0" />
                   {COMPANY.phone}
                 </a>

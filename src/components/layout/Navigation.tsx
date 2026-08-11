@@ -34,6 +34,19 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileOpen(false);
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKey);
+    };
+  }, [mobileOpen]);
+
   return (
     <>
       <motion.nav
@@ -56,6 +69,7 @@ export default function Navigation() {
                   src="/images/logo.png"
                   alt="Refined Auto Detailing"
                   fill
+                  sizes="40px"
                   className="object-contain"
                 />
               </div>
@@ -126,7 +140,7 @@ export default function Navigation() {
             {/* CTA */}
             <div className="hidden lg:flex items-center gap-4">
               <a
-                href={`tel:${COMPANY.phone}`}
+                href={`tel:${COMPANY.phoneHref}`}
                 className="flex items-center gap-2 text-white/70 hover:text-gold-500 text-sm transition-colors"
               >
                 <Phone size={14} />
@@ -160,7 +174,7 @@ export default function Navigation() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="fixed inset-0 z-40 bg-black/98 backdrop-blur-xl flex flex-col"
+            className="fixed inset-0 z-[60] bg-black flex flex-col"
           >
             <div className="flex items-center justify-between h-20 container-custom border-b border-white/10">
               <Link href="/" onClick={() => setMobileOpen(false)}>
@@ -198,7 +212,7 @@ export default function Navigation() {
                 className="mt-10 space-y-4"
               >
                 <a
-                  href={`tel:${COMPANY.phone}`}
+                  href={`tel:${COMPANY.phoneHref}`}
                   className="flex items-center gap-3 text-white/60 text-lg"
                 >
                   <Phone size={18} className="text-gold-500" />

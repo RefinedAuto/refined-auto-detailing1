@@ -53,7 +53,7 @@ export default function FullDetailPage() {
               </a>
             </div>
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10">
-              <Image src="/images/GS0A5621.jpeg" alt="Essential full detailing" fill className="object-cover" priority />
+              <Image src="/images/GS0A5621.jpeg" alt="Essential full detailing" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" priority />
             </div>
           </div>
 
@@ -86,7 +86,7 @@ export default function FullDetailPage() {
           {/* Elite Full Detail */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 order-2 lg:order-1">
-              <Image src="/images/GS0A5749.jpeg" alt="Elite full detailing" fill className="object-cover" />
+              <Image src="/images/GS0A5749.jpeg" alt="Elite full detailing" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
             </div>
             <div className="order-1 lg:order-2">
               <span className="text-gold-500 text-xs tracking-[0.3em] uppercase font-medium mb-4 block">Full Detail</span>

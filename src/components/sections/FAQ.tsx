@@ -74,7 +74,7 @@ export default function FAQ() {
             </p>
             <p className="text-white/40 text-sm">
               Still have questions?{" "}
-              <a href="tel:(425) 386-5190" className="text-gold-500 hover:text-gold-400">
+              <a href="tel:+14253865190" className="text-gold-500 hover:text-gold-400">
                 Call us directly
               </a>{" "}
               — we&apos;re happy to help.

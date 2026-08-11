@@ -35,7 +35,6 @@ function SingleSlider({ beforeSrc, afterSrc, beforeAlt, afterAlt }: BeforeAfterS
 
   const handleTouchMove = useCallback(
     (e: React.TouchEvent) => {
-      e.preventDefault();
       updatePosition(e.touches[0].clientX);
     },
     [updatePosition]
@@ -54,7 +53,7 @@ function SingleSlider({ beforeSrc, afterSrc, beforeAlt, afterAlt }: BeforeAfterS
     >
       {/* After image (full) */}
       <div className="absolute inset-0">
-        <Image src={afterSrc} alt={afterAlt || "After"} fill className="object-cover pointer-events-none" />
+        <Image src={afterSrc} alt={afterAlt || "After"} fill sizes="(min-width: 1024px) 896px, 100vw" className="object-cover pointer-events-none" />
         <div className="absolute bottom-4 right-4 bg-black/60 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full tracking-widest uppercase">
           After
         </div>
@@ -65,7 +64,7 @@ function SingleSlider({ beforeSrc, afterSrc, beforeAlt, afterAlt }: BeforeAfterS
         className="absolute inset-0 overflow-hidden"
         style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
       >
-        <Image src={beforeSrc} alt={beforeAlt || "Before"} fill className="object-cover pointer-events-none" />
+        <Image src={beforeSrc} alt={beforeAlt || "Before"} fill sizes="(min-width: 1024px) 896px, 100vw" className="object-cover pointer-events-none" />
         <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full tracking-widest uppercase">
           Before
         </div>
@@ -77,7 +76,19 @@ function SingleSlider({ beforeSrc, afterSrc, beforeAlt, afterAlt }: BeforeAfterS
         style={{ left: `${position}%` }}
       >
         {/* Handle */}
-        <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 bg-gold-500 rounded-full flex items-center justify-center shadow-gold">
+        <div
+          role="slider"
+          tabIndex={0}
+          aria-label="Compare before and after"
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={Math.round(position)}
+          onKeyDown={(e) => {
+            if (e.key === "ArrowLeft") setPosition((p) => Math.max(0, p - 5));
+            if (e.key === "ArrowRight") setPosition((p) => Math.min(100, p + 5));
+          }}
+          className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-11 h-11 bg-gold-500 rounded-full flex items-center justify-center shadow-gold cursor-ew-resize"
+        >
           <GripVertical size={16} className="text-black" />
         </div>
       </div>

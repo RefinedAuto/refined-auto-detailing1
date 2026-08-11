@@ -106,7 +106,7 @@ export default function ServiceAreasPage() {
               We service a ~30 mile radius and may be able to accommodate your location. Reach out and ask — we love covering new areas.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href={`tel:${COMPANY.phone}`} className="flex items-center justify-center gap-2 bg-gold-500 hover:bg-gold-400 text-black font-bold px-8 py-4 rounded-full transition-all">
+              <a href={`tel:${COMPANY.phoneHref}`} className="flex items-center justify-center gap-2 bg-gold-500 hover:bg-gold-400 text-black font-bold px-8 py-4 rounded-full transition-all">
                 <Phone size={16} /> Call Us
               </a>
               <Link href="/quote" className="flex items-center justify-center gap-2 glass hover:border-gold-500/30 text-white px-8 py-4 rounded-full transition-all">

@@ -47,7 +47,7 @@ export default function InteriorDetailingPage() {
               </a>
             </div>
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10">
-              <Image src="/images/IMG_3373.JPG" alt="Interior car detailing" fill className="object-cover" priority />
+              <Image src="/images/IMG_3373.JPG" alt="Interior car detailing" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" priority />
             </div>
           </div>
 

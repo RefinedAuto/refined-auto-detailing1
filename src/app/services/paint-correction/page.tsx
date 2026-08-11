@@ -15,7 +15,7 @@ export default function PaintCorrectionPage() {
       <section className="section-padding">
         <div className="container-custom">
           <div className="relative aspect-[21/9] rounded-2xl overflow-hidden border border-white/10 mb-16">
-            <Image src="/images/IMG_3469.JPG" alt="Audi Q3 paint decontamination result" fill className="object-cover object-center" priority />
+            <Image src="/images/IMG_3469.JPG" alt="Audi Q3 paint decontamination result" fill sizes="100vw" className="object-cover object-center" priority />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
           </div>
           <div className="max-w-3xl mx-auto">

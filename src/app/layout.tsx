@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
+import MobileCTABar from "@/components/layout/MobileCTABar";
 import { Toaster } from "sonner";
 
 const inter = Inter({
@@ -67,9 +68,12 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "your-google-verification-code",
-  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0A0A0A",
 };
 
 export default function RootLayout({
@@ -137,12 +141,14 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="bg-dark-950 text-white antialiased">
+      <body className="bg-dark-950 text-white antialiased pb-[72px] lg:pb-0">
         <Navigation />
         <main>{children}</main>
         <Footer />
+        <MobileCTABar />
         <Toaster
           position="bottom-right"
+          mobileOffset={{ bottom: "88px" }}
           toastOptions={{
             style: {
               background: "#111111",

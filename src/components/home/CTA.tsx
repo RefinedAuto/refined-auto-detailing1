@@ -52,7 +52,7 @@ export default function CTA() {
               </Link>
 
               <a
-                href={`tel:${COMPANY.phone}`}
+                href={`tel:${COMPANY.phoneHref}`}
                 className="group flex flex-col items-center gap-3 glass hover:border-gold-500/40 text-white hover:text-gold-500 px-6 py-5 rounded-2xl transition-all duration-300"
               >
                 <Phone size={22} />
@@ -61,7 +61,7 @@ export default function CTA() {
               </a>
 
               <a
-                href={`sms:${COMPANY.phone}`}
+                href={`sms:${COMPANY.phoneHref}`}
                 className="group flex flex-col items-center gap-3 glass hover:border-gold-500/40 text-white hover:text-gold-500 px-6 py-5 rounded-2xl transition-all duration-300"
               >
                 <MessageSquare size={22} />

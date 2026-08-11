@@ -66,6 +66,7 @@ export default function AboutPage() {
                   src="/images/gs-5094.jpg"
                   alt="Refined Auto Detailing at work"
                   fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
                   className="object-cover"
                 />
               </div>

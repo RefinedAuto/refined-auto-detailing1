@@ -16,13 +16,14 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
+    <section className="relative min-h-[100svh] flex items-center overflow-hidden bg-black pt-20">
       {/* Background Image with overlay */}
       <div className="absolute inset-0">
         <Image
           src="/images/GS0A5754.jpeg"
           alt="Premium auto detailing"
           fill
+          sizes="100vw"
           className="object-cover object-center opacity-30"
           priority
           quality={90}
@@ -41,7 +42,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative container-custom pt-32 pb-20">
+      <div className="relative container-custom py-12 lg:py-20">
         <div className="max-w-3xl">
           {/* Badge */}
           <motion.div
@@ -136,7 +137,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="hidden lg:flex absolute bottom-10 left-1/2 -translate-x-1/2 flex-col items-center gap-2"
       >
         <span className="text-white/30 text-xs tracking-[0.2em] uppercase">Scroll</span>
         <div className="w-px h-12 bg-gradient-to-b from-gold-500/60 to-transparent animate-pulse" />

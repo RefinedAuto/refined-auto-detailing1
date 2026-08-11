@@ -41,14 +41,14 @@ export default function QuotePage() {
             <p className="text-white/40 text-sm mb-6">Prefer to talk directly?</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href={`tel:${COMPANY.phone}`}
+                href={`tel:${COMPANY.phoneHref}`}
                 className="flex items-center justify-center gap-3 glass hover:border-gold-500/30 text-white px-8 py-4 rounded-full transition-all"
               >
                 <Phone size={18} className="text-gold-500" />
                 <span className="font-semibold">Call {COMPANY.phone}</span>
               </a>
               <a
-                href={`sms:${COMPANY.phone}`}
+                href={`sms:${COMPANY.phoneHref}`}
                 className="flex items-center justify-center gap-3 glass hover:border-gold-500/30 text-white px-8 py-4 rounded-full transition-all"
               >
                 <MessageSquare size={18} className="text-gold-500" />
