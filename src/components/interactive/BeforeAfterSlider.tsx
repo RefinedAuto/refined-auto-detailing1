@@ -35,6 +35,7 @@ function SingleSlider({ beforeSrc, afterSrc, beforeAlt, afterAlt }: BeforeAfterS
 
   const handleTouchMove = useCallback(
     (e: React.TouchEvent) => {
+      e.preventDefault();
       updatePosition(e.touches[0].clientX);
     },
     [updatePosition]
@@ -43,16 +44,17 @@ function SingleSlider({ beforeSrc, afterSrc, beforeAlt, afterAlt }: BeforeAfterS
   return (
     <div
       ref={containerRef}
-      className="relative w-full aspect-video rounded-2xl overflow-hidden cursor-ew-resize select-none"
+      className="relative w-full aspect-video rounded-2xl overflow-hidden cursor-ew-resize select-none touch-none"
       onMouseMove={handleMouseMove}
-      onMouseDown={() => (isDragging.current = true)}
+      onMouseDown={(e) => { e.preventDefault(); isDragging.current = true; updatePosition(e.clientX); }}
       onMouseUp={() => (isDragging.current = false)}
       onMouseLeave={() => (isDragging.current = false)}
+      onTouchStart={(e) => updatePosition(e.touches[0].clientX)}
       onTouchMove={handleTouchMove}
     >
       {/* After image (full) */}
       <div className="absolute inset-0">
-        <Image src={afterSrc} alt={afterAlt || "After"} fill className="object-cover" />
+        <Image src={afterSrc} alt={afterAlt || "After"} fill className="object-cover pointer-events-none" />
         <div className="absolute bottom-4 right-4 bg-black/60 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full tracking-widest uppercase">
           After
         </div>
@@ -63,7 +65,7 @@ function SingleSlider({ beforeSrc, afterSrc, beforeAlt, afterAlt }: BeforeAfterS
         className="absolute inset-0 overflow-hidden"
         style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
       >
-        <Image src={beforeSrc} alt={beforeAlt || "Before"} fill className="object-cover" />
+        <Image src={beforeSrc} alt={beforeAlt || "Before"} fill className="object-cover pointer-events-none" />
         <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full tracking-widest uppercase">
           Before
         </div>
