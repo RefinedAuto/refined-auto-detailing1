@@ -13,6 +13,13 @@ export function formatCurrency(amount: number): string {
   }).format(amount);
 }
 
+/**
+ * Canonical origin, used for metadata, sitemap, robots and schema.org.
+ * Keep this as the single source of truth — hardcoding it elsewhere is how
+ * the site previously ended up advertising a domain that didn't resolve.
+ */
+export const SITE_URL = "https://detailingrefinedauto.com";
+
 export const COMPANY = {
   name: "Refined Auto Detailing",
   phone: "(425) 386-5190",

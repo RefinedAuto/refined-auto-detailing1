@@ -4,6 +4,7 @@ import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import MobileCTABar from "@/components/layout/MobileCTABar";
+import { SITE_URL } from "@/lib/utils";
 import { Toaster } from "sonner";
 
 const inter = Inter({
@@ -13,7 +14,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://detailingrefinedautodetailing.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Refined Auto Detailing | Premium Mobile Detailing in Snohomish County, WA",
     template: "%s | Refined Auto Detailing",
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://detailingrefinedautodetailing.com",
+    url: SITE_URL,
     siteName: "Refined Auto Detailing",
     title: "Refined Auto Detailing | Premium Mobile Detailing — We Come to You",
     description:
@@ -92,15 +93,15 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
-              "@id": "https://detailingrefinedautodetailing.com",
+              "@id": SITE_URL,
               name: "Refined Auto Detailing",
               description:
                 "Premium mobile auto detailing service serving Snohomish County, Washington. Specializing in interior detailing, exterior detailing, paint correction, and ceramic coating.",
-              url: "https://detailingrefinedautodetailing.com",
+              url: SITE_URL,
               telephone: "(425) 386-5190",
               email: "detailing.refinedauto@gmail.com",
               priceRange: "$$",
-              image: "https://detailingrefinedautodetailing.com/images/logo.png",
+              image: `${SITE_URL}/images/logo.png`,
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Marysville",
