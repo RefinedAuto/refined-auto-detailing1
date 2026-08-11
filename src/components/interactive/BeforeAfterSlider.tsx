@@ -85,13 +85,13 @@ function SingleSlider({ beforeSrc, afterSrc, beforeAlt, afterAlt }: BeforeAfterS
 
 const transformations = [
   {
-    before: "/images/gs-5050.jpg",
-    after: "/images/gs-5754.jpg",
+    before: "/images/IMG_3715.JPG",
+    after: "/images/IMG_3735.JPG",
     label: "Interior Transformation",
   },
   {
-    before: "/images/gs-5299.jpg",
-    after: "/images/gs-5758.jpg",
+    before: "/images/infiniti-q50-dirty.jpg",
+    after: "/images/infiniti-q50-clean.jpg",
     label: "Exterior Transformation",
   },
 ];

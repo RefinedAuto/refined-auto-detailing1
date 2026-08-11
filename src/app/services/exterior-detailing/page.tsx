@@ -47,7 +47,7 @@ export default function ExteriorDetailingPage() {
               </a>
             </div>
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10">
-              <Image src="/images/gs-5364.jpg" alt="Exterior car detailing" fill className="object-cover" priority />
+              <Image src="/images/GS0A5263.jpeg" alt="Exterior car detailing" fill className="object-cover" priority />
             </div>
           </div>
           <div className="glass rounded-3xl p-10">

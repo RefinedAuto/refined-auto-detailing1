@@ -6,23 +6,31 @@ import { ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "Gallery | Before & After Auto Detailing Photos — Snohomish County WA",
   description:
-    "See real before and after photos from Refined Auto Detailing. Interior and exterior transformations on Teslas, BMWs, trucks, and more across Snohomish County, WA.",
+    "See real before and after photos from Refined Auto Detailing. Interior and exterior transformations across Snohomish County, WA.",
 };
 
 const galleryItems = [
-  { src: "/images/gs-5758.jpg", alt: "Professional auto detailing result", label: "Premium Full Detail", tag: "Full Detail" },
-  { src: "/images/gs-5299.jpg", alt: "Exterior detailing transformation", label: "Exterior Transformation", tag: "Exterior" },
-  { src: "/images/gs-5754.jpg", alt: "Interior deep cleaning result", label: "Interior Deep Clean", tag: "Interior" },
-  { src: "/images/gs-5364.jpg", alt: "Paint correction and protection", label: "Paint Correction", tag: "Exterior" },
-  { src: "/images/gs-5621.jpg", alt: "Vehicle detailing in progress", label: "Detailing in Progress", tag: "Full Detail" },
-  { src: "/images/gs-5749.jpg", alt: "Professional auto detail finish", label: "Showroom Finish", tag: "Exterior" },
-  { src: "/images/gs-5050.jpg", alt: "Interior cleaning and conditioning", label: "Interior Conditioning", tag: "Interior" },
-  { src: "/images/gs-5094.jpg", alt: "Wheel and tire detailing", label: "Wheel & Tire Detail", tag: "Exterior" },
-  { src: "/images/gs-5133.jpg", alt: "Ceramic coating application", label: "Ceramic Coating", tag: "Ceramic Coating" },
-  { src: "/images/gs-5048.jpg", alt: "Full vehicle detail service", label: "Complete Detail Package", tag: "Full Detail" },
-  { src: "/images/bmw-m3.jpg", alt: "BMW M3 exterior detailing", label: "BMW M3 — Full Detail", tag: "Exterior" },
-  { src: "/images/detail-4.jpg", alt: "Vehicle detailing result", label: "Premium Finish", tag: "Full Detail" },
+  { src: "/images/GS0A5754.jpeg", alt: "BMW M3 full detail front view", label: "BMW M3 — Full Detail", tag: "Full Detail" },
+  { src: "/images/GS0A5749.jpeg", alt: "BMW M3 side profile after detail", label: "BMW M3 — Side Profile", tag: "Exterior" },
+  { src: "/images/GS0A5668.jpeg", alt: "BMW M3 rear after detail", label: "BMW M3 — Rear Detail", tag: "Exterior" },
+  { src: "/images/GS0A5609.jpeg", alt: "BMW M3 wheel detail close-up", label: "Wheel & Brake Detail", tag: "Exterior" },
+  { src: "/images/GS0A5263.jpeg", alt: "BMW M3 being foam washed", label: "Foam Wash in Progress", tag: "Exterior" },
+  { src: "/images/GS0A5621.jpeg", alt: "BMW M3 being dried after wash", label: "Hand Drying Process", tag: "Exterior" },
+  { src: "/images/IMG_3373.JPG", alt: "Audi Q3 interior after detail", label: "Audi Q3 — Interior Clean", tag: "Interior" },
+  { src: "/images/IMG_3377.JPG", alt: "Audi Q3 rear seats after detail", label: "Audi Q3 — Rear Seats", tag: "Interior" },
+  { src: "/images/IMG_3378.JPG", alt: "Audi Q3 front seats after detail", label: "Audi Q3 — Leather Seats", tag: "Interior" },
+  { src: "/images/IMG_3438.JPG", alt: "Audi Q3 exterior after detail", label: "Audi Q3 — Exterior", tag: "Ceramic Coating" },
+  { src: "/images/IMG_3469.JPG", alt: "Audi Q3 rear angle after detail", label: "Audi Q3 — Rear Angle", tag: "Ceramic Coating" },
+  { src: "/images/IMG_3450.JPG", alt: "Audi Q3 wheel after cleaning", label: "Audi Q3 — Wheel Detail", tag: "Exterior" },
+  { src: "/images/IMG_3735.JPG", alt: "VW GTI interior after detail", label: "VW GTI — Interior After", tag: "Interior" },
+  { src: "/images/IMG_3745.JPG", alt: "VW GTI rear seats after detail", label: "VW GTI — Rear Seats", tag: "Interior" },
+  { src: "/images/IMG_3754.JPG", alt: "VW GTI dashboard after detail", label: "VW GTI — Dashboard", tag: "Interior" },
+  { src: "/images/IMG_3725.JPG", alt: "VW GTI engine bay after clean", label: "Engine Bay Detail", tag: "Full Detail" },
+  { src: "/images/infiniti-q50-clean.jpg", alt: "Infiniti Q50 after full detail", label: "Infiniti Q50 — After", tag: "Full Detail" },
+  { src: "/images/IMG_4197.JPG", alt: "Clean interior detail result", label: "Interior Transformation", tag: "Interior" },
 ];
+
+const tags = ["All", "Interior", "Exterior", "Full Detail", "Ceramic Coating"];
 
 export default function GalleryPage() {
   return (
@@ -41,9 +49,8 @@ export default function GalleryPage() {
             </p>
           </div>
 
-          {/* Filter tabs */}
           <div className="flex flex-wrap justify-center gap-3 mb-12">
-            {["All", "Interior", "Exterior", "Full Detail", "Ceramic Coating"].map((tag) => (
+            {tags.map((tag) => (
               <button
                 key={tag}
                 className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
@@ -55,7 +62,6 @@ export default function GalleryPage() {
             ))}
           </div>
 
-          {/* Gallery grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {galleryItems.map((item, i) => (
               <div

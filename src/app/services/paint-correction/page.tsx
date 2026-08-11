@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle } from "lucide-react";
 
@@ -12,7 +13,12 @@ export default function PaintCorrectionPage() {
   return (
     <div className="bg-dark-950 pt-32">
       <section className="section-padding">
-        <div className="container-custom max-w-3xl mx-auto">
+        <div className="container-custom">
+          <div className="relative aspect-[21/9] rounded-2xl overflow-hidden border border-white/10 mb-16">
+            <Image src="/images/IMG_3469.JPG" alt="Audi Q3 paint decontamination result" fill className="object-cover object-center" priority />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          </div>
+          <div className="max-w-3xl mx-auto">
           <span className="text-gold-500 text-xs tracking-[0.3em] uppercase font-medium mb-4 block">Paint Care</span>
           <h1 className="text-5xl font-black tracking-tight mb-6">
             Paint <span className="text-gradient-gold">Decontamination</span>
@@ -50,6 +56,7 @@ export default function PaintCorrectionPage() {
             <Link href="/services/ceramic-coating" className="flex-1 flex items-center justify-center gap-2 glass border border-white/10 hover:border-gold-500/30 text-white px-8 py-4 rounded-full transition-all">
               See Ceramic Coating <ArrowRight size={16} />
             </Link>
+          </div>
           </div>
         </div>
       </section>

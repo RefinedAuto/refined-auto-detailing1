@@ -20,7 +20,7 @@ export default function Hero() {
       {/* Background Image with overlay */}
       <div className="absolute inset-0">
         <Image
-          src="/images/gs-5758.jpg"
+          src="/images/GS0A5754.jpeg"
           alt="Premium auto detailing"
           fill
           className="object-cover object-center opacity-30"
