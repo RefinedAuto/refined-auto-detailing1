@@ -341,7 +341,7 @@ export const SERVICES: Service[] = [
         items: ["Light vacuum", "Surface wipe-down", "Windows & mirrors cleaned"],
       },
     ],
-    note: "Heavy pet hair is a +$50 surcharge. This package does not remove embedded paint contaminants — the Elite Full Detail does.",
+    note: "Upcharges: heavy pet hair +$50, stain removal +$50 ($100 if both are needed). This package does not remove embedded paint contaminants — the Elite Full Detail does.",
     about: {
       heading: "Inside-and-Out Detailing Without Leaving Home",
       paragraphs: [
@@ -406,7 +406,7 @@ export const SERVICES: Service[] = [
         ],
       },
     ],
-    note: "Heavy pet hair is a +$50 surcharge. The Elite Full Detail is the required first visit for Maintenance Plans.",
+    note: "Upcharges: heavy pet hair +$50, stain removal +$50 ($100 if both are needed). The Elite Full Detail is the required first visit for Maintenance Plans.",
     about: {
       heading: "Why Decontamination Matters in the Pacific Northwest",
       paragraphs: [

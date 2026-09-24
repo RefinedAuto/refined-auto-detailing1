@@ -184,7 +184,8 @@ export default function DetailPackagesPage() {
               </table>
             </div>
             <p className="text-white/60 text-sm mt-4 text-center">
-              Heavy pet hair is a +$50 upcharge on either package. Final price depends on vehicle size and condition.
+              Upcharges on either package: heavy pet hair +$50, stain removal +$50 ($100 if both are needed). Final
+              price depends on vehicle size and condition.
             </p>
           </section>
 
