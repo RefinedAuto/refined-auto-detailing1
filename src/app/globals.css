@@ -237,17 +237,21 @@ html.lenis {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  /* Horizontal only — a `padding` shorthand here would override py-* utilities. */
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 @media (min-width: 640px) {
   .container-custom {
-    padding: 0 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 
 @media (min-width: 1024px) {
   .container-custom {
-    padding: 0 3rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 }

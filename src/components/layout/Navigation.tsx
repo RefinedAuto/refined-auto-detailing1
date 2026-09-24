@@ -8,13 +8,21 @@ import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { cn, COMPANY } from "@/lib/utils";
 import { PRIMARY_SERVICES } from "@/lib/services";
 
+// Ceramic coating and paint correction get their own top-level nav items.
+const STANDALONE = ["ceramic-coating", "paint-correction"];
+
 const services = [
-  ...PRIMARY_SERVICES.map((s) => ({ name: s.name, href: `/services/${s.slug}` })),
+  ...PRIMARY_SERVICES.filter((s) => !STANDALONE.includes(s.slug)).map((s) => ({
+    name: s.name,
+    href: `/services/${s.slug}`,
+  })),
   { name: "All Services & Add-Ons", href: "/services" },
 ];
 
 const navLinks = [
   { name: "Services", href: "/services", hasDropdown: true },
+  { name: "Ceramic Coating", href: "/services/ceramic-coating" },
+  { name: "Paint Correction", href: "/services/paint-correction" },
   { name: "Gallery", href: "/gallery" },
   { name: "About", href: "/about" },
   { name: "Service Areas", href: "/service-areas" },
@@ -72,7 +80,7 @@ export default function Navigation() {
                   className="object-contain"
                 />
               </div>
-              <div className="hidden sm:block">
+              <div className="hidden sm:block lg:hidden xl:block">
                 <p className="text-white font-semibold text-sm tracking-widest uppercase">
                   Refined Auto
                 </p>
@@ -83,7 +91,7 @@ export default function Navigation() {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-8">
+            <div className="hidden lg:flex items-center gap-5 xl:gap-7">
               {navLinks.map((link) =>
                 link.hasDropdown ? (
                   <div
@@ -104,8 +112,12 @@ export default function Navigation() {
                       type="button"
                       aria-expanded={servicesOpen}
                       aria-controls="services-menu"
-                      onClick={() => setServicesOpen((o) => !o)}
-                      className="flex items-center gap-1 text-white/80 hover:text-gold-500 text-sm font-medium tracking-wide transition-colors duration-200"
+                      onClick={(e) => {
+                        // Hover already opened it for mouse users, so a click
+                        // (detail > 0) keeps it open; keyboard presses (detail 0) toggle.
+                        setServicesOpen((o) => (e.detail > 0 ? true : !o));
+                      }}
+                      className="flex items-center gap-1 text-white/80 hover:text-gold-500 text-sm font-medium tracking-wide whitespace-nowrap transition-colors duration-200"
                     >
                       {link.name}
                       <ChevronDown
@@ -125,14 +137,14 @@ export default function Navigation() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-56 glass rounded-xl overflow-hidden shadow-2xl border border-white/10"
+                          className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-60 bg-dark-950 rounded-xl overflow-hidden shadow-2xl shadow-black/60 border border-white/15"
                         >
                           {services.map((service) => (
                             <Link
                               key={service.name}
                               href={service.href}
                               onClick={() => setServicesOpen(false)}
-                              className="block px-5 py-3 text-sm text-white/70 hover:text-gold-500 hover:bg-white/5 transition-all duration-150 border-b border-white/5 last:border-0"
+                              className="block px-5 py-3 text-sm text-white/85 hover:text-gold-500 hover:bg-white/5 transition-all duration-150 border-b border-white/5 last:border-0"
                             >
                               {service.name}
                             </Link>
@@ -145,7 +157,7 @@ export default function Navigation() {
                   <Link
                     key={link.name}
                     href={link.href}
-                    className="text-white/80 hover:text-gold-500 text-sm font-medium tracking-wide transition-colors duration-200"
+                    className="text-white/80 hover:text-gold-500 text-sm font-medium tracking-wide whitespace-nowrap transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
@@ -154,13 +166,13 @@ export default function Navigation() {
             </div>
 
             {/* CTA */}
-            <div className="hidden lg:flex items-center gap-4">
+            <div className="hidden lg:flex items-center gap-4 shrink-0">
               <a
                 href={`tel:${COMPANY.phoneHref}`}
                 className="flex items-center gap-2 text-white/70 hover:text-gold-500 text-sm transition-colors"
               >
                 <Phone size={14} aria-hidden="true" />
-                <span>
+                <span className="sr-only xl:not-sr-only">
                   <span className="sr-only">Call </span>
                   {COMPANY.phone}
                 </span>

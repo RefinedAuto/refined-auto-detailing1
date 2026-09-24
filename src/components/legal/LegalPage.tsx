@@ -13,7 +13,7 @@ export default function LegalPage({
 }) {
   return (
     <div className="bg-dark-950 pt-32 min-h-screen">
-      <div className="container-custom py-16 max-w-3xl">
+      <div className="container-custom pt-4 pb-16 max-w-3xl">
         <Breadcrumbs items={[{ name: title, path }]} />
         <h1 className="text-4xl sm:text-5xl font-black text-white mb-3">{title}</h1>
         <p className="text-white/60 text-sm mb-12">Last updated: {updated}</p>
