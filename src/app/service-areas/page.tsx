@@ -6,8 +6,8 @@ import { AREAS } from "@/lib/areas";
 import { COMPANY } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: { absolute: "Mobile Car Detailing Service Areas — Snohomish & King County, WA" },
-  description: `Mobile car detailing and ceramic coating in ${AREAS.map((a) => a.city).join(", ")}, WA. We come to your home or office.`,
+  title: { absolute: "Mobile Detailing Service Areas | Snohomish & King County, WA" },
+  description: `Mobile car detailing and ceramic coating in ${AREAS.length} cities across Snohomish & King County, WA — Lynnwood, Everett, Kirkland, Shoreline and more.`,
   alternates: { canonical: "/service-areas" },
 };
 

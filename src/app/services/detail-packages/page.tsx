@@ -7,9 +7,9 @@ import { DETAIL_PACKAGES_HUB, getService, VEHICLE_LABELS, type Service } from "@
 import { COMPANY, SITE_URL } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: { absolute: "Car Detail Packages — Essential & Elite | Snohomish & King County, WA" },
+  title: { absolute: "Car Detail Packages — Essential & Elite | Snohomish County" },
   description:
-    "Compare our mobile car detail packages: the Essential Detail Package from $175 and the Elite Full Detail from $300, performed at your home in Snohomish & King County, WA.",
+    "Compare mobile car detail packages: the Essential Detail Package from $175 and the Elite Full Detail from $300, done at your home in Snohomish & King County.",
   alternates: { canonical: DETAIL_PACKAGES_HUB.path },
 };
 

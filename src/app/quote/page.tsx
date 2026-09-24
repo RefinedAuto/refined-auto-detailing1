@@ -4,9 +4,9 @@ import { Phone, MessageSquare, Clock, Shield } from "lucide-react";
 import { COMPANY } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Free Car Detailing Quote — Snohomish County, WA",
+  title: "Free Car Detailing Quote",
   description:
-    "Get an instant estimate for mobile car detailing in Marysville, Everett, Lynnwood & Snohomish County, WA. Upfront, size-based pricing for interior, exterior and full details.",
+    "Get an instant estimate for mobile car detailing, ceramic coating or paint correction in Snohomish & King County, WA. Upfront, size-based pricing.",
   alternates: { canonical: "/quote" },
 };
 

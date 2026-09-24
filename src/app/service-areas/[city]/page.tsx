@@ -21,12 +21,17 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
   if (!area) return {};
   const path = `/service-areas/${area.slug}`;
   const title = `Mobile Car Detailing & Ceramic Coating in ${area.city}, WA`;
-  const description = `Mobile car detailing in ${area.city}, WA (${area.zips.join(", ")}). Interior & exterior auto detailing, paint correction and ceramic coating at your home or office. ${COMPANY.google.rating}★ on Google. Call ${COMPANY.phone}.`;
+  const description = `Mobile car detailing & ceramic coating in ${area.city}, WA. Interior & exterior detailing and paint correction at your home. ${COMPANY.google.rating}★ on Google — free quote.`;
   return {
     title: { absolute: title },
     description,
     alternates: { canonical: path },
-    openGraph: { title, description, url: path },
+    openGraph: {
+      title,
+      description,
+      url: path,
+      images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: `Mobile car detailing in ${area.city}, WA` }],
+    },
   };
 }
 

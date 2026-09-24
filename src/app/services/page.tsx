@@ -8,7 +8,7 @@ import { COMPANY } from "@/lib/utils";
 export const metadata: Metadata = {
   title: { absolute: "Car Detailing Services & Prices | Snohomish & King County, WA" },
   description:
-    "Ceramic coating, paint correction, interior & exterior detailing, full details and maintenance plans — mobile auto detailing prices for Snohomish & King County, WA.",
+    "Ceramic coating, paint correction, interior & exterior detailing and detail packages — mobile car detailing prices for Snohomish & King County, WA.",
   alternates: { canonical: "/services" },
 };
 

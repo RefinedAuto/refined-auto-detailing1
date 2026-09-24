@@ -4,9 +4,9 @@ import Link from "next/link";
 import { Shield, Star, Zap, Heart, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About Us — Mobile Auto Detailers in Snohomish County, WA",
+  title: "About Our Mobile Detailing Team",
   description:
-    "Meet Refined Auto Detailing, a mobile auto detailing business serving Snohomish County, WA — built on precision, care, and bringing the detail shop to your driveway.",
+    "Meet Refined Auto Detailing, a mobile detailing business serving Snohomish & King County, WA — precision work, done in your driveway.",
   alternates: { canonical: "/about" },
 };
 
@@ -63,7 +63,7 @@ export default function AboutPage() {
             <div className="relative">
               <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-white/10">
                 <Image
-                  src="/images/gs-5094.jpg"
+                  src="/images/work/detailer-cleaning-bmw-wheel.jpg"
                   alt="Refined Auto Detailing cleaning a BMW wheel with a brush during a mobile detail"
                   fill
                   sizes="(min-width: 1024px) 50vw, 100vw"
@@ -109,9 +109,14 @@ export default function AboutPage() {
             </h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {["/images/gs-5754.jpg", "/images/gs-5749.jpg", "/images/gs-5094.jpg", "/images/gs-5133.jpg"].map((src, i) => (
-              <div key={i} className="aspect-square rounded-xl overflow-hidden border border-white/5 hover:border-gold-500/30 transition-all">
-                <Image src={src} alt={`Vehicle detailed by Refined Auto Detailing, photo ${i + 1}`} width={400} height={400} className="object-cover w-full h-full hover:scale-105 transition-transform duration-700" />
+            {[
+              { src: "/images/work/bmw-m3-mobile-detail-front.jpg", alt: "White BMW M3 after a full mobile detail" },
+              { src: "/images/work/bmw-m3-elite-detail-side.jpg", alt: "Glossy side profile of a detailed white BMW M3" },
+              { src: "/images/work/detailer-cleaning-bmw-wheel.jpg", alt: "Detailer scrubbing a BMW wheel with a brush during a mobile wash" },
+              { src: "/images/work/foam-cannon-wash-white-sedan.jpg", alt: "Detailer foaming a white sedan in a driveway during a mobile hand wash" },
+            ].map(({ src, alt }) => (
+              <div key={src} className="aspect-square rounded-xl overflow-hidden border border-white/5 hover:border-gold-500/30 transition-all">
+                <Image src={src} alt={alt} width={400} height={400} className="object-cover w-full h-full hover:scale-105 transition-transform duration-700" />
               </div>
             ))}
           </div>

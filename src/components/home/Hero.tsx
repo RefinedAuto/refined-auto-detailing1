@@ -12,8 +12,8 @@ export default function Hero() {
       {/* Background Image with overlay */}
       <div className="absolute inset-0">
         <Image
-          src="/images/GS0A5754.jpeg"
-          alt=""
+          src="/images/work/bmw-m3-mobile-detail-front.jpg"
+          alt="White BMW M3 in a home driveway after a mobile detail by Refined Auto Detailing"
           fill
           sizes="100vw"
           className="object-cover object-center opacity-30"

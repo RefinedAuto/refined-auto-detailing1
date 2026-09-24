@@ -59,14 +59,14 @@ export const SERVICES: Service[] = [
     slug: "ceramic-coating",
     name: "Ceramic Coating",
     category: "Paint & Protection",
-    metaTitle: "Ceramic Coating in Snohomish & King County, WA | 1, 3 & 5-Year",
+    metaTitle: "Ceramic Coating in Snohomish & King County, WA",
     metaDescription:
-      "Mobile ceramic coating in Lynnwood, Everett, Edmonds, Shoreline, Kirkland, Redmond & across Snohomish and King County, WA. 1, 3 and 5-year coatings with decontamination and polish included. Starting from $600.",
+      "Mobile ceramic coating in Lynnwood, Everett, Edmonds, Shoreline & Kirkland, WA. 1, 3 & 5-year coatings with full prep included. Starting from $600.",
     h1: "Ceramic Coating in Snohomish & King County, WA",
     eyebrow: "Ceramic Coating",
     intro:
       "Professional ceramic coating bonds to your vehicle's paint for hydrophobic, UV-resistant protection that keeps it glossy and easier to clean for years. Every package includes a three-step decontamination wash and a paint enhancement polish before the coating goes on.",
-    image: { src: "/images/IMG_3438.JPG", alt: "Audi Q3 exterior after ceramic coating" },
+    image: { src: "/images/work/audi-q3-ceramic-coating.jpg", alt: "Gray Audi Q3 with glossy paint after a ceramic coating" },
     lowPrice: 600,
     startingPrice: "$600",
     pricingTitle: "Coating Packages",
@@ -164,14 +164,14 @@ export const SERVICES: Service[] = [
     slug: "paint-correction",
     name: "Paint Correction",
     category: "Paint & Protection",
-    metaTitle: "Paint Correction & Swirl Removal | Snohomish & King County, WA",
+    metaTitle: "Paint Correction & Swirl Removal | Snohomish County, WA",
     metaDescription:
-      "Mobile paint correction in Lynnwood, Everett, Edmonds, Shoreline, Kirkland & across Snohomish and King County, WA. Machine polishing removes swirl marks, light scratches and oxidation. Free quote.",
+      "Mobile paint correction in Snohomish & King County, WA. Machine polishing removes swirl marks, light scratches and oxidation. Free quote after inspection.",
     h1: "Paint Correction & Swirl Mark Removal in Snohomish & King County, WA",
     eyebrow: "Paint Correction",
     intro:
       "Paint correction is machine polishing that levels the clear coat to remove or reduce swirl marks, light scratches, water spots and oxidation. It restores depth and gloss that washing and waxing can't bring back — and it's the right prep before a ceramic coating.",
-    image: { src: "/images/IMG_3469.JPG", alt: "Glossy Audi Q3 paint after polishing" },
+    image: { src: "/images/work/audi-q3-paint-polish-rear.jpg", alt: "Audi Q3 paint with a deep, glossy finish after machine polishing" },
     startingPrice: "Quote",
     includes: [
       {
@@ -222,12 +222,12 @@ export const SERVICES: Service[] = [
     category: "Detailing Package",
     metaTitle: "Mobile Interior Car Detailing in Snohomish County, WA",
     metaDescription:
-      "Mobile interior car detailing in Marysville, Everett, Lynnwood & all of Snohomish County. Steam cleaning, deep vacuuming, air blow-out, leather & plastic protection. From $160 — we come to you.",
+      "Mobile interior car detailing in Snohomish County, WA: steam cleaning, deep vacuuming, leather & plastic protection. From $160 — we come to you.",
     h1: "Mobile Interior Car Detailing in Snohomish County, WA",
     eyebrow: "Basic Interior Detail",
     intro:
       "An interior detail that leaves your cabin clean, fresh and protected — done in your driveway. We steam clean interior surfaces, deep vacuum every surface, blow debris out of every crevice with compressed air, clean the interior glass, and clean and protect all leather, plastics and vinyl.",
-    image: { src: "/images/IMG_3373.JPG", alt: "Audi Q3 interior after a mobile interior detail" },
+    image: { src: "/images/work/audi-q3-interior-detail.jpg", alt: "Clean Audi Q3 front interior after a mobile interior car detail" },
     lowPrice: 160,
     startingPrice: "$160",
     pricing: [{ label: "Basic Interior Detail", sedan: "$160+", suv: "$180+", large: "$200+" }],
@@ -282,14 +282,14 @@ export const SERVICES: Service[] = [
     slug: "exterior-detailing",
     name: "Exterior Detailing",
     category: "Detailing Package",
-    metaTitle: "Mobile Car Wash & Exterior Detailing in Snohomish County, WA",
+    metaTitle: "Mobile Car Wash & Exterior Detailing | Snohomish County",
     metaDescription:
-      "Premium mobile hand car wash in Snohomish County, WA. Two-bucket hand wash, wheels & inner rims, tire dressing, door jambs. From $80 — at your home or office.",
+      "Mobile hand car wash in Snohomish County, WA: two-bucket wash, wheels & inner rims, tire dressing and door jambs. From $80 at your home or office.",
     h1: "Mobile Car Wash & Exterior Detailing in Snohomish County, WA",
     eyebrow: "Premium Exterior Wash",
     intro:
       "A thorough hand wash that goes far beyond a drive-through car wash. We clean every wheel and inner rim, hand wash the paint using the two-bucket method, dry with soft microfiber, dress the tires and wipe down the door edges and jambs — all at your location.",
-    image: { src: "/images/GS0A5263.jpeg", alt: "BMW M3 covered in foam during a mobile hand wash" },
+    image: { src: "/images/work/bmw-m3-foam-hand-wash.jpg", alt: "White BMW M3 covered in foam during a mobile hand car wash" },
     lowPrice: 80,
     startingPrice: "$80",
     pricing: [{ label: "Premium Exterior Wash", sedan: "$80+", suv: "$100+", large: "$120+" }],
@@ -334,14 +334,14 @@ export const SERVICES: Service[] = [
     name: "Essential Detail Package",
     category: "Detailing Package",
     parent: DETAIL_PACKAGES_HUB,
-    metaTitle: "Full Car Detailing in Snohomish County, WA | Inside & Out",
+    metaTitle: "Full Car Detailing in Snohomish County, WA",
     metaDescription:
-      "Full car detailing, inside and out, at your home or office in Marysville, Everett, Lynnwood & Snohomish County. Essential Detail Package from $175. Mobile — we come to you.",
+      "Full car detailing inside and out at your home or office. The Essential Detail Package starts at $175 — mobile service across Snohomish County, WA.",
     h1: "Full Car Detailing in Snohomish County, WA",
     eyebrow: "Essential Detail Package",
     intro:
       "A complete interior and exterior refresh in one visit. The Essential Detail Package is designed to keep a well-maintained vehicle looking its best on a regular schedule, and we perform it wherever your car is parked.",
-    image: { src: "/images/GS0A5621.jpeg", alt: "BMW M3 being hand dried during a full detail" },
+    image: { src: "/images/work/bmw-m3-hand-drying.jpg", alt: "BMW M3 being hand dried during a full car detail" },
     lowPrice: 175,
     startingPrice: "$175",
     pricing: [{ label: "Essential Detail Package", sedan: "$175+", suv: "$210+", large: "$250+" }],
@@ -391,14 +391,14 @@ export const SERVICES: Service[] = [
     name: "Elite Full Detail",
     category: "Detailing Package",
     parent: DETAIL_PACKAGES_HUB,
-    metaTitle: "Elite Full Detail — Deep Clean Car Detailing in Snohomish County, WA",
+    metaTitle: "Elite Full Detail: Deep Clean Car Detailing, Snohomish Co.",
     metaDescription:
-      "Our most thorough mobile car detail: iron decontamination, clay bar, ceramic sealant and a full interior scrub. Serving Snohomish County, WA. From $300.",
+      "Our most popular, most thorough mobile detail: iron decontamination, clay bar, ceramic sealant and full interior scrub. Snohomish County, WA. From $300.",
     h1: "Elite Full Detail — Deep Clean Car Detailing in Snohomish County",
     eyebrow: "Elite Full Detail · Most Popular",
     intro:
       "Our most popular and most thorough detail — an extensive deep clean that addresses every crack, crevice and surface. The exterior is fully decontaminated with an iron remover and clay bar, then protected with a ceramic sealant. Inside, plastics and vinyl are scrubbed and conditioned.",
-    image: { src: "/images/GS0A5749.jpeg", alt: "BMW M3 side profile after an Elite Full Detail" },
+    image: { src: "/images/work/bmw-m3-elite-detail-side.jpg", alt: "Glossy white BMW M3 side profile after an Elite Full Detail" },
     lowPrice: 300,
     startingPrice: "$300",
     pricing: [{ label: "Elite Full Detail", sedan: "$300+", suv: "$350+", large: "$400+" }],
@@ -457,14 +457,14 @@ export const SERVICES: Service[] = [
     slug: "maintenance-plans",
     name: "Maintenance Plans",
     category: "Detailing Package",
-    metaTitle: "Recurring Car Detailing Maintenance Plans | Snohomish County, WA",
+    metaTitle: "Car Detailing Maintenance Plans | Snohomish County, WA",
     metaDescription:
-      "Bi-weekly or monthly mobile car detailing in Snohomish County, WA at discounted recurring rates. Keep your vehicle clean year-round. From $140 per visit.",
+      "Bi-weekly or monthly mobile car detailing at discounted recurring rates in Snohomish County, WA. Keep your vehicle clean year-round. From $140/visit.",
     h1: "Recurring Car Detailing Plans in Snohomish County, WA",
     eyebrow: "Maintenance Plans",
     intro:
       "Stay on top of your vehicle's appearance with a standing bi-weekly or monthly appointment. Each visit includes our Essential Detail Package at a discounted recurring rate — we show up on schedule so you never have to think about it.",
-    image: { src: "/images/GS0A5754.jpeg", alt: "Freshly detailed BMW M3 front view" },
+    image: { src: "/images/work/bmw-m3-mobile-detail-front.jpg", alt: "Freshly detailed white BMW M3 in a home driveway" },
     lowPrice: 140,
     startingPrice: "$140",
     pricingTitle: "Price Per Visit",
@@ -511,14 +511,14 @@ export const SERVICES: Service[] = [
     slug: "headlight-restoration",
     name: "Headlight Restoration",
     category: "Add-On",
-    metaTitle: "Headlight Restoration in Snohomish County, WA | Mobile Service",
+    metaTitle: "Headlight Restoration in Snohomish County, WA",
     metaDescription:
-      "Mobile headlight restoration in Snohomish County, WA. Restore cloudy, yellowed headlight lenses for a cleaner look. $60 add-on to any detail.",
+      "Mobile headlight restoration in Snohomish County, WA. Restore cloudy, yellowed headlight lenses — a $60 add-on to any detail.",
     h1: "Headlight Restoration in Snohomish County, WA",
     eyebrow: "Add-On Service",
     intro:
       "Cloudy, yellowed headlights make any car look older than it is. Our headlight restoration removes the oxidized outer layer of the lens and brings back clarity — added to any detail appointment at your location.",
-    image: { src: "/images/GS0A5754.jpeg", alt: "Clear headlights on a detailed BMW M3" },
+    image: { src: "/images/work/bmw-m3-mobile-detail-front.jpg", alt: "Clear, bright headlights on a freshly detailed BMW M3" },
     lowPrice: 60,
     startingPrice: "$60",
     includes: [
@@ -552,14 +552,14 @@ export const SERVICES: Service[] = [
     slug: "engine-bay-detailing",
     name: "Engine Bay Detailing",
     category: "Add-On",
-    metaTitle: "Engine Bay Detailing in Snohomish County, WA | Mobile Service",
+    metaTitle: "Engine Bay Detailing in Snohomish County, WA",
     metaDescription:
       "Mobile engine bay cleaning and dressing in Snohomish County, WA. A careful, low-water engine detail added to any service for $80.",
     h1: "Engine Bay Detailing in Snohomish County, WA",
     eyebrow: "Add-On Service",
     intro:
       "A careful engine bay cleaning that removes built-up dirt and grime, then dresses plastics and rubber for a clean, finished look. It's a great add-on when selling a car or after a long winter.",
-    image: { src: "/images/IMG_3725.JPG", alt: "Volkswagen GTI engine bay after detailing" },
+    image: { src: "/images/work/vw-gti-engine-bay-detail.jpg", alt: "Volkswagen GTI engine bay after detailing" },
     lowPrice: 80,
     startingPrice: "$80",
     includes: [
@@ -594,14 +594,14 @@ export const SERVICES: Service[] = [
     slug: "pet-hair-removal",
     name: "Pet Hair Removal",
     category: "Add-On",
-    metaTitle: "Car Pet Hair Removal in Snohomish County, WA | Mobile Detailing",
+    metaTitle: "Car Pet Hair Removal in Snohomish County, WA",
     metaDescription:
       "Professional dog and cat hair removal from car seats and carpets in Snohomish County, WA. Added to any interior detail for $50. We come to you.",
     h1: "Car Pet Hair Removal in Snohomish County, WA",
     eyebrow: "Add-On Service",
     intro:
       "Dog and cat hair weaves itself into carpet and upholstery fibers and won't come out with a normal vacuum. We use dedicated tools and techniques to pull embedded hair from seats, carpets and cargo areas.",
-    image: { src: "/images/IMG_3377.JPG", alt: "Clean rear seats of an Audi Q3 after interior detailing" },
+    image: { src: "/images/work/audi-q3-rear-seats-interior-detail.jpg", alt: "Clean rear seats of an Audi Q3 after interior detailing" },
     lowPrice: 50,
     startingPrice: "$50",
     includes: [

@@ -51,7 +51,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-white font-semibold text-sm tracking-widest uppercase mb-6">Services</h3>
+            <h2 className="text-white font-semibold text-sm tracking-widest uppercase mb-6">Services</h2>
             <ul className="space-y-3">
               {services.map((s) => (
                 <li key={s.name}>
@@ -65,7 +65,7 @@ export default function Footer() {
 
           {/* Service Areas */}
           <div>
-            <h3 className="text-white font-semibold text-sm tracking-widest uppercase mb-6">Service Areas</h3>
+            <h2 className="text-white font-semibold text-sm tracking-widest uppercase mb-6">Service Areas</h2>
             <ul className="grid grid-cols-2 lg:grid-cols-1 gap-3">
               {serviceAreas.map((a) => (
                 <li key={a.name}>
@@ -79,7 +79,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-white font-semibold text-sm tracking-widest uppercase mb-6">Contact</h3>
+            <h2 className="text-white font-semibold text-sm tracking-widest uppercase mb-6">Contact</h2>
             <ul className="space-y-4">
               <li>
                 <a href={`tel:${COMPANY.phoneHref}`} className="flex items-center gap-3 text-white/50 hover:text-gold-500 text-sm transition-colors">

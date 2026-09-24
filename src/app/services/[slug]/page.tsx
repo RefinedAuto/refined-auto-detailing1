@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!service) return {};
   const path = `/services/${service.slug}`;
   return {
-    title: { absolute: `${service.metaTitle} | Refined Auto Detailing` },
+    title: { absolute: service.metaTitle },
     description: service.metaDescription,
     alternates: { canonical: path },
     openGraph: {

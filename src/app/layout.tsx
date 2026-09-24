@@ -96,6 +96,8 @@ const businessJsonLd = {
     postalCode: COMPANY.postalCode,
     addressCountry: "US",
   },
+  // Pin location from the Google Business Profile.
+  geo: { "@type": "GeoCoordinates", latitude: 47.8085, longitude: -122.2943 },
   areaServed: [
     ...AREAS.map((a) => ({ "@type": "City", name: `${a.city}, WA` })),
     { "@type": "AdministrativeArea", name: "Snohomish County, WA" },
