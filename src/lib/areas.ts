@@ -87,7 +87,7 @@ export const AREAS: Area[] = [
       "For Lynnwood commuters who want the car to stay clean with zero effort, a bi-weekly or monthly Maintenance Plan keeps it on a regular schedule.",
     ],
     protection:
-      "Lynnwood commuters rack up miles on I-5 and I-405, and the road film and brake dust show. Paint correction removes the resulting swirls and dullness, and a 1, 3 or 4-year ceramic coating makes future washes fast and easy.",
+      "Lynnwood commuters rack up miles on I-5 and I-405, and the road film and brake dust show. Paint correction removes the resulting swirls and dullness, and a 1, 3 or 5-year ceramic coating makes future washes fast and easy.",
     neighborhoods: [
       "Alderwood",
       "City Center",
@@ -281,7 +281,7 @@ export const AREAS: Area[] = [
       "Condo and apartment living around downtown and Totem Lake is common — if you park in a garage or shared lot, tell us when you book and confirm the property allows on-site service.",
     ],
     protection:
-      "Ceramic coating and paint correction are a natural fit for Kirkland's newer and high-end vehicles. Correction removes dealer-installed swirl marks and wash haze; a 1, 3 or 4-year ceramic coating then keeps the finish glossy through Eastside rain.",
+      "Ceramic coating and paint correction are a natural fit for Kirkland's newer and high-end vehicles. Correction removes dealer-installed swirl marks and wash haze; a 1, 3 or 5-year ceramic coating then keeps the finish glossy through Eastside rain.",
     neighborhoods: [
       "Downtown / Moss Bay",
       "Juanita",

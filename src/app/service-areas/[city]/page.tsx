@@ -55,7 +55,7 @@ function cityFaqs(city: string, zips: string[], neighborhoods: string[]) {
     },
     {
       q: `Do you do ceramic coating and paint correction in ${city}?`,
-      a: `Yes. We offer 1, 3 and 4-year ceramic coatings starting at ${ceramic.startingPrice}, applied at your location in ${city}. Paint correction is quoted after we inspect the paint.`,
+      a: `Yes. We offer 1, 3 and 5-year ceramic coatings starting at ${ceramic.startingPrice}, applied at your location in ${city}. Paint correction is quoted after we inspect the paint.`,
     },
     {
       q: `What are your hours in ${city}?`,

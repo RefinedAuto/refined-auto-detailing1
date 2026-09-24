@@ -10,8 +10,8 @@ const services = [
     icon: Shield,
     title: "Ceramic Coating",
     description:
-      "Professional ceramic coating with 1, 3, or 4-year protection tiers. Includes full decontamination wash and paint enhancement polish before every application.",
-    features: ["1, 3, or 4-year tiers", "Full decontamination prep", "Paint enhancement included", "Window & wheel coating add-ons"],
+      "Professional ceramic coating with 1, 3, or 5-year protection tiers. Includes full decontamination wash and paint enhancement polish before every application.",
+    features: ["1, 3, or 5-year tiers", "Full decontamination prep", "Paint enhancement included", "Window & wheel coating add-ons"],
     price: "From $600",
     href: "/services/ceramic-coating",
     accent: "from-gold-500/20 to-transparent",

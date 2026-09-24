@@ -58,9 +58,9 @@ export const SERVICES: Service[] = [
     slug: "ceramic-coating",
     name: "Ceramic Coating",
     category: "Paint & Protection",
-    metaTitle: "Ceramic Coating in Snohomish & King County, WA | 1, 3 & 4-Year",
+    metaTitle: "Ceramic Coating in Snohomish & King County, WA | 1, 3 & 5-Year",
     metaDescription:
-      "Mobile ceramic coating in Lynnwood, Everett, Edmonds, Shoreline, Kirkland, Redmond & across Snohomish and King County, WA. 1, 3 and 4-year coatings with decontamination and polish included. Starting from $600.",
+      "Mobile ceramic coating in Lynnwood, Everett, Edmonds, Shoreline, Kirkland, Redmond & across Snohomish and King County, WA. 1, 3 and 5-year coatings with decontamination and polish included. Starting from $600.",
     h1: "Ceramic Coating in Snohomish & King County, WA",
     eyebrow: "Ceramic Coating",
     intro:
@@ -80,7 +80,7 @@ export const SERVICES: Service[] = [
         popular: true,
       },
       {
-        label: "4-Year Ceramic Coating",
+        label: "5-Year Ceramic Coating",
         description: "Our longest-lasting coating for maximum durability.",
       },
     ],
@@ -127,7 +127,7 @@ export const SERVICES: Service[] = [
     faqs: [
       {
         q: "How long does a ceramic coating last?",
-        a: "We offer 1-year, 3-year and 4-year coatings. Actual lifespan depends on how the vehicle is washed and stored — we'll give you aftercare instructions so you get the most out of it.",
+        a: "We offer 1-year, 3-year and 5-year coatings. Actual lifespan depends on how the vehicle is washed and stored — we'll give you aftercare instructions so you get the most out of it.",
       },
       {
         q: "Do I need paint correction before ceramic coating?",

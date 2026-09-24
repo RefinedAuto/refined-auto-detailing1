@@ -92,7 +92,7 @@ export default function TermsPage() {
           reduced but not fully removed.
         </li>
         <li>
-          Ceramic coating durability (1, 3 or 4 years) is an expected lifespan with proper care — not a warranty.
+          Ceramic coating durability (1, 3 or 5 years) is an expected lifespan with proper care — not a warranty.
           Lifespan depends on washing methods, weather, storage and use. Coatings do not prevent rock chips,
           scratches, dents or etching from neglected contaminants.
         </li>
