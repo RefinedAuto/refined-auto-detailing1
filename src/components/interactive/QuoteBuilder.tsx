@@ -13,9 +13,16 @@ import Link from "next/link";
 import { formatCurrency, COMPANY } from "@/lib/utils";
 
 type VehicleType = "sedan" | "suv" | "large";
-type ServiceType = "exterior_wash" | "basic_detail" | "essential" | "elite";
+type DetailType = "exterior_wash" | "basic_detail" | "essential" | "elite";
+type QuoteType = "ceramic" | "paint_correction";
+type ServiceType = DetailType | QuoteType;
 
-const basePricing: Record<VehicleType, Record<ServiceType, number>> = {
+const isQuoteOnly = (s: ServiceType): s is QuoteType => s === "ceramic" || s === "paint_correction";
+
+// Keep in sync with src/lib/services.ts.
+const CERAMIC_STARTING_PRICE = 600;
+
+const basePricing: Record<VehicleType, Record<DetailType, number>> = {
   sedan: { exterior_wash: 80, basic_detail: 160, essential: 175, elite: 300 },
   suv:   { exterior_wash: 100, basic_detail: 180, essential: 210, elite: 350 },
   large: { exterior_wash: 120, basic_detail: 200, essential: 250, elite: 400 },
@@ -27,6 +34,29 @@ const addons: { id: string; name: string; price: number; description: string }[]
   { id: "engine", name: "Engine Bay Detail", price: 80, description: "Thorough engine bay cleaning & dressing" },
   { id: "headlight", name: "Headlight Restoration", price: 60, description: "Rejuvenates faded & yellowed headlights" },
   { id: "clay_sealant", name: "Clay Bar & Sealant", price: 80, description: "Full decontamination + ceramic sealant" },
+];
+
+const coatingTiers = [
+  { id: "1yr", label: "1-Year Coating", desc: "Entry-level protection with full prep" },
+  { id: "3yr", label: "3-Year Coating", desc: "Extended protection, same thorough prep" },
+  { id: "5yr", label: "5-Year Coating", desc: "Our longest-lasting protection", popular: true },
+  { id: "unsure", label: "Not sure yet", desc: "We'll recommend one after seeing your vehicle" },
+];
+
+const leatherPrice: Record<VehicleType, number> = { sedan: 250, suv: 300, large: 350 };
+
+const coatingExtras = (vehicle: VehicleType) => [
+  { id: "window", name: "Window Coating", price: "from $125", desc: "Rain beads off the glass" },
+  { id: "wheel", name: "Wheel Coating", price: "from $180", desc: "Brake dust rinses right off" },
+  { id: "leather", name: "Leather Coating", price: `$${leatherPrice[vehicle]}`, desc: "Guards seats against spills & stains" },
+  { id: "correction", name: "Paint Correction First", price: "quoted", desc: "Removes swirls before coating" },
+];
+
+const paintConditions = [
+  { id: "light", label: "Light swirls or haze", desc: "Fine swirl marks you mostly notice in direct sunlight" },
+  { id: "moderate", label: "Swirls & light scratches", desc: "Visible swirls plus a few light scratches" },
+  { id: "heavy", label: "Heavy defects or oxidation", desc: "Deep swirls, many scratches, or faded / chalky paint" },
+  { id: "unsure", label: "Not sure", desc: "We'll assess the paint in person" },
 ];
 
 const leadSchema = z.object({
@@ -43,6 +73,10 @@ export default function QuoteBuilder() {
   const [vehicleType, setVehicleType] = useState<VehicleType>("sedan");
   const [service, setService] = useState<ServiceType>("elite");
   const [selectedAddons, setSelectedAddons] = useState<string[]>([]);
+  const [coatingTier, setCoatingTier] = useState("5yr");
+  const [coatingAddons, setCoatingAddons] = useState<string[]>([]);
+  const [paintCondition, setPaintCondition] = useState("unsure");
+  const [addCeramicAfter, setAddCeramicAfter] = useState(false);
   const [leadCaptured, setLeadCaptured] = useState(false);
   const [estimate, setEstimate] = useState(0);
   const stepRegionRef = useRef<HTMLDivElement>(null);
@@ -67,6 +101,7 @@ export default function QuoteBuilder() {
   const submitToFormspree = useSubmit<Record<string, string>>("mojgblgp");
 
   const calculateEstimate = () => {
+    if (isQuoteOnly(service)) return 0;
     const base = basePricing[vehicleType][service];
     const addonsTotal = selectedAddons.reduce((sum, id) => {
       const addon = addons.find((a) => a.id === id);
@@ -81,11 +116,39 @@ export default function QuoteBuilder() {
     );
   };
 
+  const toggleCoatingAddon = (id: string) => {
+    setCoatingAddons((prev) => (prev.includes(id) ? prev.filter((a) => a !== id) : [...prev, id]));
+  };
+
+  /** Human-readable price line for the summary, result screen and email. */
+  const priceSummary = () => {
+    if (service === "ceramic") return `Starting from ${formatCurrency(CERAMIC_STARTING_PRICE)}`;
+    if (service === "paint_correction") return "Quoted after inspection";
+    return formatCurrency(calculateEstimate());
+  };
+
+  /** Everything the customer chose, as short lines for the email. */
+  const selectionDetails = () => {
+    if (service === "ceramic") {
+      const tier = coatingTiers.find((t) => t.id === coatingTier)!.label;
+      const extras = coatingExtras(vehicleType)
+        .filter((x) => coatingAddons.includes(x.id))
+        .map((x) => x.name);
+      return { option: tier, extras: extras.join(", ") || "None" };
+    }
+    if (service === "paint_correction") {
+      const cond = paintConditions.find((c) => c.id === paintCondition)!.label;
+      return { option: `Paint condition: ${cond}`, extras: addCeramicAfter ? "Interested in ceramic coating after" : "None" };
+    }
+    const names = selectedAddons.map((id) => addons.find((a) => a.id === id)?.name).join(", ");
+    return { option: "—", extras: names || "None" };
+  };
+
   const onSubmitLead = async (data: LeadFormData) => {
     const total = calculateEstimate();
     const selectedServiceLabel = services.find(s => s.type === service)!.label;
     const selectedVehicleLabel = vehicles.find(v => v.type === vehicleType)!.label;
-    const selectedAddonNames = selectedAddons.map(id => addons.find(a => a.id === id)?.name).join(", ");
+    const { option, extras } = selectionDetails();
 
     const result = await submitToFormspree({
       name: data.name,
@@ -93,8 +156,9 @@ export default function QuoteBuilder() {
       phone: data.phone,
       vehicle: selectedVehicleLabel,
       service: selectedServiceLabel,
-      addons: selectedAddonNames || "None",
-      estimate: `$${total}`,
+      option,
+      addons: extras,
+      estimate: priceSummary(),
       _subject: `New Quote Request — ${selectedServiceLabel} (${selectedVehicleLabel})`,
     });
 
@@ -119,6 +183,8 @@ export default function QuoteBuilder() {
   ];
 
   const services: { type: ServiceType; label: string; desc: string; highlight?: boolean }[] = [
+    { type: "ceramic", label: "Ceramic Coating", desc: "1, 3 or 5-year paint protection" },
+    { type: "paint_correction", label: "Paint Correction", desc: "Remove swirls, scratches & oxidation" },
     { type: "exterior_wash", label: "Premium Exterior Wash", desc: "Hand wash, wheels, tire dressing" },
     { type: "basic_detail", label: "Basic Interior Detail", desc: "Steam clean, deep vacuum, windows, leather protect" },
     { type: "essential", label: "Essential Detail Package", desc: "Interior + exterior maintenance package" },
@@ -141,7 +207,7 @@ export default function QuoteBuilder() {
           <h2 className="text-4xl sm:text-5xl font-black tracking-tight mb-4">
             Get Your <span className="text-gradient-gold">Quote</span>
           </h2>
-          <p className="text-white/50">Configure your service in 60 seconds.</p>
+          <p className="text-white/70">Four quick steps — about 60 seconds.</p>
         </motion.div>
 
         <motion.div
@@ -194,13 +260,16 @@ export default function QuoteBuilder() {
                   exit={{ opacity: 0, x: -30 }}
                 >
                   <h3 className="text-white font-bold text-xl mb-2">What vehicle are we detailing?</h3>
-                  <p className="text-white/60 text-sm mb-6">Select your vehicle type</p>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
+                  <p className="text-white/60 text-sm mb-6">Tap your vehicle type to continue</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     {vehicles.map(({ type, label, icon: Icon }) => (
                       <button
                         key={type}
                         type="button"
-                        onClick={() => setVehicleType(type)}
+                        onClick={() => {
+                          setVehicleType(type);
+                          setStep(2);
+                        }}
                         aria-pressed={vehicleType === type}
                         className={`flex flex-row sm:flex-col items-center gap-3 p-4 sm:p-5 rounded-2xl border transition-all duration-200 ${
                           vehicleType === type
@@ -213,13 +282,6 @@ export default function QuoteBuilder() {
                       </button>
                     ))}
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => setStep(2)}
-                    className="w-full bg-gold-500 hover:bg-gold-400 text-black font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all"
-                  >
-                    Next <ArrowRight size={18} aria-hidden="true" />
-                  </button>
                 </motion.div>
               )}
 
@@ -232,51 +294,57 @@ export default function QuoteBuilder() {
                   exit={{ opacity: 0, x: -30 }}
                 >
                   <h3 className="text-white font-bold text-xl mb-2">What service do you need?</h3>
-                  <p className="text-white/60 text-sm mb-6">Choose your detailing package</p>
-                  <div className="space-y-3 mb-8">
-                    {services.map(({ type, label, desc, highlight }) => (
-                      <button
-                        key={type}
-                        type="button"
-                        aria-pressed={service === type}
-                        onClick={() => setService(type)}
-                        className={`w-full flex items-center justify-between p-5 rounded-2xl border transition-all duration-200 ${
-                          service === type
-                            ? "border-gold-500 bg-gold-500/10"
-                            : "border-white/10 hover:border-white/30"
-                        }`}
-                      >
-                        <div className="text-left">
-                          <div className="flex items-center gap-2">
-                            <p className={`font-bold ${service === type ? "text-gold-500" : "text-white"}`}>{label}</p>
-                            {highlight && <span className="text-[10px] bg-gold-500/20 text-gold-400 px-2 py-0.5 rounded-full font-bold tracking-wide">Popular</span>}
-                          </div>
-                          <p className="text-white/60 text-sm">{desc}</p>
-                        </div>
-                        <div className="text-right">
-                          <p className={`font-bold ${service === type ? "text-gold-500" : "text-white/60"}`}>
-                            {formatCurrency(basePricing[vehicleType][type])}+
-                          </p>
-                        </div>
-                      </button>
-                    ))}
-                  </div>
-                  <div className="flex gap-3">
-                    <button
-                      type="button"
-                      onClick={() => setStep(1)}
-                      className="flex-1 border border-white/10 hover:border-white/30 text-white/60 py-4 rounded-xl flex items-center justify-center gap-2 transition-all"
-                    >
-                      <ArrowLeft size={18} aria-hidden="true" /> Back
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setStep(3)}
-                      className="flex-1 bg-gold-500 hover:bg-gold-400 text-black font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all"
-                    >
-                      Next <ArrowRight size={18} aria-hidden="true" />
-                    </button>
-                  </div>
+                  <p className="text-white/60 text-sm mb-6">Tap a service to continue</p>
+                  {[
+                    { title: "Paint & Protection", items: services.filter((x) => isQuoteOnly(x.type)) },
+                    { title: "Detailing", items: services.filter((x) => !isQuoteOnly(x.type)) },
+                  ].map((group) => (
+                    <div key={group.title} className="mb-6">
+                      <p className="text-gold-500 text-xs tracking-widest uppercase font-bold mb-3">{group.title}</p>
+                      <div className="space-y-3">
+                        {group.items.map(({ type, label, desc, highlight }) => (
+                          <button
+                            key={type}
+                            type="button"
+                            aria-pressed={service === type}
+                            onClick={() => {
+                              setService(type);
+                              setStep(3);
+                            }}
+                            className={`w-full flex items-center justify-between gap-4 p-5 rounded-2xl border transition-all duration-200 ${
+                              service === type ? "border-gold-500 bg-gold-500/10" : "border-white/10 hover:border-white/30"
+                            }`}
+                          >
+                            <div className="text-left">
+                              <div className="flex items-center gap-2">
+                                <p className={`font-bold ${service === type ? "text-gold-500" : "text-white"}`}>{label}</p>
+                                {highlight && (
+                                  <span className="text-[10px] bg-gold-500 text-black px-2 py-0.5 rounded-full font-bold tracking-wide">
+                                    Popular
+                                  </span>
+                                )}
+                              </div>
+                              <p className="text-white/60 text-sm">{desc}</p>
+                            </div>
+                            <p className={`font-bold shrink-0 ${service === type ? "text-gold-500" : "text-white/70"}`}>
+                              {type === "ceramic"
+                                ? `From ${formatCurrency(CERAMIC_STARTING_PRICE)}`
+                                : type === "paint_correction"
+                                ? "Free quote"
+                                : `${formatCurrency(basePricing[vehicleType][type as DetailType])}+`}
+                            </p>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                  <button
+                    type="button"
+                    onClick={() => setStep(1)}
+                    className="w-full border border-white/10 hover:border-white/30 text-white/70 py-4 rounded-xl flex items-center justify-center gap-2 transition-all"
+                  >
+                    <ArrowLeft size={18} aria-hidden="true" /> Back
+                  </button>
                 </motion.div>
               )}
 
@@ -288,10 +356,117 @@ export default function QuoteBuilder() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -30 }}
                 >
+                  {service === "ceramic" && (
+                    <>
+                      <fieldset className="mb-8">
+                        <legend className="text-white font-bold text-xl mb-2">Choose your coating</legend>
+                        <p className="text-white/60 text-sm mb-5">Every coating includes decontamination and a paint enhancement polish.</p>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          {coatingTiers.map((t) => (
+                            <label
+                              key={t.id}
+                              className={`relative flex cursor-pointer flex-col gap-1 p-4 rounded-2xl border transition-all has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-gold-400 ${
+                                coatingTier === t.id ? "border-gold-500 bg-gold-500/10" : "border-white/10 hover:border-white/30"
+                              }`}
+                            >
+                              <input
+                                type="radio"
+                                name="coating-tier"
+                                value={t.id}
+                                checked={coatingTier === t.id}
+                                onChange={() => setCoatingTier(t.id)}
+                                className="sr-only"
+                              />
+                              <span className="flex items-center gap-2">
+                                <span className={`font-bold ${coatingTier === t.id ? "text-gold-500" : "text-white"}`}>{t.label}</span>
+                                {t.popular && (
+                                  <span className="text-[10px] bg-gold-500 text-black px-2 py-0.5 rounded-full font-bold tracking-wide">
+                                    Most Popular
+                                  </span>
+                                )}
+                              </span>
+                              <span className="text-white/60 text-xs">{t.desc}</span>
+                            </label>
+                          ))}
+                        </div>
+                      </fieldset>
+                      <fieldset className="mb-8">
+                        <legend className="text-white font-bold mb-3">Add extra protection? <span className="text-white/60 font-normal text-sm">(optional)</span></legend>
+                        <div className="space-y-2">
+                          {coatingExtras(vehicleType).map((x) => (
+                            <label
+                              key={x.id}
+                              className={`flex cursor-pointer items-center justify-between gap-3 p-4 rounded-xl border transition-all has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-gold-400 ${
+                                coatingAddons.includes(x.id) ? "border-gold-500/50 bg-gold-500/5" : "border-white/10 hover:border-white/20"
+                              }`}
+                            >
+                              <span className="flex items-center gap-3">
+                                <input
+                                  type="checkbox"
+                                  checked={coatingAddons.includes(x.id)}
+                                  onChange={() => toggleCoatingAddon(x.id)}
+                                  className="w-5 h-5 accent-[#3a91cc] shrink-0"
+                                />
+                                <span>
+                                  <span className="block text-white text-sm font-medium">{x.name}</span>
+                                  <span className="block text-white/60 text-xs">{x.desc}</span>
+                                </span>
+                              </span>
+                              <span className="text-gold-500 text-sm font-bold shrink-0">{x.price}</span>
+                            </label>
+                          ))}
+                        </div>
+                      </fieldset>
+                    </>
+                  )}
+
+                  {service === "paint_correction" && (
+                    <>
+                      <fieldset className="mb-8">
+                        <legend className="text-white font-bold text-xl mb-2">How does your paint look today?</legend>
+                        <p className="text-white/60 text-sm mb-5">A rough idea helps us prepare your quote — we&apos;ll confirm in person.</p>
+                        <div className="space-y-2">
+                          {paintConditions.map((c) => (
+                            <label
+                              key={c.id}
+                              className={`flex cursor-pointer flex-col gap-1 p-4 rounded-xl border transition-all has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-gold-400 ${
+                                paintCondition === c.id ? "border-gold-500 bg-gold-500/10" : "border-white/10 hover:border-white/30"
+                              }`}
+                            >
+                              <input
+                                type="radio"
+                                name="paint-condition"
+                                value={c.id}
+                                checked={paintCondition === c.id}
+                                onChange={() => setPaintCondition(c.id)}
+                                className="sr-only"
+                              />
+                              <span className={`font-bold text-sm ${paintCondition === c.id ? "text-gold-500" : "text-white"}`}>{c.label}</span>
+                              <span className="text-white/60 text-xs">{c.desc}</span>
+                            </label>
+                          ))}
+                        </div>
+                      </fieldset>
+                      <label className="flex cursor-pointer items-center gap-3 p-4 rounded-xl border border-white/10 hover:border-white/20 mb-8 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-gold-400">
+                        <input
+                          type="checkbox"
+                          checked={addCeramicAfter}
+                          onChange={(e) => setAddCeramicAfter(e.target.checked)}
+                          className="w-5 h-5 accent-[#3a91cc] shrink-0"
+                        />
+                        <span>
+                          <span className="block text-white text-sm font-medium">Protect it with a ceramic coating afterward</span>
+                          <span className="block text-white/60 text-xs">Recommended — locks in the corrected finish (from {formatCurrency(CERAMIC_STARTING_PRICE)})</span>
+                        </span>
+                      </label>
+                    </>
+                  )}
+
+                  {!isQuoteOnly(service) && (
+                  <>
                   <h3 className="text-white font-bold text-xl mb-2">Any add-ons?</h3>
                   <p className="text-white/60 text-sm mb-5">Optional services to add to your detail</p>
 
-                  <p className="text-white/60 text-sm mb-3">Add-on services</p>
                   <div className="space-y-2 mb-8">
                     {addons.map((addon) => (
                       <button
@@ -320,14 +495,16 @@ export default function QuoteBuilder() {
                       </button>
                     ))}
                   </div>
+                  </>
+                  )}
 
                   {/* Live estimate preview */}
                   <div className="glass-gold rounded-xl p-4 flex items-center justify-between mb-6">
                     <div className="flex items-center gap-2">
-                      <Sparkles size={16} className="text-gold-500" />
-                      <span className="text-white/70 text-sm">Estimated Total</span>
+                      <Sparkles size={16} className="text-gold-500" aria-hidden="true" />
+                      <span className="text-white/70 text-sm">{isQuoteOnly(service) ? "Pricing" : "Estimated Total"}</span>
                     </div>
-                    <span className="text-gold-500 font-black text-2xl">{formatCurrency(calculateEstimate())}</span>
+                    <span className={`text-gold-500 font-black ${isQuoteOnly(service) ? "text-lg" : "text-2xl"}`}>{priceSummary()}</span>
                   </div>
 
                   <div className="flex gap-3">
@@ -343,7 +520,7 @@ export default function QuoteBuilder() {
                       onClick={() => setStep(4)}
                       className="flex-1 bg-gold-500 hover:bg-gold-400 text-black font-bold py-4 rounded-xl flex items-center justify-center gap-2"
                     >
-                      Get Quote <ArrowRight size={18} aria-hidden="true" />
+                      Continue <ArrowRight size={18} aria-hidden="true" />
                     </button>
                   </div>
                 </motion.div>
@@ -358,7 +535,11 @@ export default function QuoteBuilder() {
                   exit={{ opacity: 0, x: -30 }}
                 >
                   <h3 className="text-white font-bold text-xl mb-2">Almost done!</h3>
-                  <p className="text-white/60 text-sm mb-6">Enter your info to see your full quote and book your detail.</p>
+                  <p className="text-white/60 text-sm mb-6">
+                    {isQuoteOnly(service)
+                      ? "Where should we send your quote? We'll follow up to confirm the details."
+                      : "Enter your info to see your full estimate and book your detail."}
+                  </p>
 
                   <form onSubmit={handleSubmit(onSubmitLead)} className="space-y-4">
                     <div>
@@ -443,7 +624,7 @@ export default function QuoteBuilder() {
                         disabled={isSubmitting}
                         className="flex-1 bg-gold-500 hover:bg-gold-400 text-black font-bold py-4 rounded-xl disabled:opacity-60 flex items-center justify-center gap-2"
                       >
-                        {isSubmitting ? "Sending..." : "See My Quote"}
+                        {isSubmitting ? "Sending..." : isQuoteOnly(service) ? "Request My Quote" : "See My Estimate"}
                         {!isSubmitting && <ArrowRight size={18} aria-hidden="true" />}
                       </button>
                     </div>
@@ -460,21 +641,28 @@ export default function QuoteBuilder() {
                   className="text-center py-8"
                 >
                   <div className="w-20 h-20 bg-gold-500/10 border border-gold-500/30 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <CheckCircle size={36} className="text-gold-500" />
+                    <CheckCircle size={36} className="text-gold-500" aria-hidden="true" />
                   </div>
-                  <h3 className="text-white font-black text-2xl mb-2">Your Estimate</h3>
-                  <div className="text-5xl font-black text-gradient-gold mb-4">
-                    {formatCurrency(estimate)}
+                  <h3 className="text-white font-black text-2xl mb-2">
+                    {isQuoteOnly(service) ? "Quote Request Received" : "Your Estimate"}
+                  </h3>
+                  <div className={`font-black text-gradient-gold mb-4 ${isQuoteOnly(service) ? "text-3xl" : "text-5xl"}`}>
+                    {isQuoteOnly(service) ? priceSummary() : formatCurrency(estimate)}
                   </div>
                   <p className="text-white/50 text-sm mb-2">
                     {vehicles.find(v => v.type === vehicleType)?.label} · {services.find(s => s.type === service)?.label}
                   </p>
-                  {selectedAddons.length > 0 && (
-                    <p className="text-gold-500 text-xs mb-6">+ {selectedAddons.length} add-on{selectedAddons.length > 1 ? "s" : ""}</p>
+                  {isQuoteOnly(service) ? (
+                    <p className="text-gold-500 text-xs mb-6">{selectionDetails().option}</p>
+                  ) : (
+                    selectedAddons.length > 0 && (
+                      <p className="text-gold-500 text-xs mb-6">+ {selectedAddons.length} add-on{selectedAddons.length > 1 ? "s" : ""}</p>
+                    )
                   )}
                   <p className="text-white/60 text-sm mb-8">
-                    This is an estimate based on starting prices. Your final price is confirmed after we see
-                    the vehicle, before any work begins. We&apos;ll reach out shortly to schedule.
+                    {isQuoteOnly(service)
+                      ? "We'll reach out shortly with your personalized quote. Final pricing is confirmed after we see the vehicle, before any work begins."
+                      : "This is an estimate based on starting prices. Your final price is confirmed after we see the vehicle, before any work begins. We'll reach out shortly to schedule."}
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3 justify-center">
                     <a
