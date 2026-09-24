@@ -50,12 +50,11 @@ const services = [
     icon: Star,
     title: "Essential Full Detail",
     description:
-      "Our most popular package — a maintenance-focused full detail refreshing your vehicle inside and out. Great for keeping a clean car on a regular schedule.",
+      "A maintenance-focused full detail refreshing your vehicle inside and out. Great for keeping a clean car on a regular schedule.",
     features: ["Hand wash & tire dressing", "Wheel & rim cleaning", "Light vacuum", "Surface wipe-down & windows"],
     price: "From $175",
     href: "/services/full-detail",
     accent: "from-gold-500/20 to-transparent",
-    featured: true,
   },
   {
     icon: Zap,
@@ -65,6 +64,7 @@ const services = [
     features: ["Iron decontamination", "Clay bar treatment", "Ceramic sealant", "Plastic scrub & conditioning"],
     price: "From $300",
     href: "/services/elite-full-detail",
+    featured: true,
     accent: "from-purple-500/10 to-transparent",
   },
 ];

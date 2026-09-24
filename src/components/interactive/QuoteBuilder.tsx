@@ -120,8 +120,8 @@ export default function QuoteBuilder() {
   const services: { type: ServiceType; label: string; desc: string; highlight?: boolean }[] = [
     { type: "exterior_wash", label: "Premium Exterior Wash", desc: "Hand wash, wheels, tire dressing" },
     { type: "basic_detail", label: "Basic Interior Detail", desc: "Vacuum, wipe-down, windows, leather protect" },
-    { type: "essential", label: "Essential Full Detail", desc: "Interior + exterior maintenance package", highlight: true },
-    { type: "elite", label: "Elite Full Detail", desc: "Complete deep clean — our most thorough service" },
+    { type: "essential", label: "Essential Full Detail", desc: "Interior + exterior maintenance package" },
+    { type: "elite", label: "Elite Full Detail", desc: "Complete deep clean — our most thorough service", highlight: true },
   ];
 
   return (

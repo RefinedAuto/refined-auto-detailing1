@@ -308,9 +308,9 @@ export const SERVICES: Service[] = [
     metaDescription:
       "Full car detailing, inside and out, at your home or office in Marysville, Everett, Lynnwood & Snohomish County. Essential Full Detail from $175. Mobile — we come to you.",
     h1: "Full Car Detailing in Snohomish County, WA",
-    eyebrow: "Essential Full Detail · Most Popular",
+    eyebrow: "Essential Full Detail",
     intro:
-      "Our most popular package — a complete interior and exterior refresh in one visit. The Essential Full Detail is designed to keep a well-maintained vehicle looking its best on a regular schedule, and we perform it wherever your car is parked.",
+      "A complete interior and exterior refresh in one visit. The Essential Full Detail is designed to keep a well-maintained vehicle looking its best on a regular schedule, and we perform it wherever your car is parked.",
     image: { src: "/images/GS0A5621.jpeg", alt: "BMW M3 being hand dried during a full detail" },
     lowPrice: 175,
     startingPrice: "$175",
@@ -335,7 +335,7 @@ export const SERVICES: Service[] = [
     about: {
       heading: "Inside-and-Out Detailing Without Leaving Home",
       paragraphs: [
-        "The Essential Full Detail combines our exterior hand wash with an interior refresh, so the whole vehicle is clean after a single appointment. It's the service most of our clients book on a recurring basis.",
+        "The Essential Full Detail combines our exterior hand wash with an interior refresh, so the whole vehicle is clean after a single appointment. It's also the service performed at each Maintenance Plan visit.",
         "If your vehicle hasn't been professionally detailed in a while — or you're dealing with stains, sap or heavy grime — start with the Elite Full Detail instead. It adds full paint decontamination, a ceramic sealant and a deeper interior scrub.",
       ],
     },
@@ -364,9 +364,9 @@ export const SERVICES: Service[] = [
     metaDescription:
       "Our most thorough mobile car detail: iron decontamination, clay bar, ceramic sealant and a full interior scrub. Serving Snohomish County, WA. From $300.",
     h1: "Elite Full Detail — Deep Clean Car Detailing in Snohomish County",
-    eyebrow: "Elite Full Detail",
+    eyebrow: "Elite Full Detail · Most Popular",
     intro:
-      "Our most thorough detail — an extensive deep clean that addresses every crack, crevice and surface. The exterior is fully decontaminated with an iron remover and clay bar, then protected with a ceramic sealant. Inside, plastics and vinyl are scrubbed and conditioned.",
+      "Our most popular and most thorough detail — an extensive deep clean that addresses every crack, crevice and surface. The exterior is fully decontaminated with an iron remover and clay bar, then protected with a ceramic sealant. Inside, plastics and vinyl are scrubbed and conditioned.",
     image: { src: "/images/GS0A5749.jpeg", alt: "BMW M3 side profile after an Elite Full Detail" },
     lowPrice: 300,
     startingPrice: "$300",

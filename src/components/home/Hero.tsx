@@ -128,17 +128,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="hidden lg:flex absolute bottom-10 left-1/2 -translate-x-1/2 flex-col items-center gap-2"
-      >
-        <span className="text-white/60 text-xs tracking-[0.2em] uppercase" aria-hidden="true">Scroll</span>
-        <div className="w-px h-12 bg-gradient-to-b from-gold-500/60 to-transparent animate-pulse" />
-      </motion.div>
-
       {/* Right side floating card */}
       <motion.div
         initial={{ opacity: 0, x: 60 }}
