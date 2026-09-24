@@ -101,7 +101,17 @@ export default function ServicesPage() {
               <h2 id={`cat-${category}`} className="text-3xl font-black text-white mb-2">
                 {title}
               </h2>
-              <p className="text-white/60 mb-8">{blurb}</p>
+              <p className="text-white/60 mb-8">
+                {blurb}
+                {category === "Detailing Package" && (
+                  <>
+                    {" "}
+                    <Link href="/services/detail-packages" className="text-gold-500 hover:text-gold-400 underline underline-offset-4">
+                      Compare the Essential and Elite packages
+                    </Link>
+                  </>
+                )}
+              </p>
               <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {SERVICES.filter((s) => s.category === category).map((s) => (
                   <ServiceCard key={s.slug} service={s} />

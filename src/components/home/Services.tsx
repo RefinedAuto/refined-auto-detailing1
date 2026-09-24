@@ -40,15 +40,15 @@ const services = [
     icon: Sparkles,
     title: "Basic Interior Detail",
     description:
-      "A focused interior clean — deep vacuum with air blow-out, interior window cleaning, and full cleaning and protection of all leather and plastics.",
-    features: ["Deep vacuum & air blow-out", "Interior windows", "Leather protection", "Plastic & vinyl care"],
-    price: "From $100",
+      "A thorough interior clean — steam cleaning, deep vacuuming with air blow-out, interior windows, and full cleaning and protection of leather and plastics. Pet hair or stains +$50 each.",
+    features: ["Steam cleaning", "Deep vacuum & air blow-out", "Interior windows", "Leather & plastic protection"],
+    price: "From $160",
     href: "/services/interior-detailing",
     accent: "from-gold-500/20 to-transparent",
   },
   {
     icon: Star,
-    title: "Essential Full Detail",
+    title: "Essential Detail Package",
     description:
       "A maintenance-focused full detail refreshing your vehicle inside and out. Great for keeping a clean car on a regular schedule.",
     features: ["Hand wash & tire dressing", "Wheel & rim cleaning", "Light vacuum", "Surface wipe-down & windows"],

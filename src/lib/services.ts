@@ -20,6 +20,8 @@ export type Service = {
   slug: string;
   name: string;
   category: "Detailing Package" | "Paint & Protection" | "Add-On";
+  /** Hub page this service sits under (breadcrumbs + nav grouping). */
+  parent?: { name: string; path: string };
   metaTitle: string;
   metaDescription: string;
   /** Keyword-first H1 — "<service> in <area>" is what local searches look like. */
@@ -42,6 +44,8 @@ export type Service = {
   faqs: { q: string; a: string }[];
   related: string[];
 };
+
+export const DETAIL_PACKAGES_HUB = { name: "Detail Packages", path: "/services/detail-packages" };
 
 export const VEHICLE_LABELS = {
   sedan: "Sedan / Hatchback",
@@ -198,19 +202,20 @@ export const SERVICES: Service[] = [
     category: "Detailing Package",
     metaTitle: "Mobile Interior Car Detailing in Snohomish County, WA",
     metaDescription:
-      "Mobile interior car detailing in Marysville, Everett, Lynnwood & all of Snohomish County. Deep vacuum, air blow-out, leather & plastic protection. From $100 — we come to you.",
+      "Mobile interior car detailing in Marysville, Everett, Lynnwood & all of Snohomish County. Steam cleaning, deep vacuuming, air blow-out, leather & plastic protection. From $160 — we come to you.",
     h1: "Mobile Interior Car Detailing in Snohomish County, WA",
     eyebrow: "Basic Interior Detail",
     intro:
-      "A maintenance interior detail that leaves your cabin clean, fresh and protected — done in your driveway. We deep vacuum every surface, blow debris out of every crevice with compressed air, clean the interior glass, and clean and protect all leather, plastics and vinyl.",
+      "An interior detail that leaves your cabin clean, fresh and protected — done in your driveway. We steam clean interior surfaces, deep vacuum every surface, blow debris out of every crevice with compressed air, clean the interior glass, and clean and protect all leather, plastics and vinyl.",
     image: { src: "/images/IMG_3373.JPG", alt: "Audi Q3 interior after a mobile interior detail" },
-    lowPrice: 100,
-    startingPrice: "$100",
-    pricing: [{ label: "Basic Interior Detail", sedan: "$100+", suv: "$120+", large: "$140+" }],
+    lowPrice: 160,
+    startingPrice: "$160",
+    pricing: [{ label: "Basic Interior Detail", sedan: "$160+", suv: "$180+", large: "$200+" }],
     includes: [
       {
         items: [
-          "Deep vacuum — seats, carpets, mats & crevices",
+          "Steam cleaning of interior surfaces",
+          "Deep vacuuming — seats, carpets, mats & crevices",
           "Compressed-air blow-out of vents, seams & tracks",
           "Interior windows & mirrors cleaned",
           "Leather cleaned & protected",
@@ -218,13 +223,13 @@ export const SERVICES: Service[] = [
         ],
       },
     ],
-    note: "Heavy pet hair is a +$50 surcharge. Final price depends on vehicle size and condition.",
+    note: "Upcharges: heavy pet hair +$50, stain removal +$50 ($100 if both are needed). Final price depends on vehicle size and condition.",
     about: {
       heading: "Interior Detailing That Comes to Your Driveway",
       paragraphs: [
         "Pacific Northwest weather means wet shoes, muddy floor mats and fogged-up glass for most of the year. Our mobile interior detail resets the cabin without you having to drop your car off at a shop — we bring the vacuums, air tools and professional-grade cleaners to your home or office anywhere in Snohomish County.",
-        "Every interior detail starts with a full compressed-air blow-out to lift dirt from vents, seat rails and seams that a vacuum alone can't reach. From there we vacuum every surface, clean the interior glass streak-free, and clean and protect leather, plastic and vinyl so surfaces look new instead of greasy.",
-        "Want the outside done too? The Essential Full Detail adds a hand wash and wheel cleaning for one visit.",
+        "Every interior detail starts with a full compressed-air blow-out to lift dirt from vents, seat rails and seams that a vacuum alone can't reach. We steam clean interior surfaces to loosen grime and refresh the cabin, then deep vacuum every surface, clean the interior glass streak-free, and clean and protect leather, plastic and vinyl so surfaces look new instead of greasy.",
+        "Want the outside done too? The Essential Detail Package adds a hand wash and wheel cleaning for one visit.",
       ],
     },
     idealFor: [
@@ -241,6 +246,10 @@ export const SERVICES: Service[] = [
       {
         q: "Do you remove pet hair?",
         a: "Yes. Light pet hair is handled as part of the vacuum. Heavy, embedded pet hair takes significantly more time and is a +$50 surcharge.",
+      },
+      {
+        q: "Do you remove stains?",
+        a: "Yes. Stain removal is a +$50 upcharge, separate from the pet hair upcharge. We treat stains on seats, carpets and mats; most lift completely, but some older or set-in stains can only be lightened.",
       },
       {
         q: "Do I need to be home during the interior detail?",
@@ -302,19 +311,20 @@ export const SERVICES: Service[] = [
   },
   {
     slug: "full-detail",
-    name: "Full Detail",
+    name: "Essential Detail Package",
     category: "Detailing Package",
+    parent: DETAIL_PACKAGES_HUB,
     metaTitle: "Full Car Detailing in Snohomish County, WA | Inside & Out",
     metaDescription:
-      "Full car detailing, inside and out, at your home or office in Marysville, Everett, Lynnwood & Snohomish County. Essential Full Detail from $175. Mobile — we come to you.",
+      "Full car detailing, inside and out, at your home or office in Marysville, Everett, Lynnwood & Snohomish County. Essential Detail Package from $175. Mobile — we come to you.",
     h1: "Full Car Detailing in Snohomish County, WA",
-    eyebrow: "Essential Full Detail",
+    eyebrow: "Essential Detail Package",
     intro:
-      "A complete interior and exterior refresh in one visit. The Essential Full Detail is designed to keep a well-maintained vehicle looking its best on a regular schedule, and we perform it wherever your car is parked.",
+      "A complete interior and exterior refresh in one visit. The Essential Detail Package is designed to keep a well-maintained vehicle looking its best on a regular schedule, and we perform it wherever your car is parked.",
     image: { src: "/images/GS0A5621.jpeg", alt: "BMW M3 being hand dried during a full detail" },
     lowPrice: 175,
     startingPrice: "$175",
-    pricing: [{ label: "Essential Full Detail", sedan: "$175+", suv: "$210+", large: "$250+" }],
+    pricing: [{ label: "Essential Detail Package", sedan: "$175+", suv: "$210+", large: "$250+" }],
     includes: [
       {
         title: "Exterior",
@@ -335,7 +345,7 @@ export const SERVICES: Service[] = [
     about: {
       heading: "Inside-and-Out Detailing Without Leaving Home",
       paragraphs: [
-        "The Essential Full Detail combines our exterior hand wash with an interior refresh, so the whole vehicle is clean after a single appointment. It's also the service performed at each Maintenance Plan visit.",
+        "The Essential Detail Package combines our exterior hand wash with an interior refresh, so the whole vehicle is clean after a single appointment. It's also the service performed at each Maintenance Plan visit.",
         "If your vehicle hasn't been professionally detailed in a while — or you're dealing with stains, sap or heavy grime — start with the Elite Full Detail instead. It adds full paint decontamination, a ceramic sealant and a deeper interior scrub.",
       ],
     },
@@ -346,8 +356,8 @@ export const SERVICES: Service[] = [
     ],
     faqs: [
       {
-        q: "What's the difference between the Essential and Elite Full Detail?",
-        a: "The Essential is a maintenance clean. The Elite adds iron decontamination, a clay bar treatment, a ceramic sealant, and a full interior plastic and vinyl scrub and conditioning — it's our most thorough service.",
+        q: "What's the difference between the Essential Detail Package and the Elite Full Detail?",
+        a: "The Essential Detail Package is a maintenance clean. The Elite adds iron decontamination, a clay bar treatment, a ceramic sealant, and a full interior plastic and vinyl scrub and conditioning — it's our most thorough service.",
       },
       {
         q: "How long does a full detail take?",
@@ -360,6 +370,7 @@ export const SERVICES: Service[] = [
     slug: "elite-full-detail",
     name: "Elite Full Detail",
     category: "Detailing Package",
+    parent: DETAIL_PACKAGES_HUB,
     metaTitle: "Elite Full Detail — Deep Clean Car Detailing in Snohomish County, WA",
     metaDescription:
       "Our most thorough mobile car detail: iron decontamination, clay bar, ceramic sealant and a full interior scrub. Serving Snohomish County, WA. From $300.",
@@ -432,7 +443,7 @@ export const SERVICES: Service[] = [
     h1: "Recurring Car Detailing Plans in Snohomish County, WA",
     eyebrow: "Maintenance Plans",
     intro:
-      "Stay on top of your vehicle's appearance with a standing bi-weekly or monthly appointment. Each visit includes our Essential Full Detail at a discounted recurring rate — we show up on schedule so you never have to think about it.",
+      "Stay on top of your vehicle's appearance with a standing bi-weekly or monthly appointment. Each visit includes our Essential Detail Package at a discounted recurring rate — we show up on schedule so you never have to think about it.",
     image: { src: "/images/GS0A5754.jpeg", alt: "Freshly detailed BMW M3 front view" },
     lowPrice: 140,
     startingPrice: "$140",
@@ -445,7 +456,7 @@ export const SERVICES: Service[] = [
       {
         items: [
           "Bi-weekly or monthly scheduling",
-          "Essential Full Detail performed each visit",
+          "Essential Detail Package performed each visit",
           "Discounted recurring rate",
           "Elite Full Detail required first to set the baseline",
         ],
@@ -456,7 +467,7 @@ export const SERVICES: Service[] = [
       heading: "The Easiest Way to Keep a Car Clean",
       paragraphs: [
         "A car that's cleaned on a regular schedule never gets to the point of needing a heavy, expensive restoration. Dirt and contaminants are removed before they bond to the paint or grind into the carpet.",
-        "Plans start with one Elite Full Detail to bring the vehicle to a clean baseline. After that, each visit is an Essential Full Detail at a lower recurring price.",
+        "Plans start with one Elite Full Detail to bring the vehicle to a clean baseline. After that, each visit is an Essential Detail Package at a lower recurring price.",
       ],
     },
     idealFor: [
@@ -467,7 +478,7 @@ export const SERVICES: Service[] = [
     faqs: [
       {
         q: "What's the difference between bi-weekly and monthly?",
-        a: "Both include an Essential Full Detail each visit. Bi-weekly visits cost slightly less per visit because the vehicle stays cleaner between appointments.",
+        a: "Both include an Essential Detail Package each visit. Bi-weekly visits cost slightly less per visit because the vehicle stays cleaner between appointments.",
       },
       {
         q: "Why is the Elite Full Detail required first?",
@@ -583,7 +594,7 @@ export const SERVICES: Service[] = [
         ],
       },
     ],
-    note: "Pet hair removal is a +$50 surcharge on any interior or full detail when heavy pet hair is present.",
+    note: "Pet hair removal is a +$50 surcharge on any interior detail or detail package when heavy pet hair is present. Stain removal is a separate +$50.",
     about: {
       heading: "Why Pet Hair Is So Hard to Remove",
       paragraphs: [

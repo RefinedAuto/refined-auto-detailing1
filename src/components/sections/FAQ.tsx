@@ -27,7 +27,7 @@ const faqs = [
   },
   {
     q: "How much does detailing cost?",
-    a: "Pricing depends on vehicle size, the service selected and the vehicle's condition. The Premium Exterior Wash starts at $80, the Basic Interior Detail at $100, the Essential Full Detail at $175 and the Elite Full Detail at $300. Use our quote builder for an estimate for your vehicle.",
+    a: "Pricing depends on vehicle size, the service selected and the vehicle's condition. The Premium Exterior Wash starts at $80, the Basic Interior Detail at $160, the Essential Detail Package at $175 and the Elite Full Detail at $300. Use our quote builder for an estimate for your vehicle.",
   },
   {
     q: "What's the difference between a car wash and a detail?",

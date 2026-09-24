@@ -51,7 +51,7 @@ function cityFaqs(city: string, zips: string[], neighborhoods: string[]) {
     },
     {
       q: `How much does car detailing cost in ${city}?`,
-      a: `Our Premium Exterior Wash starts at ${detail.startingPrice}, the Essential Full Detail starts at ${full.startingPrice}, and pricing depends on vehicle size and condition. Contact us to confirm availability and pricing for your address in ${city}.`,
+      a: `Our Premium Exterior Wash starts at ${detail.startingPrice}, the Essential Detail Package starts at ${full.startingPrice}, and pricing depends on vehicle size and condition. Contact us to confirm availability and pricing for your address in ${city}.`,
     },
     {
       q: `Do you do ceramic coating and paint correction in ${city}?`,

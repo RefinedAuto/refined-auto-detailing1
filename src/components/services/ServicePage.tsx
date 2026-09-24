@@ -20,6 +20,7 @@ export default function ServicePage({ service }: { service: Service }) {
           <Breadcrumbs
             items={[
               { name: "Services", path: "/services" },
+              ...(service.parent ? [service.parent] : []),
               { name: service.name, path: `/services/${service.slug}` },
             ]}
           />

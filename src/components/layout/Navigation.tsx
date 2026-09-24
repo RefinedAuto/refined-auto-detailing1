@@ -6,10 +6,15 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { cn, COMPANY } from "@/lib/utils";
-import { PRIMARY_SERVICES } from "@/lib/services";
+import { DETAIL_PACKAGES_HUB, PRIMARY_SERVICES } from "@/lib/services";
 
+// The Essential and Elite packages are reached through one "Detail Packages" hub item.
 const services = [
-  ...PRIMARY_SERVICES.map((s) => ({ name: s.name, href: `/services/${s.slug}` })),
+  ...PRIMARY_SERVICES.filter((s) => !s.parent).flatMap((s, i) => {
+    const item = { name: s.name, href: `/services/${s.slug}` };
+    // Hub sits right after Paint Correction (the second primary service).
+    return i === 1 ? [item, { name: DETAIL_PACKAGES_HUB.name, href: DETAIL_PACKAGES_HUB.path }] : [item];
+  }),
   { name: "All Services & Add-Ons", href: "/services" },
 ];
 

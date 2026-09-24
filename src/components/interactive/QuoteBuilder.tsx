@@ -16,13 +16,14 @@ type VehicleType = "sedan" | "suv" | "large";
 type ServiceType = "exterior_wash" | "basic_detail" | "essential" | "elite";
 
 const basePricing: Record<VehicleType, Record<ServiceType, number>> = {
-  sedan: { exterior_wash: 80, basic_detail: 100, essential: 175, elite: 300 },
-  suv:   { exterior_wash: 100, basic_detail: 120, essential: 210, elite: 350 },
-  large: { exterior_wash: 120, basic_detail: 140, essential: 250, elite: 400 },
+  sedan: { exterior_wash: 80, basic_detail: 160, essential: 175, elite: 300 },
+  suv:   { exterior_wash: 100, basic_detail: 180, essential: 210, elite: 350 },
+  large: { exterior_wash: 120, basic_detail: 200, essential: 250, elite: 400 },
 };
 
 const addons: { id: string; name: string; price: number; description: string }[] = [
   { id: "pet_hair", name: "Pet Hair Removal", price: 50, description: "Heavy pet hair extraction (+$50 surcharge)" },
+  { id: "stains", name: "Stain Removal", price: 50, description: "Seat, carpet & mat stain treatment (+$50 surcharge)" },
   { id: "engine", name: "Engine Bay Detail", price: 80, description: "Thorough engine bay cleaning & dressing" },
   { id: "headlight", name: "Headlight Restoration", price: 60, description: "Rejuvenates faded & yellowed headlights" },
   { id: "clay_sealant", name: "Clay Bar & Sealant", price: 80, description: "Full decontamination + ceramic sealant" },
@@ -119,8 +120,8 @@ export default function QuoteBuilder() {
 
   const services: { type: ServiceType; label: string; desc: string; highlight?: boolean }[] = [
     { type: "exterior_wash", label: "Premium Exterior Wash", desc: "Hand wash, wheels, tire dressing" },
-    { type: "basic_detail", label: "Basic Interior Detail", desc: "Vacuum, wipe-down, windows, leather protect" },
-    { type: "essential", label: "Essential Full Detail", desc: "Interior + exterior maintenance package" },
+    { type: "basic_detail", label: "Basic Interior Detail", desc: "Steam clean, deep vacuum, windows, leather protect" },
+    { type: "essential", label: "Essential Detail Package", desc: "Interior + exterior maintenance package" },
     { type: "elite", label: "Elite Full Detail", desc: "Complete deep clean — our most thorough service", highlight: true },
   ];
 
