@@ -149,6 +149,44 @@ export default function ServicePage({ service }: { service: Service }) {
             </section>
           )}
 
+          {/* Quote-only packages */}
+          {service.packages && (
+            <section aria-labelledby="packages" className="mb-12">
+              <h2 id="packages" className="text-3xl font-black text-white mb-2">
+                {service.pricingTitle ?? "Packages"}
+              </h2>
+              <p className="text-white/70 mb-8">
+                Starting from {service.startingPrice}. Every package is quoted for your vehicle&apos;s size and paint
+                condition.
+              </p>
+              <ul className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {service.packages.map((pkg) => (
+                  <li
+                    key={pkg.label}
+                    className={`glass rounded-3xl p-8 border relative flex flex-col ${
+                      pkg.popular ? "border-gold-500/40" : "border-white/5"
+                    }`}
+                  >
+                    {pkg.popular && (
+                      <p className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold-500 text-black text-xs font-bold px-4 py-1 rounded-full">
+                        Most Popular
+                      </p>
+                    )}
+                    <h3 className="text-white font-black text-lg mb-2">{pkg.label}</h3>
+                    <p className="text-white/70 text-sm mb-6">{pkg.description}</p>
+                    <Link
+                      href="/quote"
+                      className="mt-auto inline-flex items-center gap-2 text-gold-500 hover:text-gold-400 font-bold text-sm"
+                    >
+                      Get a quote<span className="sr-only"> for the {pkg.label}</span>
+                      <ArrowRight size={14} aria-hidden="true" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
           {/* Add-ons */}
           {service.addons && (
             <section aria-labelledby="addons" className="glass rounded-3xl p-8 sm:p-10 mb-12">

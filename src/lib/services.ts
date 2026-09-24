@@ -32,6 +32,8 @@ export type Service = {
   startingPrice: string;
   pricingTitle?: string;
   pricing?: PriceRow[];
+  /** Tiers shown without prices — each one is quoted individually. */
+  packages?: { label: string; description: string; popular?: boolean }[];
   includes: { title?: string; items: string[] }[];
   note?: string;
   addons?: { name: string; price: string }[];
@@ -54,36 +56,27 @@ export const SERVICES: Service[] = [
     category: "Paint & Protection",
     metaTitle: "Ceramic Coating in Snohomish & King County, WA | 1, 3 & 4-Year",
     metaDescription:
-      "Mobile ceramic coating in Lynnwood, Everett, Edmonds, Shoreline, Kirkland, Redmond & across Snohomish and King County, WA. 1, 3 and 4-year coatings with decontamination and polish included. From $400.",
+      "Mobile ceramic coating in Lynnwood, Everett, Edmonds, Shoreline, Kirkland, Redmond & across Snohomish and King County, WA. 1, 3 and 4-year coatings with decontamination and polish included. Starting from $600.",
     h1: "Ceramic Coating in Snohomish & King County, WA",
     eyebrow: "Ceramic Coating",
     intro:
       "Professional ceramic coating bonds to your vehicle's paint for hydrophobic, UV-resistant protection that keeps it glossy and easier to clean for years. Every package includes a three-step decontamination wash and a paint enhancement polish before the coating goes on.",
     image: { src: "/images/IMG_3438.JPG", alt: "Audi Q3 exterior after ceramic coating" },
-    lowPrice: 400,
-    startingPrice: "$400",
+    lowPrice: 600,
+    startingPrice: "$600",
     pricingTitle: "Coating Packages",
-    pricing: [
+    packages: [
       {
         label: "1-Year Ceramic Coating",
-        sedan: "$400",
-        suv: "$500",
-        large: "$600",
         description: "Decontamination wash and paint enhancement polish included.",
       },
       {
         label: "3-Year Ceramic Coating",
-        sedan: "$700",
-        suv: "$900",
-        large: "$1,100",
         description: "Extended protection with the same thorough prep.",
         popular: true,
       },
       {
         label: "4-Year Ceramic Coating",
-        sedan: "$1,000",
-        suv: "$1,200",
-        large: "$1,400",
         description: "Our longest-lasting coating for maximum durability.",
       },
     ],

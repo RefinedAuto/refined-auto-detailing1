@@ -35,7 +35,7 @@ const faqs = [
   },
   {
     q: "Do you offer ceramic coating?",
-    a: "Yes. We offer 1-year, 3-year and 4-year ceramic coatings starting at $400 for a sedan. Every package includes a decontamination wash and a paint enhancement polish before the coating is applied. Vehicles with heavy swirls or scratches may need paint correction first, quoted separately.",
+    a: "Yes. We offer 1-year, 3-year and 4-year ceramic coatings starting from $600, with each package quoted for your vehicle. Every package includes a decontamination wash and a paint enhancement polish before the coating is applied. Vehicles with heavy swirls or scratches may need paint correction first, quoted separately.",
   },
   {
     q: "What's your cancellation policy?",
