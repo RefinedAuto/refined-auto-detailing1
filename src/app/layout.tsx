@@ -110,11 +110,12 @@ const businessJsonLd = {
   },
   openingHoursSpecification: {
     "@type": "OpeningHoursSpecification",
-    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-    opens: "07:00",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    opens: "06:00",
     closes: "20:00",
   },
-  sameAs: [COMPANY.instagram, COMPANY.facebook],
+  hasMap: COMPANY.google.url,
+  sameAs: [COMPANY.instagram, COMPANY.facebook, COMPANY.google.url, ...(COMPANY.yelpUrl ? [COMPANY.yelpUrl] : [])],
 };
 
 export default function RootLayout({

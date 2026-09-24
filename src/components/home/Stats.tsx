@@ -2,15 +2,15 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { COMPANY } from "@/lib/utils";
 
 /**
- * Only claims that are true today. If you want real numbers back here
- * (vehicles detailed, Google rating, review count), use figures you can
- * prove — the FTC treats inflated stats and ratings as deceptive advertising.
+ * Only claims that are true today — the rating comes from the Google Business
+ * Profile. The FTC treats inflated stats and ratings as deceptive advertising.
  */
 const stats = [
   { value: "Mobile", label: "We come to you" },
-  { value: "7 Days", label: "A week, 7 AM – 8 PM" },
+  { value: `${COMPANY.google.rating}★`, label: `Google rating · ${COMPANY.google.reviewCount} reviews` },
   { value: "100%", label: "Satisfaction guarantee" },
   { value: "Pro-Grade", label: "Products & tools" },
 ];

@@ -25,7 +25,7 @@ export default function ServiceAreasPage() {
               Mobile Detailing Service Areas in <span className="text-gradient-gold">Snohomish County</span>
             </h1>
             <p className="text-white/70 text-lg leading-relaxed">
-              Based in Marysville, we bring professional mobile detailing to homes and workplaces within about 30
+              Based in south Snohomish County, we bring professional mobile detailing to homes and workplaces within about 30
               miles — your home, office, or anywhere convenient.
             </p>
           </div>

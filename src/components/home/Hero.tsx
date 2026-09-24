@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, MapPin, Shield, Calendar, Home } from "lucide-react";
+import { ArrowRight, MapPin, Shield, Calendar, Star } from "lucide-react";
 import { COMPANY } from "@/lib/utils";
 
 export default function Hero() {
@@ -98,10 +98,26 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.8 }}
             className="mt-14 flex flex-wrap items-center gap-8"
           >
+            <a
+              href={COMPANY.google.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-white/70 hover:text-white text-sm transition-colors"
+            >
+              <span className="flex" aria-hidden="true">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={14} className="fill-gold-500 text-gold-500" />
+                ))}
+              </span>
+              <span>
+                <strong className="text-white">{COMPANY.google.rating}</strong> on Google ·{" "}
+                {COMPANY.google.reviewCount} reviews
+              </span>
+              <span className="sr-only">(opens in a new tab)</span>
+            </a>
             {[
               { icon: Shield, text: "Satisfaction guaranteed" },
-              { icon: Home, text: "We come to you" },
-              { icon: Calendar, text: "Open 7 days a week" },
+              { icon: Calendar, text: COMPANY.hoursShort },
             ].map(({ icon: Icon, text }) => (
               <div key={text} className="flex items-center gap-2 text-white/70 text-sm">
                 <Icon size={14} className="text-gold-500" aria-hidden="true" />
@@ -136,7 +152,7 @@ export default function Hero() {
             { icon: "🚗", text: "We come to you — zero commute" },
             { icon: "✨", text: "Professional-grade products only" },
             { icon: "🛡️", text: "Satisfaction guarantee" },
-            { icon: "⏱️", text: "Flexible scheduling, 7 days/week" },
+            { icon: "⏱️", text: "Flexible scheduling, Mon–Sat" },
           ].map(({ icon, text }) => (
             <li key={text} className="flex items-center gap-3 text-white/70 text-sm">
               <span className="text-lg" aria-hidden="true">{icon}</span>

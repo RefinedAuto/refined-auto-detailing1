@@ -21,11 +21,11 @@ export const AREAS: Area[] = [
     city: "Marysville",
     zips: ["98270", "98271"],
     summary:
-      "Our home base. We serve every Marysville neighborhood — from Downtown and Getchell to Smokey Point — right in your driveway.",
+      "We serve every Marysville neighborhood — from Downtown and Getchell to Smokey Point — right in your driveway.",
     intro:
-      "Marysville is home base for Refined Auto Detailing. We bring professional mobile car detailing to driveways, apartment lots and offices across the city — from Downtown and Sunnyside to Getchell and Smokey Point.",
+      "Refined Auto Detailing brings professional mobile car detailing to driveways, apartment lots and offices across the city — from Downtown and Sunnyside to Getchell and Smokey Point.",
     paragraphs: [
-      "Because we're based here, Marysville is where our schedule is most flexible. Whether you need an interior reset after a season of wet weather, a hand wash before a weekend on the water, or a multi-year ceramic coating, we handle it at your location.",
+      "Whether you need an interior reset after a season of wet weather, a hand wash before a weekend on the water, or a multi-year ceramic coating, we handle it at your location.",
       "Marysville drivers spend a lot of time on I-5 and SR-9, which means road film, tar and brake dust build up fast. Our Elite Full Detail removes that bonded grime with iron decontamination and a clay bar, then seals the paint.",
     ],
     neighborhoods: [

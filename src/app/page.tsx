@@ -6,6 +6,7 @@ import BeforeAfterSlider from "@/components/interactive/BeforeAfterSlider";
 import Process from "@/components/home/Process";
 import VehicleExplorer from "@/components/interactive/VehicleExplorer";
 import QuoteBuilder from "@/components/interactive/QuoteBuilder";
+import Reviews from "@/components/home/Reviews";
 import ServiceAreas from "@/components/home/ServiceAreas";
 import FAQ from "@/components/sections/FAQ";
 import CTA from "@/components/home/CTA";
@@ -27,6 +28,7 @@ export default function HomePage() {
       <Process />
       <VehicleExplorer />
       <QuoteBuilder />
+      <Reviews />
       <ServiceAreas />
       <FAQ />
       <CTA />

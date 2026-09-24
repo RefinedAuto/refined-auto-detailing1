@@ -23,7 +23,7 @@ export default function QuotePage() {
             </div>
             <div className="flex items-center gap-2">
               <Clock size={14} className="text-gold-500" aria-hidden="true" />
-              <span>Open 7 days a week</span>
+              <span>{COMPANY.hoursShort}</span>
             </div>
             <div className="flex items-center gap-2">
               <Phone size={14} className="text-gold-500" aria-hidden="true" />

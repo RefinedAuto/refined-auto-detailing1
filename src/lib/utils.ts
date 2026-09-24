@@ -29,11 +29,22 @@ export const COMPANY = {
   bookingUrl: "https://refinedautodetailing.setmore.com",
   address: "Snohomish County, WA",
   /** Base city for schema.org — a service-area business, so no street address is published. */
-  city: "Marysville",
+  // Must match the Google Business Profile, which lists Lynnwood.
+  city: "Lynnwood",
   region: "WA",
-  postalCode: "98270",
+  postalCode: "98036",
   serviceArea: "Snohomish County & King County, Washington",
-  hours: "7 days a week, 7 AM – 8 PM",
+  // Keep in sync with the Google Business Profile hours.
+  hours: "Mon–Sat, 6 AM – 8 PM",
+  hoursShort: "Open Monday–Saturday",
+  /** Google Business Profile — rating and count checked 2026-09-24; update as reviews come in. */
+  google: {
+    url: "https://www.google.com/maps?cid=3706376565908828558",
+    rating: "5.0",
+    reviewCount: 11,
+  },
+  /** Paste the Yelp business page URL here to show the Yelp link. */
+  yelpUrl: "",
   instagram: "https://www.instagram.com/refined.autodetail/",
   facebook: "https://www.facebook.com/profile.php?id=61575955184190",
 } as const;

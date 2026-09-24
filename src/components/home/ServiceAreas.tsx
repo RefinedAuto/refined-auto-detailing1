@@ -9,7 +9,7 @@ const areas = [
   {
     city: "Marysville",
     state: "WA",
-    description: "Our home base. Same-day service usually available.",
+    description: "Every Marysville neighborhood, right in your driveway.",
     href: "/service-areas/marysville",
     zip: "98270",
   },

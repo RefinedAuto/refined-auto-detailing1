@@ -8,21 +8,13 @@ import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { cn, COMPANY } from "@/lib/utils";
 import { PRIMARY_SERVICES } from "@/lib/services";
 
-// Ceramic coating and paint correction get their own top-level nav items.
-const STANDALONE = ["ceramic-coating", "paint-correction"];
-
 const services = [
-  ...PRIMARY_SERVICES.filter((s) => !STANDALONE.includes(s.slug)).map((s) => ({
-    name: s.name,
-    href: `/services/${s.slug}`,
-  })),
+  ...PRIMARY_SERVICES.map((s) => ({ name: s.name, href: `/services/${s.slug}` })),
   { name: "All Services & Add-Ons", href: "/services" },
 ];
 
 const navLinks = [
   { name: "Services", href: "/services", hasDropdown: true },
-  { name: "Ceramic Coating", href: "/services/ceramic-coating" },
-  { name: "Paint Correction", href: "/services/paint-correction" },
   { name: "Gallery", href: "/gallery" },
   { name: "About", href: "/about" },
   { name: "Service Areas", href: "/service-areas" },
@@ -80,7 +72,7 @@ export default function Navigation() {
                   className="object-contain"
                 />
               </div>
-              <div className="hidden sm:block lg:hidden xl:block">
+              <div className="hidden sm:block">
                 <p className="text-white font-semibold text-sm tracking-widest uppercase">
                   Refined Auto
                 </p>
@@ -91,7 +83,7 @@ export default function Navigation() {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-5 xl:gap-7">
+            <div className="hidden lg:flex items-center gap-6 xl:gap-8">
               {navLinks.map((link) =>
                 link.hasDropdown ? (
                   <div

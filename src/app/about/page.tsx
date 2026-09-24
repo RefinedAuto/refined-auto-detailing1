@@ -4,9 +4,9 @@ import Link from "next/link";
 import { Shield, Star, Zap, Heart, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About Us — Mobile Auto Detailers Based in Marysville, WA",
+  title: "About Us — Mobile Auto Detailers in Snohomish County, WA",
   description:
-    "Meet Refined Auto Detailing, a mobile auto detailing business based in Marysville and serving Snohomish County, WA — built on precision, care, and bringing the detail shop to your driveway.",
+    "Meet Refined Auto Detailing, a mobile auto detailing business serving Snohomish County, WA — built on precision, care, and bringing the detail shop to your driveway.",
   alternates: { canonical: "/about" },
 };
 
