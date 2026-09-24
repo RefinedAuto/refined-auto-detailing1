@@ -40,7 +40,7 @@ export default function QuoteBuilder() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
   const [step, setStep] = useState(1);
   const [vehicleType, setVehicleType] = useState<VehicleType>("sedan");
-  const [service, setService] = useState<ServiceType>("essential");
+  const [service, setService] = useState<ServiceType>("elite");
   const [selectedAddons, setSelectedAddons] = useState<string[]>([]);
   const [leadCaptured, setLeadCaptured] = useState(false);
   const [estimate, setEstimate] = useState(0);
