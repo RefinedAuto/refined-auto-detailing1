@@ -12,9 +12,9 @@ import FAQ from "@/components/sections/FAQ";
 import CTA from "@/components/home/CTA";
 
 export const metadata: Metadata = {
-  title: { absolute: "Mobile Car Detailing in Snohomish County, WA | Refined Auto Detailing" },
+  title: { absolute: "Mobile Car Detailing & Ceramic Coating | Snohomish & King County, WA" },
   description:
-    "Mobile car detailing in Marysville, Everett, Lynnwood & all of Snohomish County, WA. Interior & exterior detailing, paint correction and ceramic coating at your home or office. Free quote.",
+    "5.0★ mobile car detailing in Lynnwood, Everett, Marysville, Edmonds, Shoreline, Kirkland & Redmond, WA. Ceramic coating, paint correction, interior & exterior detailing at your home. Free quote.",
   alternates: { canonical: "/" },
 };
 

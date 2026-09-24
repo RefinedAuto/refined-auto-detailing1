@@ -4,51 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { MapPin, ArrowRight } from "lucide-react";
-
-const areas = [
-  {
-    city: "Marysville",
-    state: "WA",
-    description: "Every Marysville neighborhood, right in your driveway.",
-    href: "/service-areas/marysville",
-    zip: "98270",
-  },
-  {
-    city: "Everett",
-    state: "WA",
-    description: "Serving all Everett neighborhoods and the waterfront.",
-    href: "/service-areas/everett",
-    zip: "98201",
-  },
-  {
-    city: "Lynnwood",
-    state: "WA",
-    description: "Premium mobile detailing throughout Lynnwood.",
-    href: "/service-areas/lynnwood",
-    zip: "98036",
-  },
-  {
-    city: "Mukilteo",
-    state: "WA",
-    description: "Waterfront to the bluffs — we cover all of Mukilteo.",
-    href: "/service-areas/mukilteo",
-    zip: "98275",
-  },
-  {
-    city: "Mill Creek",
-    state: "WA",
-    description: "Serving Mill Creek and surrounding neighborhoods.",
-    href: "/service-areas/mill-creek",
-    zip: "98012",
-  },
-  {
-    city: "+ More Areas",
-    state: "",
-    description: "Don't see your city? Contact us — we likely service your area.",
-    href: "/service-areas",
-    zip: "",
-  },
-];
+import { AREAS } from "@/lib/areas";
 
 export default function ServiceAreas() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -70,16 +26,18 @@ export default function ServiceAreas() {
             <h2 className="text-4xl sm:text-5xl font-black tracking-tight mb-6">
               We Come to <span className="text-gradient-gold">You</span>
             </h2>
-            <p className="text-white/50 text-lg leading-relaxed mb-8">
-              No need to drive anywhere. We serve all of Snohomish County, WA — at your home, office, apartment complex, or anywhere else that works for you.
+            <p className="text-white/70 text-lg leading-relaxed mb-8">
+              No need to drive anywhere. We bring mobile car detailing, paint correction and ceramic coating to
+              Snohomish County and north King County — at your home, office, apartment complex, or anywhere else
+              that works for you.
             </p>
 
             {/* Map placeholder */}
             <div className="rounded-2xl overflow-hidden border border-white/10 bg-dark-950 relative h-64">
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
-                  <MapPin size={32} className="text-gold-500 mx-auto mb-3" />
-                  <p className="text-white/50 text-sm">Snohomish County, WA</p>
+                  <MapPin size={32} className="text-gold-500 mx-auto mb-3" aria-hidden="true" />
+                  <p className="text-white/70 text-sm">Snohomish &amp; King County, WA</p>
                   <p className="text-white/60 text-xs mt-1">Service radius: ~30 miles</p>
                 </div>
               </div>
@@ -114,41 +72,44 @@ export default function ServiceAreas() {
             </div>
           </motion.div>
 
-          {/* Right — area list */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {areas.map((area, i) => (
+          {/* Right — every city page, grouped by county */}
+          <div className="space-y-10">
+            {(["Snohomish", "King"] as const).map((county, ci) => (
               <motion.div
-                key={area.city}
+                key={county}
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
+                transition={{ delay: ci * 0.15, duration: 0.5 }}
               >
-                <Link
-                  href={area.href}
-                  className="group block glass rounded-2xl p-6 hover:border-gold-500/30 transition-all duration-300"
-                >
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="flex items-center gap-2">
-                      <MapPin size={14} className="text-gold-500 shrink-0 mt-0.5" />
-                      <div>
-                        <span className="text-white font-bold text-base">{area.city}</span>
-                        {area.state && (
-                          <span className="text-white/60 text-sm ml-1">{area.state}</span>
-                        )}
-                      </div>
-                    </div>
-                    <ArrowRight
-                      size={14}
-                      className="text-white/60 group-hover:text-gold-500 group-hover:translate-x-1 transition-all"
-                    />
-                  </div>
-                  <p className="text-white/50 text-sm leading-relaxed">{area.description}</p>
-                  {area.zip && (
-                    <p className="text-white/60 text-xs mt-2 font-mono">{area.zip}</p>
-                  )}
-                </Link>
+                <h3 className="text-white font-bold text-lg mb-4">{county} County</h3>
+                <ul className="grid grid-cols-2 gap-3">
+                  {AREAS.filter((a) => a.county === county).map((area) => (
+                    <li key={area.slug}>
+                      <Link
+                        href={`/service-areas/${area.slug}`}
+                        className="group flex items-center justify-between gap-2 glass rounded-xl px-4 py-3 hover:border-gold-500/30 transition-all duration-300"
+                      >
+                        <span className="flex items-center gap-2 text-white text-sm font-semibold">
+                          <MapPin size={13} className="text-gold-500 shrink-0" aria-hidden="true" />
+                          {area.city}
+                        </span>
+                        <ArrowRight
+                          size={14}
+                          aria-hidden="true"
+                          className="text-white/60 group-hover:text-gold-500 group-hover:translate-x-1 transition-all"
+                        />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
             ))}
+            <Link
+              href="/service-areas"
+              className="inline-flex items-center gap-2 text-gold-500 hover:text-gold-400 font-semibold text-sm"
+            >
+              Don&apos;t see your city? View all service areas <ArrowRight size={14} aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </div>

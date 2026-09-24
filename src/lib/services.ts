@@ -49,6 +49,157 @@ export const VEHICLE_LABELS = {
 
 export const SERVICES: Service[] = [
   {
+    slug: "ceramic-coating",
+    name: "Ceramic Coating",
+    category: "Paint & Protection",
+    metaTitle: "Ceramic Coating in Snohomish & King County, WA | 1, 3 & 4-Year",
+    metaDescription:
+      "Mobile ceramic coating in Lynnwood, Everett, Edmonds, Shoreline, Kirkland, Redmond & across Snohomish and King County, WA. 1, 3 and 4-year coatings with decontamination and polish included. From $400.",
+    h1: "Ceramic Coating in Snohomish & King County, WA",
+    eyebrow: "Ceramic Coating",
+    intro:
+      "Professional ceramic coating bonds to your vehicle's paint for hydrophobic, UV-resistant protection that keeps it glossy and easier to clean for years. Every package includes a three-step decontamination wash and a paint enhancement polish before the coating goes on.",
+    image: { src: "/images/IMG_3438.JPG", alt: "Audi Q3 exterior after ceramic coating" },
+    lowPrice: 400,
+    startingPrice: "$400",
+    pricingTitle: "Coating Packages",
+    pricing: [
+      {
+        label: "1-Year Ceramic Coating",
+        sedan: "$400",
+        suv: "$500",
+        large: "$600",
+        description: "Decontamination wash and paint enhancement polish included.",
+      },
+      {
+        label: "3-Year Ceramic Coating",
+        sedan: "$700",
+        suv: "$900",
+        large: "$1,100",
+        description: "Extended protection with the same thorough prep.",
+        popular: true,
+      },
+      {
+        label: "4-Year Ceramic Coating",
+        sedan: "$1,000",
+        suv: "$1,200",
+        large: "$1,400",
+        description: "Our longest-lasting coating for maximum durability.",
+      },
+    ],
+    includes: [
+      {
+        items: [
+          "Three-step decontamination wash",
+          "Iron decontamination & clay bar",
+          "Paint enhancement polish",
+          "IPA surface wipe-down",
+          "Professional ceramic coating application",
+          "Aftercare instructions",
+        ],
+      },
+    ],
+    addons: [
+      { name: "Window Coating — All Windows", price: "$300" },
+      { name: "Window Coating — Windshield & Rear Only", price: "$125" },
+      { name: 'Wheel Face Coating (15–18")', price: "$180" },
+      { name: 'Wheel Face Coating (19–22")', price: "$240" },
+      { name: 'Wheel Face Coating (23"+)', price: "$320" },
+      { name: 'Wheels-Off Coating (15–18")', price: "$480" },
+      { name: 'Wheels-Off Coating (19–22")', price: "$580" },
+      { name: 'Wheels-Off Coating (23"+)', price: "$640" },
+      { name: "Leather Ceramic Coating — Sedan", price: "$250" },
+      { name: "Leather Ceramic Coating — SUV", price: "$300" },
+      { name: "Leather Ceramic Coating — Large SUV/Truck", price: "$350" },
+    ],
+    note: "Coating lifespan depends on proper maintenance — hand washing with pH-neutral soap and avoiding automatic brush washes. Heavy swirls or scratches may require paint correction before coating, quoted separately.",
+    about: {
+      heading: "Is Ceramic Coating Worth It in Washington?",
+      paragraphs: [
+        "In a climate with months of rain, road grime and tree sap, a ceramic coating makes a real difference. Water sheets off the surface, dirt has a harder time sticking, and contaminants like sap and bird droppings are easier to remove before they etch the paint.",
+        "A coating is only as good as the surface under it, so every package starts with a full decontamination and a paint enhancement polish. That prep is what gives the coating its gloss and helps it bond properly.",
+        "A ceramic coating is not a force field — it won't stop rock chips or deep scratches — but it's the most durable, lowest-maintenance paint protection short of paint protection film.",
+      ],
+    },
+    idealFor: [
+      "New or recently corrected paint",
+      "Owners who want easier washing",
+      "Vehicles parked outdoors year-round",
+      "Leased or high-value vehicles",
+    ],
+    faqs: [
+      {
+        q: "How long does a ceramic coating last?",
+        a: "We offer 1-year, 3-year and 4-year coatings. Actual lifespan depends on how the vehicle is washed and stored — we'll give you aftercare instructions so you get the most out of it.",
+      },
+      {
+        q: "Do I need paint correction before ceramic coating?",
+        a: "Every package includes a paint enhancement polish. If your paint has heavy swirls or scratches, a deeper paint correction may be recommended first and is quoted separately.",
+      },
+      {
+        q: "Can I wash my car after it's coated?",
+        a: "Yes, after the initial cure period we'll tell you about. Hand washing with a pH-neutral soap is best; avoid automatic brush washes.",
+      },
+    ],
+    related: ["paint-correction", "elite-full-detail", "maintenance-plans"],
+  },
+  {
+    slug: "paint-correction",
+    name: "Paint Correction",
+    category: "Paint & Protection",
+    metaTitle: "Paint Correction & Swirl Removal | Snohomish & King County, WA",
+    metaDescription:
+      "Mobile paint correction in Lynnwood, Everett, Edmonds, Shoreline, Kirkland & across Snohomish and King County, WA. Machine polishing removes swirl marks, light scratches and oxidation. Free quote.",
+    h1: "Paint Correction & Swirl Mark Removal in Snohomish & King County, WA",
+    eyebrow: "Paint Correction",
+    intro:
+      "Paint correction is machine polishing that levels the clear coat to remove or reduce swirl marks, light scratches, water spots and oxidation. It restores depth and gloss that washing and waxing can't bring back — and it's the right prep before a ceramic coating.",
+    image: { src: "/images/IMG_3469.JPG", alt: "Glossy Audi Q3 paint after polishing" },
+    startingPrice: "Quote",
+    includes: [
+      {
+        items: [
+          "Paint inspection & condition assessment",
+          "Full wash, iron decontamination & clay bar",
+          "Masking of trim and sensitive areas",
+          "Machine compounding and/or polishing",
+          "Panel wipe to check true results",
+          "Protection recommendation (sealant or ceramic coating)",
+        ],
+      },
+    ],
+    note: "Paint correction is priced after an in-person inspection because the time required depends on the paint's condition, hardness and the level of correction you want.",
+    about: {
+      heading: "What Paint Correction Can — and Can't — Fix",
+      paragraphs: [
+        "Most swirl marks come from automatic car washes and improper hand-washing. They sit in the top layer of clear coat, so carefully polishing that layer flat removes them and brings back a mirror-like reflection.",
+        "Deeper scratches that have gone through the clear coat — usually ones you can catch with a fingernail — can often be reduced but not fully removed without paint work. We'll tell you honestly what to expect after inspecting your vehicle.",
+        "Because correction removes a small amount of clear coat, we recommend protecting the result with a ceramic coating so the finish stays corrected.",
+      ],
+    },
+    idealFor: [
+      "Dark-colored cars showing swirl marks in sunlight",
+      "Faded or oxidized paint",
+      "Preparing for a ceramic coating",
+      "Getting top dollar when selling",
+    ],
+    faqs: [
+      {
+        q: "How much does paint correction cost?",
+        a: "It depends on the vehicle's size and paint condition and whether you want a one-step enhancement or multi-step correction. We give you a firm quote after inspecting the paint — contact us to set one up.",
+      },
+      {
+        q: "Is paint correction safe for my paint?",
+        a: "When done correctly, yes. We measure results as we go and remove only as much clear coat as needed.",
+      },
+      {
+        q: "Can you do paint correction at my house?",
+        a: "Yes, as long as the vehicle can be parked in a covered or shaded area. Direct sun and rain interfere with polishing, so we may reschedule in bad weather.",
+      },
+    ],
+    related: ["ceramic-coating", "elite-full-detail", "headlight-restoration"],
+  },
+  {
     slug: "interior-detailing",
     name: "Interior Detailing",
     category: "Detailing Package",
@@ -331,157 +482,6 @@ export const SERVICES: Service[] = [
       },
     ],
     related: ["elite-full-detail", "full-detail", "exterior-detailing"],
-  },
-  {
-    slug: "paint-correction",
-    name: "Paint Correction",
-    category: "Paint & Protection",
-    metaTitle: "Paint Correction & Swirl Removal in Snohomish County, WA",
-    metaDescription:
-      "Mobile paint correction in Snohomish County, WA. Machine polishing to remove swirl marks, light scratches and oxidation and restore gloss. Free quote after inspection.",
-    h1: "Paint Correction & Swirl Mark Removal in Snohomish County, WA",
-    eyebrow: "Paint Correction",
-    intro:
-      "Paint correction is machine polishing that levels the clear coat to remove or reduce swirl marks, light scratches, water spots and oxidation. It restores depth and gloss that washing and waxing can't bring back — and it's the right prep before a ceramic coating.",
-    image: { src: "/images/IMG_3469.JPG", alt: "Glossy Audi Q3 paint after polishing" },
-    startingPrice: "Quote",
-    includes: [
-      {
-        items: [
-          "Paint inspection & condition assessment",
-          "Full wash, iron decontamination & clay bar",
-          "Masking of trim and sensitive areas",
-          "Machine compounding and/or polishing",
-          "Panel wipe to check true results",
-          "Protection recommendation (sealant or ceramic coating)",
-        ],
-      },
-    ],
-    note: "Paint correction is priced after an in-person inspection because the time required depends on the paint's condition, hardness and the level of correction you want.",
-    about: {
-      heading: "What Paint Correction Can — and Can't — Fix",
-      paragraphs: [
-        "Most swirl marks come from automatic car washes and improper hand-washing. They sit in the top layer of clear coat, so carefully polishing that layer flat removes them and brings back a mirror-like reflection.",
-        "Deeper scratches that have gone through the clear coat — usually ones you can catch with a fingernail — can often be reduced but not fully removed without paint work. We'll tell you honestly what to expect after inspecting your vehicle.",
-        "Because correction removes a small amount of clear coat, we recommend protecting the result with a ceramic coating so the finish stays corrected.",
-      ],
-    },
-    idealFor: [
-      "Dark-colored cars showing swirl marks in sunlight",
-      "Faded or oxidized paint",
-      "Preparing for a ceramic coating",
-      "Getting top dollar when selling",
-    ],
-    faqs: [
-      {
-        q: "How much does paint correction cost?",
-        a: "It depends on the vehicle's size and paint condition and whether you want a one-step enhancement or multi-step correction. We give you a firm quote after inspecting the paint — contact us to set one up.",
-      },
-      {
-        q: "Is paint correction safe for my paint?",
-        a: "When done correctly, yes. We measure results as we go and remove only as much clear coat as needed.",
-      },
-      {
-        q: "Can you do paint correction at my house?",
-        a: "Yes, as long as the vehicle can be parked in a covered or shaded area. Direct sun and rain interfere with polishing, so we may reschedule in bad weather.",
-      },
-    ],
-    related: ["ceramic-coating", "elite-full-detail", "headlight-restoration"],
-  },
-  {
-    slug: "ceramic-coating",
-    name: "Ceramic Coating",
-    category: "Paint & Protection",
-    metaTitle: "Ceramic Coating in Snohomish County, WA | 1, 3 & 4-Year Packages",
-    metaDescription:
-      "Professional mobile ceramic coating in Marysville, Everett & Snohomish County, WA. 1, 3 and 4-year packages with decontamination and paint enhancement polish included. From $400.",
-    h1: "Ceramic Coating in Snohomish County, WA",
-    eyebrow: "Ceramic Coating",
-    intro:
-      "Professional ceramic coating bonds to your vehicle's paint for hydrophobic, UV-resistant protection that keeps it glossy and easier to clean for years. Every package includes a three-step decontamination wash and a paint enhancement polish before the coating goes on.",
-    image: { src: "/images/IMG_3438.JPG", alt: "Audi Q3 exterior after ceramic coating" },
-    lowPrice: 400,
-    startingPrice: "$400",
-    pricingTitle: "Coating Packages",
-    pricing: [
-      {
-        label: "1-Year Ceramic Coating",
-        sedan: "$400",
-        suv: "$500",
-        large: "$600",
-        description: "Decontamination wash and paint enhancement polish included.",
-      },
-      {
-        label: "3-Year Ceramic Coating",
-        sedan: "$700",
-        suv: "$900",
-        large: "$1,100",
-        description: "Extended protection with the same thorough prep.",
-        popular: true,
-      },
-      {
-        label: "4-Year Ceramic Coating",
-        sedan: "$1,000",
-        suv: "$1,200",
-        large: "$1,400",
-        description: "Our longest-lasting coating for maximum durability.",
-      },
-    ],
-    includes: [
-      {
-        items: [
-          "Three-step decontamination wash",
-          "Iron decontamination & clay bar",
-          "Paint enhancement polish",
-          "IPA surface wipe-down",
-          "Professional ceramic coating application",
-          "Aftercare instructions",
-        ],
-      },
-    ],
-    addons: [
-      { name: "Window Coating — All Windows", price: "$300" },
-      { name: "Window Coating — Windshield & Rear Only", price: "$125" },
-      { name: 'Wheel Face Coating (15–18")', price: "$180" },
-      { name: 'Wheel Face Coating (19–22")', price: "$240" },
-      { name: 'Wheel Face Coating (23"+)', price: "$320" },
-      { name: 'Wheels-Off Coating (15–18")', price: "$480" },
-      { name: 'Wheels-Off Coating (19–22")', price: "$580" },
-      { name: 'Wheels-Off Coating (23"+)', price: "$640" },
-      { name: "Leather Ceramic Coating — Sedan", price: "$250" },
-      { name: "Leather Ceramic Coating — SUV", price: "$300" },
-      { name: "Leather Ceramic Coating — Large SUV/Truck", price: "$350" },
-    ],
-    note: "Coating lifespan depends on proper maintenance — hand washing with pH-neutral soap and avoiding automatic brush washes. Heavy swirls or scratches may require paint correction before coating, quoted separately.",
-    about: {
-      heading: "Is Ceramic Coating Worth It in Washington?",
-      paragraphs: [
-        "In a climate with months of rain, road grime and tree sap, a ceramic coating makes a real difference. Water sheets off the surface, dirt has a harder time sticking, and contaminants like sap and bird droppings are easier to remove before they etch the paint.",
-        "A coating is only as good as the surface under it, so every package starts with a full decontamination and a paint enhancement polish. That prep is what gives the coating its gloss and helps it bond properly.",
-        "A ceramic coating is not a force field — it won't stop rock chips or deep scratches — but it's the most durable, lowest-maintenance paint protection short of paint protection film.",
-      ],
-    },
-    idealFor: [
-      "New or recently corrected paint",
-      "Owners who want easier washing",
-      "Vehicles parked outdoors year-round",
-      "Leased or high-value vehicles",
-    ],
-    faqs: [
-      {
-        q: "How long does a ceramic coating last?",
-        a: "We offer 1-year, 3-year and 4-year coatings. Actual lifespan depends on how the vehicle is washed and stored — we'll give you aftercare instructions so you get the most out of it.",
-      },
-      {
-        q: "Do I need paint correction before ceramic coating?",
-        a: "Every package includes a paint enhancement polish. If your paint has heavy swirls or scratches, a deeper paint correction may be recommended first and is quoted separately.",
-      },
-      {
-        q: "Can I wash my car after it's coated?",
-        a: "Yes, after the initial cure period we'll tell you about. Hand washing with a pH-neutral soap is best; avoid automatic brush washes.",
-      },
-    ],
-    related: ["paint-correction", "elite-full-detail", "maintenance-plans"],
   },
   {
     slug: "headlight-restoration",

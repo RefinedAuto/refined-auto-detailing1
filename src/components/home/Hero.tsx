@@ -45,7 +45,7 @@ export default function Hero() {
           >
             <span className="inline-flex items-center gap-2 glass-gold px-4 py-2 rounded-full mb-8 text-gold-500 text-xs sm:text-sm font-semibold tracking-widest uppercase">
               <MapPin size={12} aria-hidden="true" />
-              Mobile Car Detailing in Snohomish County, WA
+              Mobile Car Detailing in Snohomish &amp; King County, WA
             </span>
             <span className="sr-only"> — </span>
             <span className="block text-5xl sm:text-6xl lg:text-7xl font-black leading-[0.95] tracking-tight">
@@ -62,8 +62,8 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="text-white/70 text-lg sm:text-xl leading-relaxed max-w-xl mb-10"
           >
-            Professional mobile auto detailing in Marysville, Everett, Lynnwood and across Snohomish
-            County — we come to your home, office, or anywhere convenient.
+            Mobile car detailing, ceramic coating and paint correction in Lynnwood, Everett, Marysville,
+            Shoreline, Kirkland and beyond — we come to your home, office, or anywhere convenient.
           </motion.p>
 
           {/* CTAs */}

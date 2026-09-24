@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     q: "What areas do you serve?",
-    a: "We serve Snohomish County, WA — including Marysville, Everett, Lynnwood, Mukilteo, Mill Creek, Lake Stevens, Arlington, Snohomish, Bothell and Edmonds — plus nearby communities. Our service radius is about 30 miles; if you're unsure, just reach out.",
+    a: "We serve Snohomish County and north King County, WA — including Lynnwood, Everett, Marysville, Mukilteo, Mill Creek, Edmonds, Lake Stevens, Arlington, Snohomish, Bothell, Shoreline, Lake Forest Park, Kirkland and Redmond. Our service radius is about 30 miles; if you're unsure, just reach out.",
   },
   {
     q: "How much does detailing cost?",

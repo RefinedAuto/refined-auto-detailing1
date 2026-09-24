@@ -21,11 +21,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Mobile Car Detailing in Snohomish County, WA | Refined Auto Detailing",
+    default: "Mobile Car Detailing & Ceramic Coating | Snohomish & King County, WA",
     template: "%s | Refined Auto Detailing",
   },
   description:
-    "Premium mobile auto detailing serving Snohomish County, WA. We come to you — your home, office, or any location. Interior detailing, exterior detailing, ceramic coating & more. Book online today.",
+    "Mobile car detailing, ceramic coating and paint correction in Snohomish & King County, WA — Lynnwood, Everett, Marysville, Edmonds, Shoreline, Kirkland and more. We come to you.",
   authors: [{ name: "Refined Auto Detailing" }],
   creator: "Refined Auto Detailing",
   openGraph: {
@@ -82,7 +82,7 @@ const businessJsonLd = {
   "@id": BUSINESS_ID,
   name: COMPANY.name,
   description:
-    "Mobile auto detailing serving Snohomish County, Washington — interior and exterior detailing, full details, paint correction and ceramic coating at your home or office.",
+    "Mobile auto detailing serving Snohomish and King County, Washington — ceramic coating, paint correction, interior and exterior detailing and full details at your home or office.",
   url: SITE_URL,
   telephone: COMPANY.phoneHref,
   email: COMPANY.email,
@@ -99,6 +99,7 @@ const businessJsonLd = {
   areaServed: [
     ...AREAS.map((a) => ({ "@type": "City", name: `${a.city}, WA` })),
     { "@type": "AdministrativeArea", name: "Snohomish County, WA" },
+    { "@type": "AdministrativeArea", name: "King County, WA" },
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",

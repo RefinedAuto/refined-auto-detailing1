@@ -6,22 +6,22 @@ import { SERVICES, VEHICLE_LABELS, type Service } from "@/lib/services";
 import { COMPANY } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: { absolute: "Mobile Auto Detailing Services & Prices | Snohomish County, WA" },
+  title: { absolute: "Car Detailing Services & Prices | Snohomish & King County, WA" },
   description:
-    "All mobile auto detailing services and prices in Snohomish County, WA: exterior wash, interior detail, full details, maintenance plans, paint correction, ceramic coating and add-ons.",
+    "Ceramic coating, paint correction, interior & exterior detailing, full details and maintenance plans — mobile auto detailing prices for Snohomish & King County, WA.",
   alternates: { canonical: "/services" },
 };
 
 const CATEGORIES: { title: string; category: Service["category"]; blurb: string }[] = [
   {
+    title: "Ceramic Coating & Paint Correction",
+    category: "Paint & Protection",
+    blurb: "Restore your paint's gloss, then lock it in with multi-year ceramic protection.",
+  },
+  {
     title: "Detailing Packages",
     category: "Detailing Package",
     blurb: "Inside, outside or both — performed at your home or office.",
-  },
-  {
-    title: "Paint Correction & Protection",
-    category: "Paint & Protection",
-    blurb: "Restore gloss and protect your paint for the long term.",
   },
   {
     title: "Add-On Services",
@@ -87,7 +87,8 @@ export default function ServicesPage() {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <p className="text-gold-500 text-xs tracking-[0.3em] uppercase font-medium mb-4">Services & Pricing</p>
             <h1 className="text-4xl sm:text-6xl font-black tracking-tight mb-6 leading-tight">
-              Mobile Auto Detailing Services in <span className="text-gradient-gold">Snohomish County, WA</span>
+              Mobile Auto Detailing Services in{" "}
+              <span className="text-gradient-gold">Snohomish &amp; King County, WA</span>
             </h1>
             <p className="text-white/70 text-lg leading-relaxed">
               Every service is performed at your location. Prices are starting prices by vehicle size — the final

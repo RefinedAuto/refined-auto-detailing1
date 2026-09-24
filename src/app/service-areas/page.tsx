@@ -6,9 +6,8 @@ import { AREAS } from "@/lib/areas";
 import { COMPANY } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: { absolute: "Mobile Detailing Service Areas in Snohomish County, WA | Refined Auto Detailing" },
-  description:
-    "Refined Auto Detailing brings mobile car detailing to Marysville, Everett, Lynnwood, Mukilteo, Mill Creek, Lake Stevens, Arlington, Snohomish, Bothell and Edmonds, WA.",
+  title: { absolute: "Mobile Car Detailing Service Areas — Snohomish & King County, WA" },
+  description: `Mobile car detailing and ceramic coating in ${AREAS.map((a) => a.city).join(", ")}, WA. We come to your home or office.`,
   alternates: { canonical: "/service-areas" },
 };
 
@@ -22,7 +21,8 @@ export default function ServiceAreasPage() {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <p className="text-gold-500 text-xs tracking-[0.3em] uppercase font-medium mb-4">Service Areas</p>
             <h1 className="text-4xl sm:text-6xl font-black tracking-tight mb-6 leading-tight">
-              Mobile Detailing Service Areas in <span className="text-gradient-gold">Snohomish County</span>
+              Mobile Detailing Service Areas in{" "}
+              <span className="text-gradient-gold">Snohomish &amp; King County</span>
             </h1>
             <p className="text-white/70 text-lg leading-relaxed">
               Based in south Snohomish County, we bring professional mobile detailing to homes and workplaces within about 30
@@ -30,30 +30,37 @@ export default function ServiceAreasPage() {
             </p>
           </div>
 
-          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-            {AREAS.map((area) => (
-              <li key={area.slug}>
-                <Link
-                  href={`/service-areas/${area.slug}`}
-                  className="group block h-full glass rounded-2xl p-8 hover:border-gold-500/30 transition-all duration-300"
-                >
-                  <h2 className="flex items-center gap-3 mb-4 text-white font-black text-xl">
-                    <MapPin size={16} className="text-gold-500" aria-hidden="true" />
-                    {area.city}
-                    <span className="text-white/60 font-normal text-base -ml-2">, WA</span>
-                  </h2>
-                  <p className="text-white/70 text-sm leading-relaxed mb-4">{area.summary}</p>
-                  <span className="flex items-center justify-between">
-                    <span className="text-white/60 font-mono text-xs">{area.zips.join(" · ")}</span>
-                    <span className="flex items-center gap-1 text-gold-500 text-xs font-medium">
-                      Detailing in {area.city}
-                      <ArrowRight size={12} aria-hidden="true" className="group-hover:translate-x-1 transition-transform" />
+          {(["Snohomish", "King"] as const).map((county) => (
+            <section key={county} aria-labelledby={`county-${county}`} className="mb-16">
+              <h2 id={`county-${county}`} className="text-3xl font-black text-white mb-8">
+                {county} County
+              </h2>
+            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {AREAS.filter((a) => a.county === county).map((area) => (
+                <li key={area.slug}>
+                  <Link
+                    href={`/service-areas/${area.slug}`}
+                    className="group block h-full glass rounded-2xl p-8 hover:border-gold-500/30 transition-all duration-300"
+                  >
+                    <h3 className="flex items-center gap-3 mb-4 text-white font-black text-xl">
+                      <MapPin size={16} className="text-gold-500" aria-hidden="true" />
+                      {area.city}
+                      <span className="text-white/60 font-normal text-base -ml-2">, WA</span>
+                    </h3>
+                    <p className="text-white/70 text-sm leading-relaxed mb-4">{area.summary}</p>
+                    <span className="flex items-center justify-between">
+                      <span className="text-white/60 font-mono text-xs">{area.zips.join(" · ")}</span>
+                      <span className="flex items-center gap-1 text-gold-500 text-xs font-medium">
+                        Detailing in {area.city}
+                        <ArrowRight size={12} aria-hidden="true" className="group-hover:translate-x-1 transition-transform" />
+                      </span>
                     </span>
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            </section>
+          ))}
 
           <div className="glass border border-gold-500/20 rounded-3xl p-10 text-center max-w-2xl mx-auto">
             <h2 className="text-2xl font-black text-white mb-3">Don&apos;t See Your City?</h2>

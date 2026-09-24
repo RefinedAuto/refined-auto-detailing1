@@ -3,9 +3,29 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { ArrowRight, Sparkles, Shield, Zap, Droplets, Star } from "lucide-react";
+import { ArrowRight, Sparkles, Shield, Zap, Droplets, Star, Wand2 } from "lucide-react";
 
 const services = [
+  {
+    icon: Shield,
+    title: "Ceramic Coating",
+    description:
+      "Professional ceramic coating with 1, 3, or 4-year protection tiers. Includes full decontamination wash and paint enhancement polish before every application.",
+    features: ["1, 3, or 4-year tiers", "Full decontamination prep", "Paint enhancement included", "Window & wheel coating add-ons"],
+    price: "From $400",
+    href: "/services/ceramic-coating",
+    accent: "from-gold-500/20 to-transparent",
+  },
+  {
+    icon: Wand2,
+    title: "Paint Correction",
+    description:
+      "Machine polishing that removes or reduces swirl marks, light scratches and oxidation to restore deep gloss — the ideal prep for a ceramic coating.",
+    features: ["Swirl & scratch reduction", "Oxidation removal", "Full decontamination prep", "Quoted after inspection"],
+    price: "Free quote",
+    href: "/services/paint-correction",
+    accent: "from-gold-500/20 to-transparent",
+  },
   {
     icon: Droplets,
     title: "Premium Exterior Wash",
@@ -47,16 +67,6 @@ const services = [
     href: "/services/elite-full-detail",
     accent: "from-purple-500/10 to-transparent",
   },
-  {
-    icon: Shield,
-    title: "Ceramic Coating",
-    description:
-      "Professional ceramic coating with 1, 3, or 4-year protection tiers. Includes full decontamination wash and paint enhancement polish before every application.",
-    features: ["1, 3, or 4-year tiers", "Full decontamination prep", "Paint enhancement included", "Window & wheel coating add-ons"],
-    price: "From $400",
-    href: "/services/ceramic-coating",
-    accent: "from-gold-500/20 to-transparent",
-  },
 ];
 
 export default function Services() {
@@ -97,7 +107,7 @@ export default function Services() {
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: i * 0.1, duration: 0.6 }}
                 className={`group relative glass rounded-2xl p-8 hover:border-gold-500/30 transition-all duration-300 ${
-                  service.featured ? "border-gold-500/30 md:col-span-2 lg:col-span-1" : ""
+                  service.featured ? "border-gold-500/30" : ""
                 }`}
               >
                 {service.featured && (

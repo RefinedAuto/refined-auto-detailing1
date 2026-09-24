@@ -25,7 +25,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-white/50 text-sm leading-relaxed mb-6">
-              Premium mobile auto detailing serving Snohomish County. We bring the detail shop to your driveway.
+              Mobile car detailing, ceramic coating and paint correction across Snohomish &amp; King County. We bring the detail shop to your driveway.
             </p>
             <div className="flex items-center gap-3">
               <a
