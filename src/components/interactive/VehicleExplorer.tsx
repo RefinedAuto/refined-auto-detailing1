@@ -171,7 +171,7 @@ export default function VehicleExplorer() {
 
               {/* Tap instruction */}
               {!activeHotspot && (
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/30 text-xs tracking-wide animate-pulse">
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/60 text-xs tracking-wide animate-pulse">
                   Tap a hotspot to explore
                 </div>
               )}
@@ -193,14 +193,15 @@ export default function VehicleExplorer() {
                   animate={{ opacity: 1 }}
                   className="flex flex-col items-center justify-center h-full glass rounded-2xl p-8 sm:p-12 text-center"
                 >
-                  <div className="text-5xl mb-4">👆</div>
-                  <p className="text-white/40 text-base">
+                  <div className="text-5xl mb-4" aria-hidden="true">👆</div>
+                  <p className="text-white/60 text-base">
                     Select any part of the vehicle to see our detailed process.
                   </p>
                   <div className="flex flex-wrap gap-2 justify-center mt-6">
                     {hotspots.map((h) => (
                       <button
                         key={h.id}
+                        type="button"
                         onClick={() => setActiveHotspot(h.id)}
                         className="glass-gold text-gold-500 text-xs px-3 py-1.5 rounded-full border border-gold-500/20 hover:bg-gold-500/20 transition-colors"
                       >
@@ -219,14 +220,16 @@ export default function VehicleExplorer() {
                 >
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center gap-3">
-                      <span className="text-3xl">{active.emoji}</span>
+                      <span className="text-3xl" aria-hidden="true">{active.emoji}</span>
                       <h3 className="text-white font-black text-2xl">{active.label}</h3>
                     </div>
                     <button
+                      type="button"
                       onClick={() => setActiveHotspot(null)}
-                      className="text-white/40 hover:text-white p-1.5"
+                      aria-label={`Close ${active.label} details`}
+                      className="text-white/60 hover:text-white p-1.5"
                     >
-                      <X size={18} />
+                      <X size={18} aria-hidden="true" />
                     </button>
                   </div>
 
@@ -234,7 +237,7 @@ export default function VehicleExplorer() {
 
                   <div className="space-y-5">
                     <div>
-                      <p className="text-white/40 text-xs tracking-widest uppercase mb-2">Tools Used</p>
+                      <p className="text-white/60 text-xs tracking-widest uppercase mb-2">Tools Used</p>
                       <div className="flex flex-wrap gap-2">
                         {active.tools.map((tool) => (
                           <span key={tool} className="glass text-white/70 text-xs px-3 py-1.5 rounded-full">
@@ -245,12 +248,12 @@ export default function VehicleExplorer() {
                     </div>
 
                     <div>
-                      <p className="text-white/40 text-xs tracking-widest uppercase mb-2">Our Process</p>
+                      <p className="text-white/60 text-xs tracking-widest uppercase mb-2">Our Process</p>
                       <p className="text-white/70 text-sm leading-relaxed">{active.process}</p>
                     </div>
 
                     <div className="glass-gold rounded-xl p-4">
-                      <p className="text-white/40 text-xs tracking-widest uppercase mb-2">Result</p>
+                      <p className="text-white/60 text-xs tracking-widest uppercase mb-2">Result</p>
                       <p className="text-gold-500 text-sm leading-relaxed">{active.result}</p>
                     </div>
                   </div>

@@ -4,9 +4,10 @@ import Link from "next/link";
 import { Shield, Star, Zap, Heart, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About Refined Auto Detailing | Premium Mobile Detailing, Snohomish County WA",
+  title: "About Us — Mobile Auto Detailers Based in Marysville, WA",
   description:
-    "Meet the team behind Refined Auto Detailing. We're Snohomish County's premier mobile detailing service — built on precision, passion, and the belief that your vehicle deserves the best.",
+    "Meet Refined Auto Detailing, a mobile auto detailing business based in Marysville and serving Snohomish County, WA — built on precision, care, and bringing the detail shop to your driveway.",
+  alternates: { canonical: "/about" },
 };
 
 const values = [
@@ -18,12 +19,12 @@ const values = [
   {
     icon: Star,
     title: "Premium Products Only",
-    description: "We use only professional-grade products — the same ones top-tier detail shops use. No shortcuts.",
+    description: "We use professional-grade detailing products and tools. No shortcuts.",
   },
   {
     icon: Zap,
     title: "Convenient & Reliable",
-    description: "We show up on time, every time. Mobile service means zero inconvenience for you.",
+    description: "We show up when we say we will. Mobile service means no drop-offs and no waiting rooms.",
   },
   {
     icon: Heart,
@@ -43,9 +44,8 @@ export default function AboutPage() {
               <span className="text-gold-500 text-xs tracking-[0.3em] uppercase font-medium mb-4 block">
                 Our Story
               </span>
-              <h1 className="text-5xl sm:text-6xl font-black tracking-tight mb-6">
-                Built on a <br />
-                <span className="text-gradient-gold">Standard of Excellence</span>
+              <h1 className="text-4xl sm:text-6xl font-black tracking-tight mb-6 leading-tight">
+                About Refined Auto Detailing: <span className="text-gradient-gold">Snohomish County&apos;s Mobile Detailers</span>
               </h1>
               <p className="text-white/60 text-lg leading-relaxed mb-6">
                 Refined Auto Detailing started with a simple belief: every vehicle owner deserves access to truly exceptional detailing — not just a quick wash, but a complete transformation.
@@ -64,15 +64,11 @@ export default function AboutPage() {
               <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-white/10">
                 <Image
                   src="/images/gs-5094.jpg"
-                  alt="Refined Auto Detailing at work"
+                  alt="Refined Auto Detailing cleaning a BMW wheel with a brush during a mobile detail"
                   fill
                   sizes="(min-width: 1024px) 50vw, 100vw"
                   className="object-cover"
                 />
-              </div>
-              <div className="absolute -bottom-6 -left-6 glass border border-gold-500/20 rounded-2xl p-5 w-48">
-                <p className="text-3xl font-black text-gradient-gold">500+</p>
-                <p className="text-white/60 text-xs mt-1">Vehicles detailed in Snohomish County</p>
               </div>
             </div>
           </div>
@@ -115,7 +111,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {["/images/gs-5754.jpg", "/images/gs-5749.jpg", "/images/gs-5094.jpg", "/images/gs-5133.jpg"].map((src, i) => (
               <div key={i} className="aspect-square rounded-xl overflow-hidden border border-white/5 hover:border-gold-500/30 transition-all">
-                <Image src={src} alt={`Detail work ${i + 1}`} width={400} height={400} className="object-cover w-full h-full hover:scale-105 transition-transform duration-700" />
+                <Image src={src} alt={`Vehicle detailed by Refined Auto Detailing, photo ${i + 1}`} width={400} height={400} className="object-cover w-full h-full hover:scale-105 transition-transform duration-700" />
               </div>
             ))}
           </div>
@@ -131,7 +127,7 @@ export default function AboutPage() {
       <section className="py-20 bg-black text-center">
         <div className="container-custom">
           <h2 className="text-4xl font-black mb-4">Ready to Experience <span className="text-gradient-gold">Refined?</span></h2>
-          <p className="text-white/50 mb-8 max-w-md mx-auto">Join hundreds of satisfied clients across Snohomish County.</p>
+          <p className="text-white/70 mb-8 max-w-md mx-auto">Professional mobile detailing, wherever your vehicle is parked in Snohomish County.</p>
           <Link href="/quote" className="inline-flex items-center gap-3 bg-gold-500 hover:bg-gold-400 text-black font-bold px-8 py-4 rounded-full transition-all shadow-gold">
             Get My Free Quote <ArrowRight size={18} />
           </Link>

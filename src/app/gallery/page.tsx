@@ -4,9 +4,10 @@ import { ArrowRight } from "lucide-react";
 import GalleryGrid from "@/components/gallery/GalleryGrid";
 
 export const metadata: Metadata = {
-  title: "Gallery | Before & After Auto Detailing Photos — Snohomish County WA",
+  title: "Car Detailing Photos — Before & After in Snohomish County, WA",
   description:
     "See real before and after photos from Refined Auto Detailing. Interior and exterior transformations across Snohomish County, WA.",
+  alternates: { canonical: "/gallery" },
 };
 
 const galleryItems = [
@@ -39,10 +40,10 @@ export default function GalleryPage() {
             <span className="text-gold-500 text-xs tracking-[0.3em] uppercase font-medium mb-4 block">
               Our Work
             </span>
-            <h1 className="text-5xl sm:text-6xl font-black tracking-tight mb-6">
-              Real Results. <br /><span className="text-gradient-gold">Real Vehicles.</span>
+            <h1 className="text-4xl sm:text-6xl font-black tracking-tight mb-6 leading-tight">
+              Car Detailing Photos: <span className="text-gradient-gold">Real Snohomish County Results</span>
             </h1>
-            <p className="text-white/50 text-lg">
+            <p className="text-white/70 text-lg">
               Every photo is from an actual Refined Auto Detailing client in Snohomish County, WA. No stock images.
             </p>
           </div>
@@ -54,7 +55,7 @@ export default function GalleryPage() {
               href="/quote"
               className="inline-flex items-center gap-3 bg-gold-500 hover:bg-gold-400 text-black font-bold px-8 py-4 rounded-full transition-all shadow-gold"
             >
-              Get Your Vehicle Looking This Good <ArrowRight size={18} />
+              Get Your Vehicle Looking This Good <ArrowRight size={18} aria-hidden="true" />
             </Link>
           </div>
         </div>

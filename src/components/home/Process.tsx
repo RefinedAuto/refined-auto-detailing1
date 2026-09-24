@@ -77,7 +77,7 @@ export default function Process() {
             <div className="glass-gold rounded-xl p-6 border border-gold-500/20">
               <p className="text-gold-500 font-semibold text-sm mb-2">Our Promise</p>
               <p className="text-white/70 text-sm leading-relaxed">
-                If you find anything we missed, we come back and fix it. No questions asked. That&apos;s the Refined guarantee.
+                If you find anything we missed, let us know within 24 hours and we&apos;ll come back to fix it at no charge. That&apos;s the Refined guarantee.
               </p>
             </div>
           </motion.div>
@@ -104,9 +104,9 @@ export default function Process() {
                   </div>
                   <div className="pt-2">
                     <div className="flex items-center gap-3 mb-2">
-                      <span className="text-gold-500/50 text-xs font-mono">{step.number}</span>
+                      <span className="text-gold-500 text-xs font-mono">{step.number}</span>
                       <h3 className="text-white font-bold text-base">{step.title}</h3>
-                      <span className="text-white/30 text-xs ml-auto">{step.detail}</span>
+                      <span className="text-white/60 text-xs ml-auto">{step.detail}</span>
                     </div>
                     <p className="text-white/50 text-sm leading-relaxed">{step.description}</p>
                   </div>

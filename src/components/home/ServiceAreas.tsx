@@ -80,7 +80,7 @@ export default function ServiceAreas() {
                 <div className="text-center">
                   <MapPin size={32} className="text-gold-500 mx-auto mb-3" />
                   <p className="text-white/50 text-sm">Snohomish County, WA</p>
-                  <p className="text-white/30 text-xs mt-1">Service radius: ~30 miles</p>
+                  <p className="text-white/60 text-xs mt-1">Service radius: ~30 miles</p>
                 </div>
               </div>
               {/* Stylized map dots */}
@@ -133,18 +133,18 @@ export default function ServiceAreas() {
                       <div>
                         <span className="text-white font-bold text-base">{area.city}</span>
                         {area.state && (
-                          <span className="text-white/40 text-sm ml-1">{area.state}</span>
+                          <span className="text-white/60 text-sm ml-1">{area.state}</span>
                         )}
                       </div>
                     </div>
                     <ArrowRight
                       size={14}
-                      className="text-white/30 group-hover:text-gold-500 group-hover:translate-x-1 transition-all"
+                      className="text-white/60 group-hover:text-gold-500 group-hover:translate-x-1 transition-all"
                     />
                   </div>
                   <p className="text-white/50 text-sm leading-relaxed">{area.description}</p>
                   {area.zip && (
-                    <p className="text-white/20 text-xs mt-2 font-mono">{area.zip}</p>
+                    <p className="text-white/60 text-xs mt-2 font-mono">{area.zip}</p>
                   )}
                 </Link>
               </motion.div>

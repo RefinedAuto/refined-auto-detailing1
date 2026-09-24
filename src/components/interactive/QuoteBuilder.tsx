@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useForm } from "react-hook-form";
@@ -9,6 +9,7 @@ import { z } from "zod";
 import { toast } from "sonner";
 import { useSubmit } from "@formspree/react";
 import { Car, Truck, ArrowRight, ArrowLeft, CheckCircle, Sparkles } from "lucide-react";
+import Link from "next/link";
 import { formatCurrency, COMPANY } from "@/lib/utils";
 
 type VehicleType = "sedan" | "suv" | "large";
@@ -43,6 +44,18 @@ export default function QuoteBuilder() {
   const [selectedAddons, setSelectedAddons] = useState<string[]>([]);
   const [leadCaptured, setLeadCaptured] = useState(false);
   const [estimate, setEstimate] = useState(0);
+  const stepRegionRef = useRef<HTMLDivElement>(null);
+  const isFirstRender = useRef(true);
+
+  // Moving between steps unmounts the button that had focus. Move focus to the
+  // new step so keyboard and screen-reader users aren't dropped back at the top.
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    stepRegionRef.current?.focus();
+  }, [step, leadCaptured]);
 
   const {
     register,
@@ -137,7 +150,10 @@ export default function QuoteBuilder() {
           className="max-w-2xl mx-auto"
         >
           {/* Progress indicator */}
-          <div className="flex items-center gap-2 mb-8 justify-center">
+          <p className="sr-only" aria-live="polite">
+            {leadCaptured ? "Quote complete" : `Step ${step} of 4`}
+          </p>
+          <div className="flex items-center gap-2 mb-8 justify-center" aria-hidden="true">
             {[1, 2, 3, 4].map((s) => (
               <div key={s} className="flex items-center gap-2">
                 <div
@@ -146,7 +162,7 @@ export default function QuoteBuilder() {
                       ? "bg-gold-500 text-black"
                       : s === step
                       ? "bg-gold-500/20 text-gold-500 border border-gold-500"
-                      : "bg-white/5 text-white/30"
+                      : "bg-white/5 text-white/60"
                   }`}
                 >
                   {s < step ? <CheckCircle size={14} /> : s}
@@ -162,7 +178,11 @@ export default function QuoteBuilder() {
             ))}
           </div>
 
-          <div className="glass border border-white/10 rounded-3xl p-5 sm:p-8">
+          <div
+            ref={stepRegionRef}
+            tabIndex={-1}
+            className="glass border border-white/10 rounded-3xl p-5 sm:p-8 outline-none"
+          >
             <AnimatePresence mode="wait">
               {/* Step 1: Vehicle Type */}
               {step === 1 && (
@@ -173,11 +193,12 @@ export default function QuoteBuilder() {
                   exit={{ opacity: 0, x: -30 }}
                 >
                   <h3 className="text-white font-bold text-xl mb-2">What vehicle are we detailing?</h3>
-                  <p className="text-white/40 text-sm mb-6">Select your vehicle type</p>
+                  <p className="text-white/60 text-sm mb-6">Select your vehicle type</p>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
                     {vehicles.map(({ type, label, icon: Icon }) => (
                       <button
                         key={type}
+                        type="button"
                         onClick={() => setVehicleType(type)}
                         aria-pressed={vehicleType === type}
                         className={`flex flex-row sm:flex-col items-center gap-3 p-4 sm:p-5 rounded-2xl border transition-all duration-200 ${
@@ -186,16 +207,17 @@ export default function QuoteBuilder() {
                             : "border-white/10 text-white/60 hover:border-white/30"
                         }`}
                       >
-                        <Icon size={28} />
+                        <Icon size={28} aria-hidden="true" />
                         <span className="text-sm font-medium text-left sm:text-center">{label}</span>
                       </button>
                     ))}
                   </div>
                   <button
+                    type="button"
                     onClick={() => setStep(2)}
                     className="w-full bg-gold-500 hover:bg-gold-400 text-black font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all"
                   >
-                    Next <ArrowRight size={18} />
+                    Next <ArrowRight size={18} aria-hidden="true" />
                   </button>
                 </motion.div>
               )}
@@ -209,11 +231,13 @@ export default function QuoteBuilder() {
                   exit={{ opacity: 0, x: -30 }}
                 >
                   <h3 className="text-white font-bold text-xl mb-2">What service do you need?</h3>
-                  <p className="text-white/40 text-sm mb-6">Choose your detailing package</p>
+                  <p className="text-white/60 text-sm mb-6">Choose your detailing package</p>
                   <div className="space-y-3 mb-8">
                     {services.map(({ type, label, desc, highlight }) => (
                       <button
                         key={type}
+                        type="button"
+                        aria-pressed={service === type}
                         onClick={() => setService(type)}
                         className={`w-full flex items-center justify-between p-5 rounded-2xl border transition-all duration-200 ${
                           service === type
@@ -226,7 +250,7 @@ export default function QuoteBuilder() {
                             <p className={`font-bold ${service === type ? "text-gold-500" : "text-white"}`}>{label}</p>
                             {highlight && <span className="text-[10px] bg-gold-500/20 text-gold-400 px-2 py-0.5 rounded-full font-bold tracking-wide">Popular</span>}
                           </div>
-                          <p className="text-white/40 text-sm">{desc}</p>
+                          <p className="text-white/60 text-sm">{desc}</p>
                         </div>
                         <div className="text-right">
                           <p className={`font-bold ${service === type ? "text-gold-500" : "text-white/60"}`}>
@@ -238,16 +262,18 @@ export default function QuoteBuilder() {
                   </div>
                   <div className="flex gap-3">
                     <button
+                      type="button"
                       onClick={() => setStep(1)}
                       className="flex-1 border border-white/10 hover:border-white/30 text-white/60 py-4 rounded-xl flex items-center justify-center gap-2 transition-all"
                     >
-                      <ArrowLeft size={18} /> Back
+                      <ArrowLeft size={18} aria-hidden="true" /> Back
                     </button>
                     <button
+                      type="button"
                       onClick={() => setStep(3)}
                       className="flex-1 bg-gold-500 hover:bg-gold-400 text-black font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all"
                     >
-                      Next <ArrowRight size={18} />
+                      Next <ArrowRight size={18} aria-hidden="true" />
                     </button>
                   </div>
                 </motion.div>
@@ -262,13 +288,15 @@ export default function QuoteBuilder() {
                   exit={{ opacity: 0, x: -30 }}
                 >
                   <h3 className="text-white font-bold text-xl mb-2">Any add-ons?</h3>
-                  <p className="text-white/40 text-sm mb-5">Optional services to add to your detail</p>
+                  <p className="text-white/60 text-sm mb-5">Optional services to add to your detail</p>
 
-                  <p className="text-white/40 text-sm mb-3">Add-on services</p>
+                  <p className="text-white/60 text-sm mb-3">Add-on services</p>
                   <div className="space-y-2 mb-8">
                     {addons.map((addon) => (
                       <button
                         key={addon.id}
+                        type="button"
+                        aria-pressed={selectedAddons.includes(addon.id)}
                         onClick={() => toggleAddon(addon.id)}
                         className={`w-full flex items-center justify-between p-4 rounded-xl border transition-all ${
                           selectedAddons.includes(addon.id)
@@ -284,7 +312,7 @@ export default function QuoteBuilder() {
                           </div>
                           <div className="text-left">
                             <p className="text-white text-sm font-medium">{addon.name}</p>
-                            <p className="text-white/40 text-xs">{addon.description}</p>
+                            <p className="text-white/60 text-xs">{addon.description}</p>
                           </div>
                         </div>
                         <span className="text-gold-500 text-sm font-bold">+{formatCurrency(addon.price)}</span>
@@ -303,16 +331,18 @@ export default function QuoteBuilder() {
 
                   <div className="flex gap-3">
                     <button
+                      type="button"
                       onClick={() => setStep(2)}
                       className="flex-1 border border-white/10 hover:border-white/30 text-white/60 py-4 rounded-xl flex items-center justify-center gap-2"
                     >
-                      <ArrowLeft size={18} /> Back
+                      <ArrowLeft size={18} aria-hidden="true" /> Back
                     </button>
                     <button
+                      type="button"
                       onClick={() => setStep(4)}
                       className="flex-1 bg-gold-500 hover:bg-gold-400 text-black font-bold py-4 rounded-xl flex items-center justify-center gap-2"
                     >
-                      Get Quote <ArrowRight size={18} />
+                      Get Quote <ArrowRight size={18} aria-hidden="true" />
                     </button>
                   </div>
                 </motion.div>
@@ -327,37 +357,77 @@ export default function QuoteBuilder() {
                   exit={{ opacity: 0, x: -30 }}
                 >
                   <h3 className="text-white font-bold text-xl mb-2">Almost done!</h3>
-                  <p className="text-white/40 text-sm mb-6">Enter your info to see your full quote and book your detail.</p>
+                  <p className="text-white/60 text-sm mb-6">Enter your info to see your full quote and book your detail.</p>
 
                   <form onSubmit={handleSubmit(onSubmitLead)} className="space-y-4">
                     <div>
+                      <label htmlFor="quote-name" className="sr-only">
+                        Your name
+                      </label>
                       <input
+                        id="quote-name"
+                        autoComplete="name"
+                        aria-invalid={errors.name ? true : undefined}
+                        aria-describedby={errors.name ? "quote-name-error" : undefined}
                         {...register("name")}
                         placeholder="Your name"
-                        className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/30 text-sm outline-none transition-colors"
+                        className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/50 text-sm outline-none transition-colors"
                       />
-                      {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name.message}</p>}
+                      {errors.name && (
+                        <p id="quote-name-error" role="alert" className="text-red-400 text-xs mt-1">
+                          {errors.name.message}
+                        </p>
+                      )}
                     </div>
                     <div>
+                      <label htmlFor="quote-email" className="sr-only">
+                        Email address
+                      </label>
                       <input
+                        id="quote-email"
+                        autoComplete="email"
+                        aria-invalid={errors.email ? true : undefined}
+                        aria-describedby={errors.email ? "quote-email-error" : undefined}
                         {...register("email")}
                         type="email"
                         placeholder="Email address"
-                        className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/30 text-sm outline-none transition-colors"
+                        className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/50 text-sm outline-none transition-colors"
                       />
-                      {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email.message}</p>}
+                      {errors.email && (
+                        <p id="quote-email-error" role="alert" className="text-red-400 text-xs mt-1">
+                          {errors.email.message}
+                        </p>
+                      )}
                     </div>
                     <div>
+                      <label htmlFor="quote-phone" className="sr-only">
+                        Phone number
+                      </label>
                       <input
+                        id="quote-phone"
+                        autoComplete="tel"
+                        aria-invalid={errors.phone ? true : undefined}
+                        aria-describedby={errors.phone ? "quote-phone-error" : undefined}
                         {...register("phone")}
                         type="tel"
                         placeholder="Phone number"
-                        className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/30 text-sm outline-none transition-colors"
+                        className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/50 text-sm outline-none transition-colors"
                       />
-                      {errors.phone && <p className="text-red-400 text-xs mt-1">{errors.phone.message}</p>}
+                      {errors.phone && (
+                        <p id="quote-phone-error" role="alert" className="text-red-400 text-xs mt-1">
+                          {errors.phone.message}
+                        </p>
+                      )}
                     </div>
 
-                    <p className="text-white/30 text-xs">No spam. We&apos;ll only contact you about your detail.</p>
+                    <p className="text-white/60 text-xs leading-relaxed">
+                      By submitting, you agree that we may contact you by phone, text or email about your quote.
+                      Msg &amp; data rates may apply. No spam — see our{" "}
+                      <Link href="/privacy" className="text-gold-500 underline underline-offset-2">
+                        Privacy Policy
+                      </Link>
+                      .
+                    </p>
 
                     <div className="flex gap-3 pt-2">
                       <button
@@ -365,7 +435,7 @@ export default function QuoteBuilder() {
                         onClick={() => setStep(3)}
                         className="flex-1 border border-white/10 hover:border-white/30 text-white/60 py-4 rounded-xl flex items-center justify-center gap-2"
                       >
-                        <ArrowLeft size={18} /> Back
+                        <ArrowLeft size={18} aria-hidden="true" /> Back
                       </button>
                       <button
                         type="submit"
@@ -373,7 +443,7 @@ export default function QuoteBuilder() {
                         className="flex-1 bg-gold-500 hover:bg-gold-400 text-black font-bold py-4 rounded-xl disabled:opacity-60 flex items-center justify-center gap-2"
                       >
                         {isSubmitting ? "Sending..." : "See My Quote"}
-                        {!isSubmitting && <ArrowRight size={18} />}
+                        {!isSubmitting && <ArrowRight size={18} aria-hidden="true" />}
                       </button>
                     </div>
                   </form>
@@ -399,25 +469,26 @@ export default function QuoteBuilder() {
                     {vehicles.find(v => v.type === vehicleType)?.label} · {services.find(s => s.type === service)?.label}
                   </p>
                   {selectedAddons.length > 0 && (
-                    <p className="text-gold-500/70 text-xs mb-6">+ {selectedAddons.length} add-on{selectedAddons.length > 1 ? "s" : ""}</p>
+                    <p className="text-gold-500 text-xs mb-6">+ {selectedAddons.length} add-on{selectedAddons.length > 1 ? "s" : ""}</p>
                   )}
-                  <p className="text-white/40 text-sm mb-8">
-                    We&apos;ll reach out shortly to confirm pricing and schedule your appointment.
+                  <p className="text-white/60 text-sm mb-8">
+                    This is an estimate based on starting prices. Your final price is confirmed after we see
+                    the vehicle, before any work begins. We&apos;ll reach out shortly to schedule.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3 justify-center">
                     <a
-                      href="https://refinedautodetailing.setmore.com"
+                      href={COMPANY.bookingUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-400 text-black font-bold px-8 py-4 rounded-full transition-all"
                     >
-                      Book Online Now
+                      Book Online Now<span className="sr-only"> (opens in a new tab)</span>
                     </a>
                     <a
-                      href="tel:+14253865190"
+                      href={`tel:${COMPANY.phoneHref}`}
                       className="inline-flex items-center gap-2 glass border border-white/10 hover:border-gold-500/30 text-white font-bold px-8 py-4 rounded-full transition-all"
                     >
-                      Call (425) 386-5190
+                      Call {COMPANY.phone}
                     </a>
                   </div>
                 </motion.div>

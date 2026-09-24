@@ -16,11 +16,11 @@ export default function ContactPage() {
             {/* Left */}
             <div>
               <span className="text-gold-500 text-xs tracking-[0.3em] uppercase font-medium mb-4 block">Contact</span>
-              <h1 className="text-5xl font-black tracking-tight mb-6">
-                Let&apos;s Get <span className="text-gradient-gold">Started</span>
+              <h1 className="text-4xl sm:text-5xl font-black tracking-tight mb-6 leading-tight">
+                Contact Refined Auto Detailing — <span className="text-gradient-gold">Mobile Detailing in Snohomish County</span>
               </h1>
               <p className="text-white/50 text-lg mb-12">
-                Ready to book or just have a question? Reach out any way that works for you — we typically respond within the hour.
+                Ready to book or just have a question? Reach out any way that works for you — we&apos;ll get back to you as soon as possible.
               </p>
 
               <div className="space-y-6 mb-12">
@@ -29,7 +29,7 @@ export default function ContactPage() {
                     <Phone size={18} className="text-gold-500" />
                   </div>
                   <div>
-                    <p className="text-white/40 text-xs uppercase tracking-widest mb-1">Phone / Text</p>
+                    <p className="text-white/60 text-xs uppercase tracking-widest mb-1">Phone / Text</p>
                     <p className="text-white font-semibold text-lg group-hover:text-gold-500 transition-colors">{COMPANY.phone}</p>
                   </div>
                 </a>
@@ -38,7 +38,7 @@ export default function ContactPage() {
                     <Mail size={18} className="text-gold-500" />
                   </div>
                   <div>
-                    <p className="text-white/40 text-xs uppercase tracking-widest mb-1">Email</p>
+                    <p className="text-white/60 text-xs uppercase tracking-widest mb-1">Email</p>
                     <p className="text-white font-semibold group-hover:text-gold-500 transition-colors">{COMPANY.email}</p>
                   </div>
                 </a>
@@ -47,7 +47,7 @@ export default function ContactPage() {
                     <MapPin size={18} className="text-gold-500" />
                   </div>
                   <div>
-                    <p className="text-white/40 text-xs uppercase tracking-widest mb-1">Service Area</p>
+                    <p className="text-white/60 text-xs uppercase tracking-widest mb-1">Service Area</p>
                     <p className="text-white font-semibold">{COMPANY.serviceArea}</p>
                   </div>
                 </div>
@@ -56,8 +56,8 @@ export default function ContactPage() {
                     <Clock size={18} className="text-gold-500" />
                   </div>
                   <div>
-                    <p className="text-white/40 text-xs uppercase tracking-widest mb-1">Hours</p>
-                    <p className="text-white font-semibold">7 days/week, 7am – 7pm</p>
+                    <p className="text-white/60 text-xs uppercase tracking-widest mb-1">Hours</p>
+                    <p className="text-white font-semibold">{COMPANY.hours}</p>
                   </div>
                 </div>
               </div>
@@ -69,7 +69,7 @@ export default function ContactPage() {
                   rel="noopener noreferrer"
                   className="flex-1 bg-gold-500 hover:bg-gold-400 text-black font-bold py-4 rounded-full text-center transition-all text-sm"
                 >
-                  Book Now
+                  Book Now<span className="sr-only"> (opens in a new tab)</span>
                 </a>
                 <a href={`sms:${COMPANY.phoneHref}`} className="flex-1 glass hover:border-gold-500/30 text-white font-semibold py-4 rounded-full text-center transition-all text-sm flex items-center justify-center gap-2">
                   <MessageSquare size={15} /> Text Us
@@ -80,74 +80,87 @@ export default function ContactPage() {
             {/* Right — contact form */}
             <div className="glass border border-white/10 rounded-3xl p-8">
               {state.succeeded ? (
-                <div className="flex flex-col items-center justify-center h-full py-12 text-center">
+                <div role="status" className="flex flex-col items-center justify-center h-full py-12 text-center">
                   <div className="w-16 h-16 bg-gold-500/10 border border-gold-500/30 rounded-full flex items-center justify-center mb-6">
                     <CheckCircle size={32} className="text-gold-500" />
                   </div>
-                  <h3 className="text-white font-black text-2xl mb-3">Message Sent!</h3>
-                  <p className="text-white/50">We&apos;ll get back to you within the hour.</p>
+                  <h2 className="text-white font-black text-2xl mb-3">Message Sent!</h2>
+                  <p className="text-white/70">Thanks — we&apos;ll get back to you as soon as possible.</p>
                 </div>
               ) : (
                 <>
                   <h2 className="text-white font-bold text-xl mb-6">Send Us a Message</h2>
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <input type="hidden" name="_subject" value="New Contact Form Message — Refined Auto Detailing" />
+                    {/* Spam honeypot — hidden from people and screen readers; Formspree drops submissions that fill it. */}
+                    <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
+                    <p className="text-white/60 text-xs"><span aria-hidden="true">*</span> Required field</p>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="text-white/40 text-xs uppercase tracking-widest mb-2 block">First Name</label>
+                        <label htmlFor="contact-first_name" className="text-white/70 text-xs uppercase tracking-widest mb-2 block">First Name <span aria-hidden="true">*</span></label>
                         <input
                           type="text"
+                          id="contact-first_name"
+                          autoComplete="given-name"
                           name="first_name"
                           placeholder="John"
                           required
-                          className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/20 text-sm outline-none transition-colors"
+                          className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/50 text-sm outline-none transition-colors"
                         />
                       </div>
                       <div>
-                        <label className="text-white/40 text-xs uppercase tracking-widest mb-2 block">Last Name</label>
+                        <label htmlFor="contact-last_name" className="text-white/70 text-xs uppercase tracking-widest mb-2 block">Last Name <span className="normal-case tracking-normal">(optional)</span></label>
                         <input
                           type="text"
+                          id="contact-last_name"
+                          autoComplete="family-name"
                           name="last_name"
                           placeholder="Smith"
-                          className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/20 text-sm outline-none transition-colors"
+                          className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/50 text-sm outline-none transition-colors"
                         />
                       </div>
                     </div>
                     <div>
-                      <label className="text-white/40 text-xs uppercase tracking-widest mb-2 block">Email</label>
+                      <label htmlFor="contact-email" className="text-white/70 text-xs uppercase tracking-widest mb-2 block">Email <span aria-hidden="true">*</span></label>
                       <input
                         type="email"
+                        id="contact-email"
+                        autoComplete="email"
                         name="email"
                         placeholder="john@example.com"
                         required
-                        className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/20 text-sm outline-none transition-colors"
+                        className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/50 text-sm outline-none transition-colors"
                       />
                     </div>
                     <div>
-                      <label className="text-white/40 text-xs uppercase tracking-widest mb-2 block">Phone</label>
+                      <label htmlFor="contact-phone" className="text-white/70 text-xs uppercase tracking-widest mb-2 block">Phone <span className="normal-case tracking-normal">(optional)</span></label>
                       <input
                         type="tel"
+                        id="contact-phone"
+                        autoComplete="tel"
                         name="phone"
                         placeholder="(425) 000-0000"
-                        className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/20 text-sm outline-none transition-colors"
+                        className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/50 text-sm outline-none transition-colors"
                       />
                     </div>
                     <div>
-                      <label className="text-white/40 text-xs uppercase tracking-widest mb-2 block">Vehicle</label>
+                      <label htmlFor="contact-vehicle" className="text-white/70 text-xs uppercase tracking-widest mb-2 block">Vehicle <span className="normal-case tracking-normal">(optional)</span></label>
                       <input
                         type="text"
+                        id="contact-vehicle"
                         name="vehicle"
                         placeholder="2023 Tesla Model 3"
-                        className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/20 text-sm outline-none transition-colors"
+                        className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/50 text-sm outline-none transition-colors"
                       />
                     </div>
                     <div>
-                      <label className="text-white/40 text-xs uppercase tracking-widest mb-2 block">Message</label>
+                      <label htmlFor="contact-message" className="text-white/70 text-xs uppercase tracking-widest mb-2 block">Message <span className="normal-case tracking-normal">(optional)</span></label>
                       <textarea
+                        id="contact-message"
                         name="message"
                         rows={4}
                         placeholder="Tell us what you need..."
-                        className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/20 text-sm outline-none transition-colors resize-none"
+                        className="w-full bg-white/5 border border-white/10 focus:border-gold-500/50 rounded-xl px-4 py-3.5 text-white placeholder-white/50 text-sm outline-none transition-colors resize-none"
                       />
                     </div>
                     {state.errors && (
@@ -155,12 +168,17 @@ export default function ContactPage() {
                         Something went wrong sending your message. Please call or text us at {COMPANY.phone}.
                       </p>
                     )}
+                    <p className="text-white/60 text-xs leading-relaxed">
+                      By sending this form, you agree that we may contact you by phone, text or email about your
+                      request. Msg &amp; data rates may apply. See our{" "}
+                      <Link href="/privacy" className="text-gold-500 underline underline-offset-2">Privacy Policy</Link>.
+                    </p>
                     <button
                       type="submit"
                       disabled={state.submitting}
                       className="w-full bg-gold-500 hover:bg-gold-400 text-black font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-60"
                     >
-                      {state.submitting ? "Sending..." : "Send Message"} <ArrowRight size={18} />
+                      {state.submitting ? "Sending..." : "Send Message"} <ArrowRight size={18} aria-hidden="true" />
                     </button>
                   </form>
                 </>

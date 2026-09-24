@@ -6,15 +6,15 @@ import BeforeAfterSlider from "@/components/interactive/BeforeAfterSlider";
 import Process from "@/components/home/Process";
 import VehicleExplorer from "@/components/interactive/VehicleExplorer";
 import QuoteBuilder from "@/components/interactive/QuoteBuilder";
-import Testimonials from "@/components/home/Testimonials";
 import ServiceAreas from "@/components/home/ServiceAreas";
 import FAQ from "@/components/sections/FAQ";
 import CTA from "@/components/home/CTA";
 
 export const metadata: Metadata = {
-  title: "Refined Auto Detailing | Premium Mobile Detailing — Snohomish County, WA",
+  title: { absolute: "Mobile Car Detailing in Snohomish County, WA | Refined Auto Detailing" },
   description:
-    "Premium mobile auto detailing serving Snohomish County, WA. Interior detailing, exterior detailing, ceramic coating & paint correction. We come to you. Book your free quote today.",
+    "Mobile car detailing in Marysville, Everett, Lynnwood & all of Snohomish County, WA. Interior & exterior detailing, paint correction and ceramic coating at your home or office. Free quote.",
+  alternates: { canonical: "/" },
 };
 
 export default function HomePage() {
@@ -27,7 +27,6 @@ export default function HomePage() {
       <Process />
       <VehicleExplorer />
       <QuoteBuilder />
-      <Testimonials />
       <ServiceAreas />
       <FAQ />
       <CTA />

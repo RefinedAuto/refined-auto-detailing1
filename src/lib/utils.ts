@@ -28,7 +28,12 @@ export const COMPANY = {
   website: "detailingrefinedauto.com",
   bookingUrl: "https://refinedautodetailing.setmore.com",
   address: "Snohomish County, WA",
+  /** Base city for schema.org — a service-area business, so no street address is published. */
+  city: "Marysville",
+  region: "WA",
+  postalCode: "98270",
   serviceArea: "Snohomish County & King County, Washington",
+  hours: "7 days a week, 7 AM – 8 PM",
   instagram: "https://www.instagram.com/refined.autodetail/",
   facebook: "https://www.facebook.com/profile.php?id=61575955184190",
 } as const;

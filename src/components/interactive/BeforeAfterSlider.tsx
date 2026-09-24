@@ -83,13 +83,25 @@ function SingleSlider({ beforeSrc, afterSrc, beforeAlt, afterAlt }: BeforeAfterS
           aria-valuemin={0}
           aria-valuemax={100}
           aria-valuenow={Math.round(position)}
+          aria-valuetext={`Showing ${Math.round(position)}% before, ${100 - Math.round(position)}% after`}
           onKeyDown={(e) => {
-            if (e.key === "ArrowLeft") setPosition((p) => Math.max(0, p - 5));
-            if (e.key === "ArrowRight") setPosition((p) => Math.min(100, p + 5));
+            const moves: Record<string, (p: number) => number> = {
+              ArrowLeft: (p) => Math.max(0, p - 5),
+              ArrowDown: (p) => Math.max(0, p - 5),
+              ArrowRight: (p) => Math.min(100, p + 5),
+              ArrowUp: (p) => Math.min(100, p + 5),
+              Home: () => 0,
+              End: () => 100,
+            };
+            const move = moves[e.key];
+            if (move) {
+              e.preventDefault();
+              setPosition(move);
+            }
           }}
           className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-11 h-11 bg-gold-500 rounded-full flex items-center justify-center shadow-gold cursor-ew-resize"
         >
-          <GripVertical size={16} className="text-black" />
+          <GripVertical size={16} className="text-black" aria-hidden="true" />
         </div>
       </div>
     </div>
@@ -134,10 +146,12 @@ export default function BeforeAfterSlider() {
         </motion.div>
 
         {/* Tab selector */}
-        <div className="flex justify-center gap-3 mb-8">
+        <div role="group" aria-label="Choose a transformation" className="flex flex-wrap justify-center gap-3 mb-8">
           {transformations.map((t, i) => (
             <button
               key={i}
+              type="button"
+              aria-pressed={i === activeIndex}
               onClick={() => setActiveIndex(i)}
               className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ${
                 i === activeIndex
@@ -159,11 +173,12 @@ export default function BeforeAfterSlider() {
           <SingleSlider
             beforeSrc={transformations[activeIndex].before}
             afterSrc={transformations[activeIndex].after}
-            beforeAlt="Before detailing"
-            afterAlt="After detailing"
+            beforeAlt={`${transformations[activeIndex].label}: vehicle before detailing`}
+            afterAlt={`${transformations[activeIndex].label}: vehicle after detailing`}
           />
-          <p className="text-center text-white/30 text-xs mt-4 tracking-wide">
-            ← Drag to compare before & after →
+          <p className="text-center text-white/60 text-xs mt-4 tracking-wide">
+            <span aria-hidden="true">←</span> Drag or use arrow keys to compare before &amp; after{" "}
+            <span aria-hidden="true">→</span>
           </p>
         </motion.div>
       </div>

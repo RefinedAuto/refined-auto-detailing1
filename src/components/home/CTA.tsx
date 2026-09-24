@@ -57,7 +57,7 @@ export default function CTA() {
               >
                 <Phone size={22} />
                 <span className="text-base font-semibold">Call Us</span>
-                <span className="text-xs text-white/40">{COMPANY.phone}</span>
+                <span className="text-xs text-white/60">{COMPANY.phone}</span>
               </a>
 
               <a
@@ -66,13 +66,13 @@ export default function CTA() {
               >
                 <MessageSquare size={22} />
                 <span className="text-base font-semibold">Text Us</span>
-                <span className="text-xs text-white/40">Fast response</span>
+                <span className="text-xs text-white/60">Fast response</span>
               </a>
             </div>
 
             {/* Guarantee */}
-            <p className="text-white/30 text-sm mt-10">
-              100% satisfaction guarantee · Fully insured · No hidden fees
+            <p className="text-white/60 text-sm mt-10">
+              Satisfaction guarantee · Upfront, size-based pricing · We come to you
             </p>
           </div>
         </motion.div>

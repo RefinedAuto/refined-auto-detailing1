@@ -4,11 +4,14 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Plus, Minus } from "lucide-react";
+import JsonLd from "@/components/seo/JsonLd";
+import { faqJsonLd } from "@/lib/seo";
+import { COMPANY } from "@/lib/utils";
 
 const faqs = [
   {
     q: "What is mobile auto detailing?",
-    a: "Mobile auto detailing means we bring all of our professional equipment directly to your location — your home, office, or anywhere convenient. You get dealership-quality results without leaving your property. We carry everything we need in our fully-equipped vehicle.",
+    a: "Mobile auto detailing means we bring our professional equipment directly to your location — your home, office, or anywhere convenient — so you never have to drop your car off at a shop.",
   },
   {
     q: "How long does a detail take?",
@@ -20,31 +23,31 @@ const faqs = [
   },
   {
     q: "What areas do you serve?",
-    a: "We serve all of Snohomish County, WA including Marysville, Everett, Lynnwood, Mukilteo, Mill Creek, Bothell, Kenmore, and surrounding communities. If you're unsure if we service your area, just reach out — our service radius is about 30 miles.",
+    a: "We serve Snohomish County, WA — including Marysville, Everett, Lynnwood, Mukilteo, Mill Creek, Lake Stevens, Arlington, Snohomish, Bothell and Edmonds — plus nearby communities. Our service radius is about 30 miles; if you're unsure, just reach out.",
   },
   {
     q: "How much does detailing cost?",
-    a: "Pricing depends on vehicle type, service selected, and current condition. Interior-only starts at $149, exterior-only starts at $129, and full details start at $249. Use our quote builder for an instant estimate tailored to your specific vehicle.",
+    a: "Pricing depends on vehicle size, the service selected and the vehicle's condition. The Premium Exterior Wash starts at $80, the Basic Interior Detail at $100, the Essential Full Detail at $175 and the Elite Full Detail at $300. Use our quote builder for an estimate for your vehicle.",
   },
   {
     q: "What's the difference between a car wash and a detail?",
-    a: "A car wash removes surface dirt. A detail is a comprehensive restoration — we clean, decontaminate, protect, and restore every surface using professional-grade equipment and products. Think of a car wash as maintenance; a detail is a transformation.",
+    a: "A car wash removes surface dirt. A detail is a much more thorough process — cleaning, decontaminating and protecting surfaces inside and out with professional-grade tools and products.",
   },
   {
     q: "Do you offer ceramic coating?",
-    a: "Yes. We offer professional-grade ceramic coating starting at $799 — this includes paint decontamination, paint correction (if needed), and application of a 9H-rated ceramic coating that provides 2–5 years of protection with hydrophobic, self-cleaning properties.",
+    a: "Yes. We offer 1-year, 3-year and 4-year ceramic coatings starting at $400 for a sedan. Every package includes a decontamination wash and a paint enhancement polish before the coating is applied. Vehicles with heavy swirls or scratches may need paint correction first, quoted separately.",
   },
   {
     q: "What's your cancellation policy?",
-    a: "We ask for 24-hour notice for cancellations and rescheduling. Life happens — we understand, and we work with you to find a new time that works. Same-day cancellations may be subject to a small fee.",
+    a: "We ask for at least 24 hours' notice for cancellations and rescheduling. Late cancellations and no-shows may be subject to a fee — see our Terms of Service for details.",
   },
   {
     q: "Do you detail Tesla and EV vehicles?",
-    a: "Absolutely. We love working on Teslas and EVs. We're trained on the specific requirements for electric vehicle interiors (vegan leather, touchscreen panels) and are careful around battery components. Tesla-specific packages are available.",
+    a: "Yes. We detail Teslas and other EVs, using products that are safe for synthetic (vegan) leather, large touchscreens and piano-black trim.",
   },
   {
     q: "Is your work guaranteed?",
-    a: "Yes — 100% satisfaction guarantee. If there's anything you're not happy with after your detail, contact us within 24 hours and we will come back and make it right at no additional charge.",
+    a: "Yes. If you're not happy with any part of your detail, contact us within 24 hours and we'll come back to correct the issue at no additional charge. See our Terms of Service for the full guarantee.",
   },
 ];
 
@@ -72,9 +75,9 @@ export default function FAQ() {
             <p className="text-white/50 text-lg leading-relaxed mb-8">
               Everything you need to know before booking your first Refined Auto Detailing service.
             </p>
-            <p className="text-white/40 text-sm">
+            <p className="text-white/60 text-sm">
               Still have questions?{" "}
-              <a href="tel:+14253865190" className="text-gold-500 hover:text-gold-400">
+              <a href={`tel:${COMPANY.phoneHref}`} className="text-gold-500 hover:text-gold-400 underline underline-offset-4">
                 Call us directly
               </a>{" "}
               — we&apos;re happy to help.
@@ -90,7 +93,12 @@ export default function FAQ() {
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: i * 0.05 }}
               >
+                <h3>
                 <button
+                  type="button"
+                  id={`faq-q-${i}`}
+                  aria-expanded={openIndex === i}
+                  aria-controls={`faq-a-${i}`}
                   onClick={() => setOpenIndex(openIndex === i ? null : i)}
                   className={`w-full glass rounded-xl p-5 text-left flex items-center justify-between gap-4 transition-all duration-200 ${
                     openIndex === i ? "border-gold-500/30" : "hover:border-white/20"
@@ -99,7 +107,7 @@ export default function FAQ() {
                   <span className={`font-semibold text-base ${openIndex === i ? "text-gold-500" : "text-white"}`}>
                     {faq.q}
                   </span>
-                  <div className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center border transition-all ${
+                  <span aria-hidden="true" className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center border transition-all ${
                     openIndex === i ? "border-gold-500 bg-gold-500/10" : "border-white/20"
                   }`}>
                     {openIndex === i ? (
@@ -107,11 +115,15 @@ export default function FAQ() {
                     ) : (
                       <Plus size={12} className="text-white/60" />
                     )}
-                  </div>
+                  </span>
                 </button>
+                </h3>
                 <AnimatePresence>
                   {openIndex === i && (
                     <motion.div
+                      id={`faq-a-${i}`}
+                      role="region"
+                      aria-labelledby={`faq-q-${i}`}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
@@ -130,21 +142,7 @@ export default function FAQ() {
         </div>
       </div>
 
-      {/* Schema markup for FAQ */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: faqs.map((faq) => ({
-              "@type": "Question",
-              name: faq.q,
-              acceptedAnswer: { "@type": "Answer", text: faq.a },
-            })),
-          }),
-        }}
-      />
+      <JsonLd data={faqJsonLd(faqs)} />
     </section>
   );
 }

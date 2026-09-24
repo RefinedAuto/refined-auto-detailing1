@@ -4,7 +4,12 @@ import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import MobileCTABar from "@/components/layout/MobileCTABar";
-import { SITE_URL } from "@/lib/utils";
+import MotionProvider from "@/components/layout/MotionProvider";
+import JsonLd from "@/components/seo/JsonLd";
+import { AREAS } from "@/lib/areas";
+import { BUSINESS_ID } from "@/lib/seo";
+import { SERVICES } from "@/lib/services";
+import { COMPANY, SITE_URL } from "@/lib/utils";
 import { Toaster } from "sonner";
 
 const inter = Inter({
@@ -16,23 +21,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Refined Auto Detailing | Premium Mobile Detailing in Snohomish County, WA",
+    default: "Mobile Car Detailing in Snohomish County, WA | Refined Auto Detailing",
     template: "%s | Refined Auto Detailing",
   },
   description:
     "Premium mobile auto detailing serving Snohomish County, WA. We come to you — your home, office, or any location. Interior detailing, exterior detailing, ceramic coating & more. Book online today.",
-  keywords: [
-    "mobile detailing Snohomish County",
-    "mobile detailing Marysville WA",
-    "mobile detailing Everett WA",
-    "mobile detailing Lynnwood WA",
-    "auto detailing near me",
-    "car detailing Snohomish County",
-    "interior car detailing",
-    "exterior car detailing",
-    "ceramic coating Snohomish County",
-    "mobile car wash Marysville",
-  ],
   authors: [{ name: "Refined Auto Detailing" }],
   creator: "Refined Auto Detailing",
   openGraph: {
@@ -46,6 +39,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/images/og-image.jpg",
+        type: "image/jpeg",
         width: 1200,
         height: 630,
         alt: "Refined Auto Detailing — Premium Mobile Detailing",
@@ -77,6 +71,52 @@ export const viewport: Viewport = {
   themeColor: "#0A0A0A",
 };
 
+/**
+ * The one LocalBusiness node for the site; service and city pages reference
+ * it by @id. Mobile detailers are "service-area businesses", so no street
+ * address is published — only the base city.
+ */
+const businessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AutomotiveBusiness",
+  "@id": BUSINESS_ID,
+  name: COMPANY.name,
+  description:
+    "Mobile auto detailing serving Snohomish County, Washington — interior and exterior detailing, full details, paint correction and ceramic coating at your home or office.",
+  url: SITE_URL,
+  telephone: COMPANY.phoneHref,
+  email: COMPANY.email,
+  priceRange: "$$",
+  image: `${SITE_URL}/images/og-image.jpg`,
+  logo: `${SITE_URL}/images/logo.png`,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: COMPANY.city,
+    addressRegion: COMPANY.region,
+    postalCode: COMPANY.postalCode,
+    addressCountry: "US",
+  },
+  areaServed: [
+    ...AREAS.map((a) => ({ "@type": "City", name: `${a.city}, WA` })),
+    { "@type": "AdministrativeArea", name: "Snohomish County, WA" },
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Mobile Auto Detailing Services",
+    itemListElement: SERVICES.map((s) => ({
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name: s.name, url: `${SITE_URL}/services/${s.slug}` },
+    })),
+  },
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    opens: "07:00",
+    closes: "20:00",
+  },
+  sameAs: [COMPANY.instagram, COMPANY.facebook],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -84,69 +124,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
-      <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              "@id": SITE_URL,
-              name: "Refined Auto Detailing",
-              description:
-                "Premium mobile auto detailing service serving Snohomish County, Washington. Specializing in interior detailing, exterior detailing, paint correction, and ceramic coating.",
-              url: SITE_URL,
-              telephone: "(425) 386-5190",
-              email: "detailing.refinedauto@gmail.com",
-              priceRange: "$$",
-              image: `${SITE_URL}/images/logo.png`,
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Marysville",
-                addressRegion: "WA",
-                postalCode: "98270",
-                addressCountry: "US",
-              },
-              geo: {
-                "@type": "GeoCoordinates",
-                latitude: 48.0513,
-                longitude: -122.1771,
-              },
-              areaServed: [
-                { "@type": "City", name: "Marysville" },
-                { "@type": "City", name: "Everett" },
-                { "@type": "City", name: "Lynnwood" },
-                { "@type": "City", name: "Mukilteo" },
-                { "@type": "City", name: "Mill Creek" },
-                { "@type": "County", name: "Snohomish County" },
-              ],
-              hasOfferCatalog: {
-                "@type": "OfferCatalog",
-                name: "Auto Detailing Services",
-                itemListElement: [
-                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Interior Detailing" } },
-                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Exterior Detailing" } },
-                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Full Detail Package" } },
-                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Paint Correction" } },
-                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Ceramic Coating" } },
-                ],
-              },
-              openingHours: "Mo-Su 07:00-20:00",
-              sameAs: [
-                "https://instagram.com/refinedautodetailing",
-                "https://facebook.com/refinedautodetailing",
-              ],
-            }),
-          }}
-        />
-      </head>
       <body className="bg-dark-950 text-white antialiased pb-[72px] lg:pb-0">
-        <Navigation />
-        <main>{children}</main>
-        <Footer />
-        <MobileCTABar />
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-gold-500 focus:px-6 focus:py-3 focus:font-bold focus:text-black"
+        >
+          Skip to main content
+        </a>
+        <MotionProvider>
+          <Navigation />
+          <main id="main-content" tabIndex={-1} className="outline-none">
+            {children}
+          </main>
+          <Footer />
+          <MobileCTABar />
+        </MotionProvider>
+        <JsonLd data={businessJsonLd} />
         <Toaster
           position="bottom-right"
           mobileOffset={{ bottom: "88px" }}

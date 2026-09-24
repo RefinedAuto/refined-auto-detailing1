@@ -13,9 +13,11 @@ const config: Config = {
           50: "#e8f3fa",
           100: "#c5dff2",
           200: "#8ec0e5",
-          300: "#57a1d7",
-          400: "#2d88c6",
-          500: "#106caa",
+          // 500/400 are lightened from the #106caa brand blue so text and
+          // black-on-blue buttons meet WCAG AA contrast (4.5:1) on the dark UI.
+          300: "#6fb0de",
+          400: "#56a2d6",
+          500: "#3a91cc",
           600: "#0d5a8e",
           700: "#0a4872",
           800: "#083a5c",

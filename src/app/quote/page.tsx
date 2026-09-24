@@ -4,9 +4,10 @@ import { Phone, MessageSquare, Clock, Shield } from "lucide-react";
 import { COMPANY } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Get a Free Quote | Mobile Auto Detailing — Snohomish County WA",
+  title: "Free Car Detailing Quote — Snohomish County, WA",
   description:
-    "Get an instant quote for mobile auto detailing in Snohomish County, WA. Transparent pricing, no hidden fees. Interior, exterior, full detail, ceramic coating & more.",
+    "Get an instant estimate for mobile car detailing in Marysville, Everett, Lynnwood & Snohomish County, WA. Upfront, size-based pricing for interior, exterior and full details.",
+  alternates: { canonical: "/quote" },
 };
 
 export default function QuotePage() {
@@ -17,19 +18,25 @@ export default function QuotePage() {
         <div className="container-custom">
           <div className="flex flex-wrap justify-center gap-8 text-sm text-white/50">
             <div className="flex items-center gap-2">
-              <Shield size={14} className="text-gold-500" />
+              <Shield size={14} className="text-gold-500" aria-hidden="true" />
               <span>Satisfaction Guaranteed</span>
             </div>
             <div className="flex items-center gap-2">
-              <Clock size={14} className="text-gold-500" />
-              <span>Same-day appointments available</span>
+              <Clock size={14} className="text-gold-500" aria-hidden="true" />
+              <span>Open 7 days a week</span>
             </div>
             <div className="flex items-center gap-2">
-              <Phone size={14} className="text-gold-500" />
+              <Phone size={14} className="text-gold-500" aria-hidden="true" />
               <span>Reach us: {COMPANY.phone}</span>
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="container-custom pt-12 text-center">
+        <h1 className="text-3xl sm:text-4xl font-black tracking-tight">
+          Free Mobile Car Detailing Quote in <span className="text-gradient-gold">Snohomish County, WA</span>
+        </h1>
       </div>
 
       <QuoteBuilder />
@@ -38,7 +45,7 @@ export default function QuotePage() {
       <section className="pb-20">
         <div className="container-custom">
           <div className="max-w-2xl mx-auto text-center">
-            <p className="text-white/40 text-sm mb-6">Prefer to talk directly?</p>
+            <p className="text-white/60 text-sm mb-6">Prefer to talk directly?</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href={`tel:${COMPANY.phoneHref}`}

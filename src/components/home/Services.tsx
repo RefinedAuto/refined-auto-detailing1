@@ -44,7 +44,7 @@ const services = [
       "Our most thorough detail — extensive interior deep clean and full exterior decontamination with iron remover, clay bar, and ceramic sealant application.",
     features: ["Iron decontamination", "Clay bar treatment", "Ceramic sealant", "Plastic scrub & conditioning"],
     price: "From $300",
-    href: "/services/full-detail",
+    href: "/services/elite-full-detail",
     accent: "from-purple-500/10 to-transparent",
   },
   {
@@ -96,7 +96,7 @@ export default function Services() {
                 initial={{ opacity: 0, y: 40 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: i * 0.1, duration: 0.6 }}
-                className={`group relative glass rounded-2xl p-8 hover:border-gold-500/30 transition-all duration-300 cursor-pointer ${
+                className={`group relative glass rounded-2xl p-8 hover:border-gold-500/30 transition-all duration-300 ${
                   service.featured ? "border-gold-500/30 md:col-span-2 lg:col-span-1" : ""
                 }`}
               >
@@ -132,8 +132,8 @@ export default function Services() {
                       href={service.href}
                       className="flex items-center gap-2 text-white/60 hover:text-gold-500 text-sm font-medium transition-colors group/link"
                     >
-                      Learn more
-                      <ArrowRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
+                      Learn more<span className="sr-only"> about {service.title}</span>
+                      <ArrowRight size={14} aria-hidden="true" className="group-hover/link:translate-x-1 transition-transform" />
                     </Link>
                   </div>
                 </div>
