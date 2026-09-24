@@ -38,7 +38,8 @@ export type Service = {
   packages?: { label: string; description: string; popular?: boolean }[];
   includes: { title?: string; items: string[] }[];
   note?: string;
-  addons?: { name: string; price: string }[];
+  /** Add-ons grouped by what they protect; each row has one price per column. */
+  addons?: { title: string; description: string; columns: string[]; rows: { label: string; prices: string[] }[] }[];
   about: { heading: string; paragraphs: string[] };
   idealFor: string[];
   faqs: { q: string; a: string }[];
@@ -77,11 +78,11 @@ export const SERVICES: Service[] = [
       {
         label: "3-Year Ceramic Coating",
         description: "Extended protection with the same thorough prep.",
-        popular: true,
       },
       {
         label: "5-Year Ceramic Coating",
         description: "Our longest-lasting coating for maximum durability.",
+        popular: true,
       },
     ],
     includes: [
@@ -97,17 +98,36 @@ export const SERVICES: Service[] = [
       },
     ],
     addons: [
-      { name: "Window Coating — All Windows", price: "$300" },
-      { name: "Window Coating — Windshield & Rear Only", price: "$125" },
-      { name: 'Wheel Face Coating (15–18")', price: "$180" },
-      { name: 'Wheel Face Coating (19–22")', price: "$240" },
-      { name: 'Wheel Face Coating (23"+)', price: "$320" },
-      { name: 'Wheels-Off Coating (15–18")', price: "$480" },
-      { name: 'Wheels-Off Coating (19–22")', price: "$580" },
-      { name: 'Wheels-Off Coating (23"+)', price: "$640" },
-      { name: "Leather Ceramic Coating — Sedan", price: "$250" },
-      { name: "Leather Ceramic Coating — SUV", price: "$300" },
-      { name: "Leather Ceramic Coating — Large SUV/Truck", price: "$350" },
+      {
+        title: "Window Coating",
+        description: "Rain beads up and rolls off the glass, improving visibility in wet weather.",
+        columns: ["Price"],
+        rows: [
+          { label: "All windows", prices: ["$300"] },
+          { label: "Windshield & rear window only", prices: ["$125"] },
+        ],
+      },
+      {
+        title: "Wheel Coating",
+        description:
+          "Helps brake dust and grime rinse off instead of baking onto the wheels. Priced by wheel size — choose wheel faces only, or wheels off for full coverage.",
+        columns: ["Wheel faces", "Wheels off"],
+        rows: [
+          { label: '15–18" wheels', prices: ["$180", "$480"] },
+          { label: '19–22" wheels', prices: ["$240", "$580"] },
+          { label: '23"+ wheels', prices: ["$320", "$640"] },
+        ],
+      },
+      {
+        title: "Leather Coating",
+        description: "Helps protect leather seats from spills, stains and dye transfer from clothing.",
+        columns: ["Price"],
+        rows: [
+          { label: "Sedan", prices: ["$250"] },
+          { label: "SUV", prices: ["$300"] },
+          { label: "Large SUV / Truck", prices: ["$350"] },
+        ],
+      },
     ],
     note: "Coating lifespan depends on proper maintenance — hand washing with pH-neutral soap and avoiding automatic brush washes. Heavy swirls or scratches may require paint correction before coating, quoted separately.",
     about: {

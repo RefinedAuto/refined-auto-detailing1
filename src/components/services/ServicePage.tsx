@@ -188,24 +188,58 @@ export default function ServicePage({ service }: { service: Service }) {
             </section>
           )}
 
-          {/* Add-ons */}
+          {/* Add-ons, grouped so each price table stays short */}
           {service.addons && (
-            <section aria-labelledby="addons" className="glass rounded-3xl p-8 sm:p-10 mb-12">
+            <section aria-labelledby="addons" className="mb-12">
               <h2 id="addons" className="text-3xl font-black text-white mb-2">
                 Add-On Services
               </h2>
-              <p className="text-white/60 text-sm mb-8">Extend protection to windows, wheels and leather.</p>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {service.addons.map((addon) => (
-                  <li
-                    key={addon.name}
-                    className="flex items-center justify-between p-4 rounded-xl bg-white/[0.03] border border-white/5"
+              <p className="text-white/70 mb-8">
+                Optional extras you can add to any ceramic coating package.
+              </p>
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                {service.addons.map((group) => (
+                  <section
+                    key={group.title}
+                    aria-labelledby={`addon-${group.title}`}
+                    className="glass rounded-3xl p-6 sm:p-8 flex flex-col"
                   >
-                    <span className="text-white/80 text-sm">{addon.name}</span>
-                    <span className="text-gold-500 font-bold text-sm shrink-0 ml-4">{addon.price}</span>
-                  </li>
+                    <h3 id={`addon-${group.title}`} className="text-xl font-black text-white mb-2">
+                      {group.title}
+                    </h3>
+                    <p className="text-white/70 text-sm leading-relaxed mb-5">{group.description}</p>
+                    <table className="w-full text-sm mt-auto">
+                      <caption className="sr-only">{group.title} prices</caption>
+                      <thead>
+                        <tr className="border-b border-white/10">
+                          <th scope="col" className="text-left font-medium text-white/60 pb-2">
+                            Option
+                          </th>
+                          {group.columns.map((c) => (
+                            <th key={c} scope="col" className="text-right font-medium text-white/60 pb-2 pl-3">
+                              {c}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {group.rows.map((row) => (
+                          <tr key={row.label} className="border-b border-white/5 last:border-0">
+                            <th scope="row" className="text-left font-normal text-white/85 py-3">
+                              {row.label}
+                            </th>
+                            {row.prices.map((price, i) => (
+                              <td key={group.columns[i]} className="text-right text-gold-500 font-bold py-3 pl-3">
+                                {price}
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </section>
                 ))}
-              </ul>
+              </div>
             </section>
           )}
 
