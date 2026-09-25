@@ -52,6 +52,8 @@ export const metadata: Metadata = {
     description: "Premium mobile auto detailing in Snohomish County, WA.",
     images: ["/images/og-image.jpg"],
   },
+  // Google Search Console ownership (the HTML file in /public verifies it too).
+  verification: { google: "hWBHodSeWB_KlquYtt7worAcA_jhcLvLxaS1-K7n5bM" },
   robots: {
     index: true,
     follow: true,
