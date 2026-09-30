@@ -38,6 +38,14 @@ const nextConfig: NextConfig = {
   // pass their ranking to the matching new pages instead of 404ing.
   async redirects() {
     return [
+      // One canonical host, so Google doesn't index www and non-www copies.
+      // (Search Console is verified via DNS, so this redirect is safe for it.)
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.detailingrefinedauto.com" }],
+        destination: "https://detailingrefinedauto.com/:path*",
+        permanent: true,
+      },
       { source: "/packages", destination: "/services/detail-packages", permanent: true },
       { source: "/packages-1", destination: "/services/ceramic-coating", permanent: true },
       { source: "/exterior", destination: "/services/exterior-detailing", permanent: true },
