@@ -3,8 +3,14 @@ import { AREAS } from "@/lib/areas";
 import { SERVICES } from "@/lib/services";
 import { SITE_URL as BASE_URL } from "@/lib/utils";
 
+/**
+ * Date the site's content last changed. Bump it when pages are edited — a
+ * build timestamp would mark every page "changed" on every deploy, and Google
+ * learns to ignore lastmod values that are always new.
+ */
+const CONTENT_UPDATED = new Date("2026-09-29");
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
 
   const staticPages = [
     { url: BASE_URL, priority: 1.0, changeFrequency: "weekly" as const },
@@ -34,6 +40,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [...staticPages, ...servicePages, ...areaPages].map((page) => ({
     ...page,
-    lastModified: now,
+    lastModified: CONTENT_UPDATED,
   }));
 }
