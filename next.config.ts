@@ -34,6 +34,16 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizeCss: true,
   },
+  // Old Squarespace URLs that Google still has indexed — permanent redirects
+  // pass their ranking to the matching new pages instead of 404ing.
+  async redirects() {
+    return [
+      { source: "/packages", destination: "/services/detail-packages", permanent: true },
+      { source: "/packages-1", destination: "/services/ceramic-coating", permanent: true },
+      { source: "/exterior", destination: "/services/exterior-detailing", permanent: true },
+      { source: "/interior", destination: "/services/interior-detailing", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {
