@@ -86,10 +86,10 @@ export default function Services() {
           className="text-center max-w-2xl mx-auto mb-16"
         >
           <span className="text-gold-500 text-xs tracking-[0.3em] uppercase font-medium mb-4 block">
-            Our Services
+            Every Detail, Perfected
           </span>
           <h2 className="text-4xl sm:text-5xl font-black tracking-tight mb-6">
-            Every Detail, <span className="text-gradient-gold">Perfected</span>
+            Auto Detailing <span className="text-gradient-gold">Services</span>
           </h2>
           <p className="text-white/50 text-lg leading-relaxed">
             From a quick refresh to a full transformation — we offer premium detailing services tailored to your vehicle and schedule.

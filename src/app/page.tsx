@@ -12,7 +12,7 @@ import FAQ from "@/components/sections/FAQ";
 import CTA from "@/components/home/CTA";
 
 export const metadata: Metadata = {
-  title: { absolute: "Mobile Car Detailing & Ceramic Coating | Snohomish County WA" },
+  title: { absolute: "Mobile Auto Detailing & Ceramic Coating | Snohomish County, WA" },
   description:
     "5.0★ mobile car detailing in Lynnwood, Everett, Marysville, Shoreline & Kirkland, WA. Ceramic coating, paint correction & interior detailing at your home.",
   alternates: { canonical: "/" },

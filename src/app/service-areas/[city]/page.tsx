@@ -103,7 +103,7 @@ export default async function AreaPage({ params }: { params: Promise<{ city: str
             {area.city}, WA · {area.county} County · {area.zips.join(", ")}
           </p>
           <h1 className="text-4xl sm:text-6xl font-black tracking-tight mb-6 leading-tight">
-            Mobile Car Detailing in <span className="text-gradient-gold">{area.city}, WA</span>
+            Mobile Auto Detailing in <span className="text-gradient-gold">{area.city}, WA</span>
           </h1>
           <p className="text-white/70 text-xl leading-relaxed mb-8">{area.intro}</p>
 

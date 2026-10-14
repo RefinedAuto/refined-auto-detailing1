@@ -22,6 +22,7 @@ export type Service = {
   category: "Detailing Package" | "Paint & Protection" | "Add-On";
   /** Hub page this service sits under (breadcrumbs + nav grouping). */
   parent?: { name: string; path: string };
+  /** Includes the starting price where there is one — update it with `startingPrice`. */
   metaTitle: string;
   metaDescription: string;
   /** Keyword-first H1 — "<service> in <area>" is what local searches look like. */
@@ -59,10 +60,10 @@ export const SERVICES: Service[] = [
     slug: "ceramic-coating",
     name: "Ceramic Coating",
     category: "Paint & Protection",
-    metaTitle: "Mobile Ceramic Coating in Snohomish & King County, WA",
+    metaTitle: "Mobile Ceramic Coating From $600 | Snohomish & King County",
     metaDescription:
       "Mobile ceramic coating in Lynnwood, Everett, Edmonds, Shoreline & Kirkland, WA. 1, 3 & 5-year coatings with full prep included. Starting from $600.",
-    h1: "Ceramic Coating in Snohomish & King County, WA",
+    h1: "Mobile Ceramic Coating in Snohomish & King County, WA",
     eyebrow: "Ceramic Coating",
     intro:
       "Professional ceramic coating bonds to your vehicle's paint for hydrophobic, UV-resistant protection that keeps it glossy and easier to clean for years. Every package includes a three-step decontamination wash and a paint enhancement polish before the coating goes on.",
@@ -146,6 +147,10 @@ export const SERVICES: Service[] = [
     ],
     faqs: [
       {
+        q: "How much does ceramic coating cost?",
+        a: "Our ceramic coatings start at $600, and every 1, 3 or 5-year package is quoted for your vehicle's size and paint condition. The price includes the decontamination wash and paint enhancement polish. Window, wheel and leather coatings are optional add-ons, priced on this page.",
+      },
+      {
         q: "How long does a ceramic coating last?",
         a: "We offer 1-year, 3-year and 5-year coatings. Actual lifespan depends on how the vehicle is washed and stored — we'll give you aftercare instructions so you get the most out of it.",
       },
@@ -164,7 +169,7 @@ export const SERVICES: Service[] = [
     slug: "paint-correction",
     name: "Paint Correction",
     category: "Paint & Protection",
-    metaTitle: "Paint Correction & Swirl Removal | Snohomish County, WA",
+    metaTitle: "Mobile Paint Correction & Swirl Removal | Snohomish County, WA",
     metaDescription:
       "Mobile paint correction in Snohomish & King County, WA. Machine polishing removes swirl marks, light scratches and oxidation. Free quote after inspection.",
     h1: "Paint Correction & Swirl Mark Removal in Snohomish & King County, WA",
@@ -220,9 +225,9 @@ export const SERVICES: Service[] = [
     slug: "interior-detailing",
     name: "Interior Detailing",
     category: "Detailing Package",
-    metaTitle: "Mobile Interior Car Detailing in Snohomish County, WA",
+    metaTitle: "Mobile Interior Car Detailing From $160 | Snohomish County, WA",
     metaDescription:
-      "Mobile interior car detailing in Snohomish County, WA: steam cleaning, deep vacuuming, leather & plastic protection. From $160 — we come to you.",
+      "Mobile interior car detailing & car interior cleaning in Snohomish County, WA: steam cleaning, deep vacuuming, stain removal & leather care. From $160.",
     h1: "Mobile Interior Car Detailing in Snohomish County, WA",
     eyebrow: "Basic Interior Detail",
     intro:
@@ -260,6 +265,10 @@ export const SERVICES: Service[] = [
     ],
     faqs: [
       {
+        q: "How much does interior car detailing cost?",
+        a: "The Basic Interior Detail starts at $160 for a sedan, $180 for an SUV or crossover and $200 for a full-size SUV or truck. Heavy pet hair and stain removal are +$50 each ($100 if both are needed). Final price depends on the vehicle's condition.",
+      },
+      {
         q: "How long does a mobile interior detail take?",
         a: "Most interior details take about 2–4 hours depending on vehicle size and condition. We'll give you a time estimate when you book.",
       },
@@ -282,7 +291,7 @@ export const SERVICES: Service[] = [
     slug: "exterior-detailing",
     name: "Exterior Detailing",
     category: "Detailing Package",
-    metaTitle: "Mobile Car Wash & Exterior Detailing | Snohomish County",
+    metaTitle: "Mobile Car Wash & Exterior Detail From $80 | Snohomish County",
     metaDescription:
       "Mobile hand car wash in Snohomish County, WA: two-bucket wash, wheels & inner rims, tire dressing and door jambs. From $80 at your home or office.",
     h1: "Mobile Car Wash & Exterior Detailing in Snohomish County, WA",
@@ -319,6 +328,10 @@ export const SERVICES: Service[] = [
     ],
     faqs: [
       {
+        q: "How much does a mobile car wash cost?",
+        a: "The Premium Exterior Wash starts at $80 for a sedan, $100 for an SUV or crossover and $120 for a full-size SUV or truck, done at your home or office.",
+      },
+      {
         q: "Do you need my water or power?",
         a: "For most washes, no — we bring our own equipment. For very large or heavily soiled vehicles, access to an outdoor spigot can help but isn't always required.",
       },
@@ -334,7 +347,7 @@ export const SERVICES: Service[] = [
     name: "Essential Detail Package",
     category: "Detailing Package",
     parent: DETAIL_PACKAGES_HUB,
-    metaTitle: "Full Car Detailing in Snohomish County, WA",
+    metaTitle: "Mobile Full Car Detailing From $175 | Snohomish County, WA",
     metaDescription:
       "Full car detailing inside and out at your home or office. The Essential Detail Package starts at $175 — mobile service across Snohomish County, WA.",
     h1: "Full Car Detailing in Snohomish County, WA",
@@ -380,6 +393,10 @@ export const SERVICES: Service[] = [
         a: "The Essential Detail Package is a maintenance clean. The Elite adds iron decontamination, a clay bar treatment, a ceramic sealant, and a full interior plastic and vinyl scrub and conditioning — it's our most thorough service.",
       },
       {
+        q: "How much does a full car detail cost?",
+        a: "The Essential Detail Package starts at $175 for a sedan, $210 for an SUV or crossover and $250 for a full-size SUV or truck. Heavy pet hair and stain removal are +$50 each. Final price depends on vehicle size and condition.",
+      },
+      {
         q: "How long does a full detail take?",
         a: "Typically 3–6 hours depending on vehicle size and condition.",
       },
@@ -391,7 +408,7 @@ export const SERVICES: Service[] = [
     name: "Elite Full Detail",
     category: "Detailing Package",
     parent: DETAIL_PACKAGES_HUB,
-    metaTitle: "Elite Full Detail: Deep Clean Car Detailing, Snohomish Co.",
+    metaTitle: "Elite Full Car Detail From $300 | Mobile, Snohomish County",
     metaDescription:
       "Our most popular, most thorough mobile detail: iron decontamination, clay bar, ceramic sealant and full interior scrub. Snohomish County, WA. From $300.",
     h1: "Elite Full Detail — Deep Clean Car Detailing in Snohomish County",
@@ -443,6 +460,10 @@ export const SERVICES: Service[] = [
     ],
     faqs: [
       {
+        q: "How much does the Elite Full Detail cost?",
+        a: "It starts at $300 for a sedan, $350 for an SUV or crossover and $400 for a full-size SUV or truck. Heavy pet hair and stain removal are +$50 each.",
+      },
+      {
         q: "How long does the ceramic sealant last?",
         a: "A spray ceramic sealant typically lasts a few months depending on washing habits and weather. For multi-year protection, see our ceramic coating packages.",
       },
@@ -457,7 +478,7 @@ export const SERVICES: Service[] = [
     slug: "maintenance-plans",
     name: "Maintenance Plans",
     category: "Detailing Package",
-    metaTitle: "Car Detailing Maintenance Plans | Snohomish County, WA",
+    metaTitle: "Car Detailing Plans From $140/Visit | Snohomish County, WA",
     metaDescription:
       "Bi-weekly or monthly mobile car detailing at discounted recurring rates in Snohomish County, WA. Keep your vehicle clean year-round. From $140/visit.",
     h1: "Recurring Car Detailing Plans in Snohomish County, WA",
@@ -511,7 +532,7 @@ export const SERVICES: Service[] = [
     slug: "headlight-restoration",
     name: "Headlight Restoration",
     category: "Add-On",
-    metaTitle: "Headlight Restoration in Snohomish County, WA",
+    metaTitle: "Mobile Headlight Restoration — $60 | Snohomish County, WA",
     metaDescription:
       "Mobile headlight restoration in Snohomish County, WA. Restore cloudy, yellowed headlight lenses — a $60 add-on to any detail.",
     h1: "Headlight Restoration in Snohomish County, WA",
@@ -552,7 +573,7 @@ export const SERVICES: Service[] = [
     slug: "engine-bay-detailing",
     name: "Engine Bay Detailing",
     category: "Add-On",
-    metaTitle: "Engine Bay Detailing in Snohomish County, WA",
+    metaTitle: "Mobile Engine Bay Detailing — $80 | Snohomish County, WA",
     metaDescription:
       "Mobile engine bay cleaning and dressing in Snohomish County, WA. A careful, low-water engine detail added to any service for $80.",
     h1: "Engine Bay Detailing in Snohomish County, WA",
@@ -594,7 +615,7 @@ export const SERVICES: Service[] = [
     slug: "pet-hair-removal",
     name: "Pet Hair Removal",
     category: "Add-On",
-    metaTitle: "Car Pet Hair Removal in Snohomish County, WA",
+    metaTitle: "Car Pet Hair Removal — $50 Add-On | Snohomish County, WA",
     metaDescription:
       "Professional dog and cat hair removal from car seats and carpets in Snohomish County, WA. Added to any interior detail for $50. We come to you.",
     h1: "Car Pet Hair Removal in Snohomish County, WA",

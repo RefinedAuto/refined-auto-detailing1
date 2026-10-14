@@ -24,7 +24,7 @@ export default function ServiceAreas() {
               Where We Serve
             </span>
             <h2 className="text-4xl sm:text-5xl font-black tracking-tight mb-6">
-              We Come to <span className="text-gradient-gold">You</span>
+              Mobile Detailing <span className="text-gradient-gold">Near You</span>
             </h2>
             <p className="text-white/70 text-lg leading-relaxed mb-8">
               No need to drive anywhere. We bring mobile car detailing, paint correction and ceramic coating to
