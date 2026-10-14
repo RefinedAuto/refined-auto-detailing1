@@ -44,7 +44,7 @@ export const COMPANY = {
     reviewCount: 11,
   },
   /** Paste the Yelp business page URL here to show the Yelp link. */
-  yelpUrl: "",
+  yelpUrl: "https://www.yelp.com/biz/refined-auto-detailing-lynnwood",
   instagram: "https://www.instagram.com/refined.autodetail/",
   facebook: "https://www.facebook.com/profile.php?id=61575955184190",
 } as const;
