@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import QuoteBuilder from "@/components/interactive/QuoteBuilder";
+import BookingInfo from "@/components/sections/BookingInfo";
 import { Phone, MessageSquare, Clock, Shield } from "lucide-react";
 import { COMPANY } from "@/lib/utils";
 
@@ -65,6 +66,8 @@ export default function QuotePage() {
           </div>
         </div>
       </section>
+
+      <BookingInfo />
     </div>
   );
 }

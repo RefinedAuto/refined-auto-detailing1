@@ -59,7 +59,7 @@ export const SERVICES: Service[] = [
     slug: "ceramic-coating",
     name: "Ceramic Coating",
     category: "Paint & Protection",
-    metaTitle: "Ceramic Coating in Snohomish & King County, WA",
+    metaTitle: "Mobile Ceramic Coating in Snohomish & King County, WA",
     metaDescription:
       "Mobile ceramic coating in Lynnwood, Everett, Edmonds, Shoreline & Kirkland, WA. 1, 3 & 5-year coatings with full prep included. Starting from $600.",
     h1: "Ceramic Coating in Snohomish & King County, WA",

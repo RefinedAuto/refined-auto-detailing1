@@ -11,6 +11,7 @@ import { BUSINESS_ID } from "@/lib/seo";
 import { SERVICES } from "@/lib/services";
 import { COMPANY, SITE_URL } from "@/lib/utils";
 import { Toaster } from "sonner";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     siteName: "Refined Auto Detailing",
     title: "Refined Auto Detailing | Premium Mobile Detailing — We Come to You",
     description:
-      "Experience luxury-grade auto detailing at your doorstep. Serving Snohomish County, WA. Get a free instant quote.",
+      "Mobile car detailing, ceramic coating and paint correction at your doorstep across Snohomish & King County, WA. Get a free instant quote.",
     images: [
       {
         url: "/images/og-image.jpg",
@@ -49,7 +50,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Refined Auto Detailing | Premium Mobile Detailing",
-    description: "Premium mobile auto detailing in Snohomish County, WA.",
+    description: "Premium mobile auto detailing in Snohomish & King County, WA.",
     images: ["/images/og-image.jpg"],
   },
   // Google Search Console ownership (the HTML file in /public verifies it too).
@@ -146,6 +147,7 @@ export default function RootLayout({
           <MobileCTABar />
         </MotionProvider>
         <JsonLd data={businessJsonLd} />
+        <Analytics />
         <Toaster
           position="bottom-right"
           mobileOffset={{ bottom: "88px" }}

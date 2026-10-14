@@ -221,7 +221,10 @@ export default function BeforeAfterSlider() {
           </p>
         </motion.div>
 
-        {/* Warm the cache for the other pair so switching tabs is instant. */}
+        {/* Warm the cache for the other pair so switching tabs is instant. Rendered
+            only once the section is in view, so these never get server-side
+            preload tags that compete with the hero image (LCP). */}
+        {inView && (
         <div hidden className="relative w-px h-px overflow-hidden">
           {transformations
             .filter((_, i) => i !== activeIndex)
@@ -230,6 +233,7 @@ export default function BeforeAfterSlider() {
               <Image key={src} src={src} alt="" fill sizes="(min-width: 768px) 672px, 100vw" loading="eager" />
             ))}
         </div>
+        )}
       </div>
     </section>
   );

@@ -8,7 +8,7 @@ import { SITE_URL as BASE_URL } from "@/lib/utils";
  * build timestamp would mark every page "changed" on every deploy, and Google
  * learns to ignore lastmod values that are always new.
  */
-const CONTENT_UPDATED = new Date("2026-09-29");
+const CONTENT_UPDATED = new Date("2026-10-13");
 
 export default function sitemap(): MetadataRoute.Sitemap {
 

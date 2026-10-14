@@ -18,7 +18,7 @@ export default function Hero() {
           sizes="100vw"
           className="object-cover object-center opacity-30"
           priority
-          quality={90}
+          quality={75}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/40" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30" />
@@ -36,24 +36,23 @@ export default function Hero() {
       {/* Content */}
       <div className="relative container-custom py-12 lg:py-20">
         <div className="max-w-3xl">
-          {/* Heading — the small first line carries the search keywords */}
-          <motion.h1
+          {/* Heading — the H1 is the keyword line; the tagline is display text */}
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-8"
           >
-            <span className="inline-flex items-center gap-2 glass-gold px-4 py-2 rounded-full mb-8 text-gold-500 text-xs sm:text-sm font-semibold tracking-widest uppercase">
+            <h1 className="inline-flex items-center gap-2 glass-gold px-4 py-2 rounded-full mb-8 text-gold-500 text-xs sm:text-sm font-semibold tracking-widest uppercase">
               <MapPin size={12} aria-hidden="true" />
               Mobile Car Detailing in Snohomish &amp; King County, WA
-            </span>
-            <span className="sr-only"> — </span>
-            <span className="block text-5xl sm:text-6xl lg:text-7xl font-black leading-[0.95] tracking-tight">
+            </h1>
+            <p className="block text-5xl sm:text-6xl lg:text-7xl font-black leading-[0.95] tracking-tight">
               <span className="block text-white">Your Vehicle.</span>{" "}
               <span className="block text-white">Elevated to</span>{" "}
               <span className="block text-gradient-gold">Perfection.</span>
-            </span>
-          </motion.h1>
+            </p>
+          </motion.div>
 
           {/* Subheading */}
           <motion.p

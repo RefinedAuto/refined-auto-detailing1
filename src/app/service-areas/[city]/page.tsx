@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
   if (!area) return {};
   const path = `/service-areas/${area.slug}`;
   const title = `Mobile Car Detailing & Ceramic Coating in ${area.city}, WA`;
-  const description = `Mobile car detailing & ceramic coating in ${area.city}, WA. Interior & exterior detailing and paint correction at your home. ${COMPANY.google.rating}★ on Google — free quote.`;
+  const description = cityDescription(area.city, area.neighborhoods);
   return {
     title: { absolute: title },
     description,
@@ -33,6 +33,19 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
       images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: `Mobile car detailing in ${area.city}, WA` }],
     },
   };
+}
+
+/** Names the city's own neighborhoods so each page's search snippet is distinct, kept under ~160 chars. */
+function cityDescription(city: string, neighborhoods: string[]) {
+  const tail = `Interior, exterior & ceramic coating at your home. ${COMPANY.google.rating}★ on Google — free quote.`;
+  // Neighborhood names that repeat the city ("Downtown Marysville") read awkwardly in a snippet.
+  const local = neighborhoods.filter((n) => !n.includes(city));
+  for (const count of [2, 1]) {
+    if (local.length < count) continue;
+    const text = `Mobile car detailing in ${city}, WA — ${local.slice(0, count).join(" & ")} and nearby. ${tail}`;
+    if (text.length <= 160 || count === 1) return text;
+  }
+  return `Mobile car detailing in ${city}, WA. ${tail}`;
 }
 
 const HIGHLIGHTS = [
