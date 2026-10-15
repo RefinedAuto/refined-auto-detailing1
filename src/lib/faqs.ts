@@ -6,7 +6,7 @@
 export const GENERAL_FAQS = [
   {
     q: "What is mobile auto detailing?",
-    a: "Mobile auto detailing means we bring our professional equipment directly to your location — your home, office, or anywhere convenient — so you never have to drop your car off at a shop.",
+    a: "Mobile auto detailing means we bring our professional equipment directly to your home, so you never have to drop your car off at a shop.",
   },
   {
     q: "How long does a detail take?",
@@ -14,7 +14,7 @@ export const GENERAL_FAQS = [
   },
   {
     q: "Do you need water and electricity?",
-    a: "For most services, no. We carry our own water tanks and battery-powered equipment. For certain services that require significant water (large SUVs, heavily soiled vehicles), having a standard outdoor hose available is helpful but not always required.",
+    a: "Yes. We need access to an outdoor water spigot and a standard electrical outlet near where the car is parked. We bring all the tools and products. If you live in an apartment or condo without an outdoor spigot and outlet, let us know before you book.",
   },
   {
     q: "What areas do you serve?",

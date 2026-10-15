@@ -27,7 +27,7 @@ export const AREAS: Area[] = [
     summary:
       "We serve every Marysville neighborhood — from Downtown and Getchell to Smokey Point — right in your driveway.",
     intro:
-      "Refined Auto Detailing brings professional mobile car detailing to driveways, apartment lots and offices across the city — from Downtown and Sunnyside to Getchell and Smokey Point.",
+      "Refined Auto Detailing brings professional mobile car detailing to driveways across the city — from Downtown and Sunnyside to Getchell and Smokey Point.",
     paragraphs: [
       "Whether you need an interior reset after a season of wet weather, a hand wash before a weekend on the water, or a multi-year ceramic coating, we handle it at your location.",
       "Marysville drivers spend a lot of time on I-5 and SR-9, which means road film, tar and brake dust build up fast. Our Elite Full Detail removes that bonded grime with iron decontamination and a clay bar, then seals the paint.",
@@ -51,12 +51,12 @@ export const AREAS: Area[] = [
     county: "Snohomish",
     zips: ["98201", "98203", "98204", "98208"],
     summary:
-      "From Northwest Everett and Port Gardner to Silver Lake and Mariner — mobile detailing at your home or workplace.",
+      "From Northwest Everett and Port Gardner to Silver Lake and Mariner — mobile detailing at your home.",
     intro:
-      "Refined Auto Detailing provides mobile car detailing throughout Everett, from the historic homes of Northwest Everett down to Silver Lake and Mariner. We come to your home, apartment or workplace so your car gets detailed while you get on with your day.",
+      "Refined Auto Detailing provides mobile car detailing throughout Everett, from the historic homes of Northwest Everett down to Silver Lake and Mariner. We come to your home so your car gets detailed while you get on with your day.",
     paragraphs: [
       "Everett's waterfront air, rain and heavy commuter traffic are hard on paint. A two-bucket hand wash and periodic decontamination keep grime from bonding to the clear coat, and a ceramic coating makes the car far easier to keep clean between visits.",
-      "Many of our Everett clients book around the workday — we can detail your vehicle in a workplace parking lot if the property allows it. Just let us know where the vehicle will be when you book.",
+      "Many of our Everett clients book a weekday appointment while they're home, so the car gets detailed in the driveway without taking time out of the weekend. We just need an outdoor water spigot and an electrical outlet nearby.",
     ],
     protection:
       "For Everett drivers, a ceramic coating is the easiest way to deal with salt air off Port Gardner Bay and constant rain — water sheets off and grime rinses away. If your paint already looks hazy or swirled, paint correction restores the gloss before it's locked in.",
@@ -81,7 +81,7 @@ export const AREAS: Area[] = [
     summary:
       "Serving Alderwood, Meadowdale, City Center and Martha Lake with mobile interior, exterior and full detailing.",
     intro:
-      "We bring mobile car detailing to Lynnwood homes, condos and offices — from Meadowdale and Alderwood to City Center and Martha Lake. No drop-off, no waiting room: we detail your vehicle where it's already parked.",
+      "We bring mobile car detailing to Lynnwood homes and condos — from Meadowdale and Alderwood to City Center and Martha Lake. No drop-off, no waiting room: we detail your vehicle where it's already parked.",
     paragraphs: [
       "South Snohomish County traffic around I-5, I-405 and Highway 99 leaves vehicles coated in road film. Our Premium Exterior Wash handles regular upkeep, while the Elite Full Detail tackles the embedded contamination that builds up over months.",
       "For Lynnwood commuters who want the car to stay clean with zero effort, a bi-weekly or monthly Maintenance Plan keeps it on a regular schedule.",
@@ -105,7 +105,7 @@ export const AREAS: Area[] = [
     summary:
       "Old Town to Harbour Pointe — mobile detailing and ceramic coating for Mukilteo's salt-air conditions.",
     intro:
-      "Refined Auto Detailing serves all of Mukilteo, from the Old Town waterfront to Harbour Pointe. We detail your vehicle at your home or office, so there's no need to drive it anywhere.",
+      "Refined Auto Detailing serves all of Mukilteo, from the Old Town waterfront to Harbour Pointe. We detail your vehicle at your home, so there's no need to drive it anywhere.",
     paragraphs: [
       "Living near Possession Sound means salt air and marine moisture settle on your vehicle's paint, glass and wheels. Regular hand washing and a durable layer of protection — a ceramic sealant or a multi-year ceramic coating — help keep that from dulling the finish.",
       "For vehicles that already show swirl marks or oxidation, paint correction restores the gloss before protection is applied.",
@@ -196,9 +196,9 @@ export const AREAS: Area[] = [
     county: "King",
     zips: ["98011", "98012", "98021"],
     summary:
-      "Canyon Park, Country Village, North Creek and Downtown Bothell — mobile detailing at home or work.",
+      "Canyon Park, Country Village, North Creek and Downtown Bothell — mobile detailing in your driveway.",
     intro:
-      "We bring mobile car detailing to Bothell — Canyon Park, North Creek, Country Village and Downtown. Whether you work in one of the Canyon Park business parks or at home, we can detail your vehicle where it's parked.",
+      "We bring mobile car detailing to Bothell — Canyon Park, North Creek, Country Village and Downtown. We detail your vehicle right in your driveway, so there's no drop-off and no waiting room.",
     paragraphs: [
       "Busy Bothell professionals often book a Maintenance Plan so their vehicle is cleaned on a set schedule without taking time out of the week.",
       "For newer vehicles, a ceramic coating applied early keeps factory paint looking new and makes every future wash faster.",
@@ -275,10 +275,10 @@ export const AREAS: Area[] = [
     summary:
       "Juanita, Totem Lake, Houghton and downtown Kirkland — ceramic coating, paint correction and full mobile detailing.",
     intro:
-      "Refined Auto Detailing brings mobile car detailing, paint correction and ceramic coating to Kirkland, WA — Juanita, Totem Lake, Kingsgate, Finn Hill, Rose Hill, Houghton and downtown along Lake Washington. We come to your home or office.",
+      "Refined Auto Detailing brings mobile car detailing, paint correction and ceramic coating to Kirkland, WA — Juanita, Totem Lake, Kingsgate, Finn Hill, Rose Hill, Houghton and downtown along Lake Washington. We come to your home.",
     paragraphs: [
       "Kirkland's streets are full of luxury vehicles and EVs, and those finishes deserve careful work. We use a two-bucket hand wash, safe decontamination and products suited to Tesla and other EV interiors.",
-      "Condo and apartment living around downtown and Totem Lake is common — if you park in a garage or shared lot, tell us when you book and confirm the property allows on-site service.",
+      "Condo and apartment living around downtown and Totem Lake is common — if you park in a garage or shared lot, tell us when you book. We need an outdoor water spigot and an electrical outlet nearby, and the property has to allow on-site service.",
     ],
     protection:
       "Ceramic coating and paint correction are a natural fit for Kirkland's newer and high-end vehicles. Correction removes dealer-installed swirl marks and wash haze; a 1, 3 or 5-year ceramic coating then keeps the finish glossy through Eastside rain.",
@@ -299,11 +299,11 @@ export const AREAS: Area[] = [
     county: "King",
     zips: ["98052", "98053"],
     summary:
-      "Downtown Redmond, Education Hill, Overlake and Redmond Ridge — mobile detailing at home or work.",
+      "Downtown Redmond, Education Hill, Overlake and Redmond Ridge — mobile detailing in your driveway.",
     intro:
-      "We provide mobile car detailing in Redmond, WA — Downtown, Education Hill, Overlake, Grass Lawn, Idylwood and Redmond Ridge. Your vehicle gets detailed at home or, where the property allows it, at your workplace.",
+      "We provide mobile car detailing in Redmond, WA — Downtown, Education Hill, Overlake, Grass Lawn, Idylwood and Redmond Ridge. Your vehicle gets detailed right at your home.",
     paragraphs: [
-      "Redmond professionals often don't have time to drop a car off at a shop. A recurring Maintenance Plan keeps your vehicle clean on a set schedule, and every visit happens wherever the car is parked.",
+      "Redmond professionals often don't have time to drop a car off at a shop. A recurring Maintenance Plan keeps your vehicle clean on a set schedule, and every visit happens in your driveway.",
       "With lots of newer vehicles and EVs in Redmond, we focus on safe wash methods and interior products that are gentle on screens, synthetic leather and piano-black trim.",
     ],
     protection:

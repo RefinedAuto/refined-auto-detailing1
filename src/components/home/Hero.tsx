@@ -62,7 +62,7 @@ export default function Hero() {
             className="text-white/70 text-lg sm:text-xl leading-relaxed max-w-xl mb-10"
           >
             Mobile car detailing, ceramic coating and paint correction in Lynnwood, Everett, Marysville,
-            Shoreline, Kirkland and beyond — we come to your home, office, or anywhere convenient.
+            Shoreline, Kirkland and beyond — we come to you, in the comfort of your own home.
           </motion.p>
 
           {/* CTAs */}

@@ -59,7 +59,7 @@ export default function TermsPage() {
         </li>
         <li>
           Provide a safe, legal place to work. If the location is not your property (for example an apartment
-          complex, HOA or workplace), you&apos;re responsible for getting permission.
+          complex or HOA), you&apos;re responsible for getting permission.
         </li>
         <li>Make sure we can access the vehicle (keys or unlocked) at the scheduled time.</li>
         <li>

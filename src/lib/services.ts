@@ -252,7 +252,7 @@ export const SERVICES: Service[] = [
     about: {
       heading: "Interior Detailing That Comes to Your Driveway",
       paragraphs: [
-        "Pacific Northwest weather means wet shoes, muddy floor mats and fogged-up glass for most of the year. Our mobile interior detail resets the cabin without you having to drop your car off at a shop — we bring the vacuums, air tools and professional-grade cleaners to your home or office anywhere in Snohomish County.",
+        "Pacific Northwest weather means wet shoes, muddy floor mats and fogged-up glass for most of the year. Our mobile interior detail resets the cabin without you having to drop your car off at a shop — we bring the vacuums, air tools and professional-grade cleaners to your home anywhere in Snohomish County.",
         "Every interior detail starts with a full compressed-air blow-out to lift dirt from vents, seat rails and seams that a vacuum alone can't reach. We steam clean interior surfaces to loosen grime and refresh the cabin, then deep vacuum every surface, clean the interior glass streak-free, and clean and protect leather, plastic and vinyl so surfaces look new instead of greasy.",
         "Want the outside done too? The Essential Detail Package adds a hand wash and wheel cleaning for one visit.",
       ],
@@ -293,7 +293,7 @@ export const SERVICES: Service[] = [
     category: "Detailing Package",
     metaTitle: "Mobile Car Wash & Exterior Detail From $80 | Snohomish County",
     metaDescription:
-      "Mobile hand car wash in Snohomish County, WA: two-bucket wash, wheels & inner rims, tire dressing and door jambs. From $80 at your home or office.",
+      "Mobile hand car wash in Snohomish County, WA: two-bucket wash, wheels & inner rims, tire dressing and door jambs. From $80 at your home.",
     h1: "Mobile Car Wash & Exterior Detailing in Snohomish County, WA",
     eyebrow: "Premium Exterior Wash",
     intro:
@@ -329,11 +329,11 @@ export const SERVICES: Service[] = [
     faqs: [
       {
         q: "How much does a mobile car wash cost?",
-        a: "The Premium Exterior Wash starts at $80 for a sedan, $100 for an SUV or crossover and $120 for a full-size SUV or truck, done at your home or office.",
+        a: "The Premium Exterior Wash starts at $80 for a sedan, $100 for an SUV or crossover and $120 for a full-size SUV or truck, done at your home.",
       },
       {
         q: "Do you need my water or power?",
-        a: "For most washes, no — we bring our own equipment. For very large or heavily soiled vehicles, access to an outdoor spigot can help but isn't always required.",
+        a: "Yes. We need access to an outdoor water spigot and a standard electrical outlet near where the car is parked. We bring all the tools and products.",
       },
       {
         q: "Is a hand wash safe for ceramic coatings?",
@@ -349,11 +349,11 @@ export const SERVICES: Service[] = [
     parent: DETAIL_PACKAGES_HUB,
     metaTitle: "Mobile Full Car Detailing From $175 | Snohomish County, WA",
     metaDescription:
-      "Full car detailing inside and out at your home or office. The Essential Detail Package starts at $175 — mobile service across Snohomish County, WA.",
+      "Full car detailing inside and out at your home. The Essential Detail Package starts at $175 — mobile service across Snohomish County, WA.",
     h1: "Full Car Detailing in Snohomish County, WA",
     eyebrow: "Essential Detail Package",
     intro:
-      "A complete interior and exterior refresh in one visit. The Essential Detail Package is designed to keep a well-maintained vehicle looking its best on a regular schedule, and we perform it wherever your car is parked.",
+      "A complete interior and exterior refresh in one visit. The Essential Detail Package is designed to keep a well-maintained vehicle looking its best on a regular schedule, and we perform it right at your home.",
     image: { src: "/images/work/bmw-m3-hand-drying.jpg", alt: "BMW M3 being hand dried during a full car detail" },
     lowPrice: 175,
     startingPrice: "$175",

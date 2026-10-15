@@ -18,7 +18,7 @@ export default function BookingInfo() {
         <div>
           <h2 className="text-2xl sm:text-3xl font-black tracking-tight mb-4">Where We Detail</h2>
           <p className="text-white/70 mb-8 leading-relaxed">
-            We bring the detail to your home, office or apartment across {COMPANY.serviceArea}. Appointments run{" "}
+            We bring the detail to your home across {COMPANY.serviceArea}. Appointments run{" "}
             {COMPANY.hours}.
           </p>
           {counties.map((county) => (

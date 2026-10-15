@@ -28,8 +28,7 @@ export default function ServiceAreas() {
             </h2>
             <p className="text-white/70 text-lg leading-relaxed mb-8">
               No need to drive anywhere. We bring mobile car detailing, paint correction and ceramic coating to
-              Snohomish County and north King County — at your home, office, apartment complex, or anywhere else
-              that works for you.
+              Snohomish County and north King County, in the comfort of your own home.
             </p>
 
             {/* Map placeholder */}

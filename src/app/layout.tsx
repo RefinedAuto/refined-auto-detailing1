@@ -85,7 +85,7 @@ const businessJsonLd = {
   "@id": BUSINESS_ID,
   name: COMPANY.name,
   description:
-    "Mobile auto detailing serving Snohomish and King County, Washington — ceramic coating, paint correction, interior and exterior detailing and full details at your home or office.",
+    "Mobile auto detailing serving Snohomish and King County, Washington — ceramic coating, paint correction, interior and exterior detailing and full details at your home.",
   url: SITE_URL,
   telephone: COMPANY.phoneHref,
   email: COMPANY.email,

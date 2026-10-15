@@ -44,7 +44,7 @@ export default function GalleryPage() {
               Car Detailing Photos: <span className="text-gradient-gold">Real Snohomish County Results</span>
             </h1>
             <p className="text-white/70 text-lg">
-              Every photo is from an actual Refined Auto Detailing client — no stock images. Browse real interior detailing, exterior hand washes, full detail packages and ceramic coating results from vehicles we&apos;ve detailed at our clients&apos; homes and workplaces across Snohomish and King County.
+              Every photo is from an actual Refined Auto Detailing client — no stock images. Browse real interior detailing, exterior hand washes, full detail packages and ceramic coating results from vehicles we&apos;ve detailed at our clients&apos; homes across Snohomish and King County.
             </p>
           </div>
 

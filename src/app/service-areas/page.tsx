@@ -25,8 +25,8 @@ export default function ServiceAreasPage() {
               <span className="text-gradient-gold">Snohomish &amp; King County</span>
             </h1>
             <p className="text-white/70 text-lg leading-relaxed">
-              Based in south Snohomish County, we bring professional mobile detailing to homes and workplaces within about 30
-              miles — your home, office, or anywhere convenient.
+              Based in south Snohomish County, we bring professional mobile detailing to homes within about 30
+              miles, right in your own driveway.
             </p>
           </div>
 

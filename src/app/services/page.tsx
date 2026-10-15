@@ -21,7 +21,7 @@ const CATEGORIES: { title: string; category: Service["category"]; blurb: string 
   {
     title: "Detailing Packages",
     category: "Detailing Package",
-    blurb: "Inside, outside or both — performed at your home or office.",
+    blurb: "Inside, outside or both — performed at your home.",
   },
   {
     title: "Add-On Services",

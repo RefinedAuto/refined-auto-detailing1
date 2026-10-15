@@ -72,7 +72,7 @@ export default function DetailPackagesPage() {
               Car Detail Packages in <span className="text-gradient-gold">Snohomish &amp; King County</span>
             </h1>
             <p className="text-white/70 text-lg leading-relaxed">
-              Complete inside-and-out detailing at your home or office. Choose the Essential Detail Package for regular
+              Complete inside-and-out detailing at your home. Choose the Essential Detail Package for regular
               upkeep, or the Elite Full Detail for our deepest clean with paint decontamination and protection.
             </p>
           </div>

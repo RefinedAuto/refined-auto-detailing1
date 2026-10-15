@@ -284,7 +284,7 @@ export default function ServicePage({ service }: { service: Service }) {
               Mobile {service.name} Near You
             </h2>
             <p className="text-white/70 mb-6">
-              We perform {service.name.toLowerCase()} at your home or office throughout Snohomish and King County,
+              We perform {service.name.toLowerCase()} at your home throughout Snohomish and King County,
               including:
             </p>
             <ul className="flex flex-wrap gap-3">

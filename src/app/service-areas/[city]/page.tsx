@@ -49,7 +49,7 @@ function cityDescription(city: string, neighborhoods: string[]) {
 }
 
 const HIGHLIGHTS = [
-  "We come to your home, office or apartment",
+  "We come to your home",
   "Transparent, size-based pricing",
   "Professional-grade products and tools",
   "Satisfaction guarantee — tell us within 24 hours",
@@ -63,9 +63,9 @@ function cityFaqs(city: string, zips: string[], neighborhoods: string[]) {
   return [
     {
       q: `Do you offer mobile car detailing in ${city}, WA?`,
-      a: `Yes. We detail vehicles at homes and workplaces throughout ${city} (${zips.join(", ")}), including ${neighborhoods
+      a: `Yes. We detail vehicles at homes throughout ${city} (${zips.join(", ")}), including ${neighborhoods
         .slice(0, 4)
-        .join(", ")}. We bring the equipment — you just tell us where the car is parked.`,
+        .join(", ")}. We bring the tools and products; you just need an outdoor water spigot and an electrical outlet we can reach.`,
     },
     {
       q: `How much does car detailing cost in ${city}?`,

@@ -132,7 +132,7 @@ export default function AboutPage() {
       <section className="py-20 bg-black text-center">
         <div className="container-custom">
           <h2 className="text-4xl font-black mb-4">Ready to Experience <span className="text-gradient-gold">Refined?</span></h2>
-          <p className="text-white/70 mb-8 max-w-md mx-auto">Professional mobile detailing, wherever your vehicle is parked in Snohomish County.</p>
+          <p className="text-white/70 mb-8 max-w-md mx-auto">Professional mobile detailing at your home, anywhere in Snohomish County.</p>
           <Link href="/quote" className="inline-flex items-center gap-3 bg-gold-500 hover:bg-gold-400 text-black font-bold px-8 py-4 rounded-full transition-all shadow-gold">
             Get My Free Quote <ArrowRight size={18} />
           </Link>
