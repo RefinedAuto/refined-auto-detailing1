@@ -37,9 +37,11 @@ export default function Hero() {
       <div className="relative container-custom py-12 lg:py-20">
         <div className="max-w-3xl">
           {/* Heading — the H1 is the keyword line; the tagline is display text */}
+          {/* Heading and subheading slide in but never start invisible: an opacity fade delays
+              Largest Contentful Paint until after hydration. */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ y: 30 }}
+            animate={{ y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-8"
           >
@@ -56,8 +58,8 @@ export default function Hero() {
 
           {/* Subheading */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ y: 20 }}
+            animate={{ y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
             className="text-white/70 text-lg sm:text-xl leading-relaxed max-w-xl mb-10"
           >

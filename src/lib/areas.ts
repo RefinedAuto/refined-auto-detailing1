@@ -16,6 +16,10 @@ export type Area = {
   summary: string;
   /** City-specific angle on ceramic coating and paint correction — our highest-value services. */
   protection: string;
+  /** Slugs of the closest areas we serve, nearest first — linked from the "Also serving nearby" section. */
+  nearby: string[];
+  /** A real photo of our work; the alt describes the photo, not where it was taken. */
+  photo: { src: string; alt: string };
 };
 
 export const AREAS: Area[] = [
@@ -44,6 +48,8 @@ export const AREAS: Area[] = [
       "Lakewood",
       "Grove Street",
     ],
+    nearby: ["arlington", "lake-stevens", "everett", "snohomish"],
+    photo: { src: "/images/work/bmw-m3-detail-rear.jpg", alt: "Rear view of a white BMW M3 after an exterior hand wash and detail" },
   },
   {
     slug: "everett",
@@ -72,6 +78,8 @@ export const AREAS: Area[] = [
       "Forest Park",
       "South Everett",
     ],
+    nearby: ["mukilteo", "marysville", "mill-creek", "lake-stevens"],
+    photo: { src: "/images/work/audi-q3-ceramic-coating.jpg", alt: "Gray Audi Q3 with glossy paint after a ceramic coating" },
   },
   {
     slug: "lynnwood",
@@ -96,6 +104,8 @@ export const AREAS: Area[] = [
       "Cedar Valley",
       "Scriber Lake",
     ],
+    nearby: ["edmonds", "mill-creek", "mukilteo", "bothell"],
+    photo: { src: "/images/work/foam-cannon-wash-white-sedan.jpg", alt: "Detailer foaming a white sedan in a driveway during a mobile hand wash" },
   },
   {
     slug: "mukilteo",
@@ -113,6 +123,8 @@ export const AREAS: Area[] = [
     protection:
       "Salt air from the Sound makes Mukilteo one of the best places in the area for ceramic coating — it adds a slick, hydrophobic barrier over the clear coat. We recommend paint correction first on vehicles showing oxidation or water spots.",
     neighborhoods: ["Old Town", "Harbour Pointe", "Chennault Beach", "Picnic Point", "Paine Field area"],
+    nearby: ["everett", "lynnwood", "edmonds", "mill-creek"],
+    photo: { src: "/images/work/audi-q3-paint-polish-rear.jpg", alt: "Rear three-quarter view of an Audi Q3 showing glossy, polished and coated paint" },
   },
   {
     slug: "mill-creek",
@@ -138,6 +150,8 @@ export const AREAS: Area[] = [
       "North Creek",
       "Silver Firs",
     ],
+    nearby: ["bothell", "everett", "lynnwood", "snohomish"],
+    photo: { src: "/images/work/bmw-m3-elite-detail-side.jpg", alt: "Glossy white BMW M3 side profile after an Elite Full Detail" },
   },
   {
     slug: "lake-stevens",
@@ -155,6 +169,8 @@ export const AREAS: Area[] = [
     protection:
       "Between lake days, gravel roads and towing, Lake Stevens vehicles collect water spots and grime fast. Paint correction removes spotting and haze, and a ceramic coating keeps trucks and SUVs easier to clean all season.",
     neighborhoods: ["Downtown Lake Stevens", "Frontier Village", "North Cove", "Cavalero", "Machias", "Lochsloy"],
+    nearby: ["marysville", "snohomish", "everett", "arlington"],
+    photo: { src: "/images/work/honda-pilot-interior-detail.jpg", alt: "Honda Pilot interior with clean gray leather seats and carpets after an interior detail" },
   },
   {
     slug: "arlington",
@@ -172,6 +188,8 @@ export const AREAS: Area[] = [
     protection:
       "Dust from rural roads and long highway miles dull paint over time. Paint correction brings back the shine, and a ceramic coating helps Arlington vehicles shed mud and grime with a simple rinse.",
     neighborhoods: ["Downtown Arlington", "Smokey Point", "Arlington Heights", "Gleneagle", "Island Crossing"],
+    nearby: ["marysville", "lake-stevens", "everett"],
+    photo: { src: "/images/work/audi-q3-wheel-cleaning.jpg", alt: "Audi Q3 wheel after a deep wheel and tire cleaning" },
   },
   {
     slug: "snohomish",
@@ -189,6 +207,8 @@ export const AREAS: Area[] = [
     protection:
       "Farm roads, evergreen sap and valley rain make protection worth it in Snohomish. Paint correction restores faded or swirled finishes — including on classic cars — and a ceramic coating helps preserve them.",
     neighborhoods: ["Historic Downtown", "Cathcart", "Clearview", "Maltby", "Three Lakes"],
+    nearby: ["lake-stevens", "mill-creek", "everett", "marysville"],
+    photo: { src: "/images/work/infiniti-q50-exterior-detail.jpg", alt: "Gray Infiniti Q50 with clean, glossy paint after a full exterior detail" },
   },
   {
     slug: "bothell",
@@ -206,6 +226,8 @@ export const AREAS: Area[] = [
     protection:
       "Newer vehicles around Canyon Park and North Creek are ideal ceramic coating candidates — protecting factory paint early keeps it looking new. For older finishes, paint correction removes swirls and restores clarity first.",
     neighborhoods: ["Canyon Park", "North Creek", "Country Village", "Downtown Bothell", "Thrasher's Corner", "Queensborough"],
+    nearby: ["mill-creek", "kirkland", "lake-forest-park", "lynnwood"],
+    photo: { src: "/images/work/audi-q3-interior-detail.jpg", alt: "Clean Audi Q3 front interior after a mobile interior detail" },
   },
   {
     slug: "edmonds",
@@ -223,6 +245,8 @@ export const AREAS: Area[] = [
     protection:
       "Marine air in Edmonds leaves a film on paint and glass. A ceramic coating makes salt residue easy to rinse away, and paint correction removes the oxidation and water spotting that waterfront living can cause.",
     neighborhoods: ["Downtown / the Bowl", "Perrinville", "Five Corners", "Westgate", "Firdale Village", "Esperance"],
+    nearby: ["lynnwood", "shoreline", "mukilteo", "lake-forest-park"],
+    photo: { src: "/images/work/bmw-m3-mobile-detail-front.jpg", alt: "Clear, bright headlights on a freshly detailed BMW M3" },
   },
   {
     slug: "shoreline",
@@ -249,6 +273,8 @@ export const AREAS: Area[] = [
       "Ballinger",
       "Hillwood",
     ],
+    nearby: ["lake-forest-park", "edmonds", "lynnwood", "bothell"],
+    photo: { src: "/images/work/bmw-m3-foam-hand-wash.jpg", alt: "White BMW M3 covered in foam during a mobile hand car wash" },
   },
   {
     slug: "lake-forest-park",
@@ -266,6 +292,8 @@ export const AREAS: Area[] = [
     protection:
       "Under Lake Forest Park's tree canopy, a ceramic coating is one of the best investments you can make — sap and pollen wipe off instead of etching the clear coat. Paint correction can remove light sap etching and swirls before coating.",
     neighborhoods: ["Sheridan Beach", "Sheridan Heights", "Horizon View", "Brookside", "Lyon Creek", "Town Center area"],
+    nearby: ["shoreline", "bothell", "kirkland", "edmonds"],
+    photo: { src: "/images/work/bmw-m3-hand-drying.jpg", alt: "BMW M3 being hand dried after a mobile hand wash" },
   },
   {
     slug: "kirkland",
@@ -292,6 +320,8 @@ export const AREAS: Area[] = [
       "Houghton",
       "Bridle Trails",
     ],
+    nearby: ["redmond", "bothell", "lake-forest-park"],
+    photo: { src: "/images/work/vw-gti-dashboard-detail.jpg", alt: "Volkswagen GTI dashboard and center console after interior detailing" },
   },
   {
     slug: "redmond",
@@ -317,6 +347,8 @@ export const AREAS: Area[] = [
       "Redmond Ridge",
       "Willows / Rose Hill",
     ],
+    nearby: ["kirkland", "bothell"],
+    photo: { src: "/images/work/vw-gti-interior-detail.jpg", alt: "Volkswagen GTI interior after an interior detail, with clean floors and leather seats" },
   },
 ];
 

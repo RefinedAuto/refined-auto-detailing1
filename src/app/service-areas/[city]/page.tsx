@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, CheckCircle, MapPin, Phone, Shield } from "lucide-react";
+import { ArrowRight, CheckCircle, MapPin, Phone, Shield, Star } from "lucide-react";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import JsonLd from "@/components/seo/JsonLd";
 import { AREAS, getArea } from "@/lib/areas";
@@ -85,8 +86,10 @@ function cityFaqs(city: string, zips: string[], neighborhoods: string[]) {
 export default async function AreaPage({ params }: { params: Promise<{ city: string }> }) {
   const area = getArea((await params).city);
   if (!area) notFound();
-  const nearby = AREAS.filter((a) => a.slug !== area.slug);
+  const nearby = area.nearby.map((slug) => getArea(slug)!);
   const faqs = cityFaqs(area.city, area.zips, area.neighborhoods);
+  // Wikipedia's article for the city tells search engines exactly which place this page serves.
+  const citySameAs = `https://en.wikipedia.org/wiki/${area.city.replace(/ /g, "_")},_Washington`;
 
   return (
     <div className="bg-dark-950 pt-32">
@@ -107,7 +110,7 @@ export default async function AreaPage({ params }: { params: Promise<{ city: str
           </h1>
           <p className="text-white/70 text-xl leading-relaxed mb-8">{area.intro}</p>
 
-          <div className="flex flex-wrap gap-4 mb-14">
+          <div className="flex flex-wrap gap-4 mb-6">
             <Link
               href="/quote"
               className="bg-gold-500 hover:bg-gold-400 text-black font-bold px-8 py-4 rounded-full transition-all shadow-gold flex items-center gap-2"
@@ -122,11 +125,39 @@ export default async function AreaPage({ params }: { params: Promise<{ city: str
               Call {COMPANY.phone}
             </a>
           </div>
+          <a
+            href={COMPANY.google.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-white/70 hover:text-white text-sm transition-colors mb-14"
+          >
+            <span className="flex" aria-hidden="true">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} size={14} className="fill-gold-500 text-gold-500" />
+              ))}
+            </span>
+            <span>
+              <strong className="text-white">{COMPANY.google.rating}</strong> on Google ·{" "}
+              {COMPANY.google.reviewCount} reviews
+            </span>
+            <span className="sr-only">(opens in a new tab)</span>
+          </a>
 
-          <div className="space-y-4 text-white/70 text-lg leading-relaxed mb-14 max-w-3xl">
-            {area.paragraphs.map((p) => (
-              <p key={p}>{p}</p>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-start mb-14">
+            <div className="md:col-span-3 space-y-4 text-white/70 text-lg leading-relaxed">
+              {area.paragraphs.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
+            </div>
+            <div className="md:col-span-2 relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10">
+              <Image
+                src={area.photo.src}
+                alt={area.photo.alt}
+                fill
+                sizes="(min-width: 768px) 40vw, 100vw"
+                className="object-cover"
+              />
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-14">
@@ -210,20 +241,27 @@ export default async function AreaPage({ params }: { params: Promise<{ city: str
 
           <section aria-labelledby="nearby">
             <h2 id="nearby" className="text-2xl font-black text-white mb-4">
-              Also Serving Nearby
+              Also Serving Near {area.city}
             </h2>
-            <ul className="flex flex-wrap gap-3">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
               {nearby.map((a) => (
                 <li key={a.slug}>
                   <Link
                     href={`/service-areas/${a.slug}`}
-                    className="inline-block glass rounded-full px-4 py-2 text-sm text-white/80 hover:text-gold-500 transition-colors"
+                    className="block glass rounded-xl p-5 h-full hover:border-gold-500/30 transition-all"
                   >
-                    {a.city}, WA
+                    <span className="block text-white font-semibold mb-1">Mobile Detailing in {a.city}, WA</span>
+                    <span className="block text-white/60 text-sm leading-relaxed">{a.summary}</span>
                   </Link>
                 </li>
               ))}
             </ul>
+            <Link
+              href="/service-areas"
+              className="inline-flex items-center gap-2 text-gold-500 hover:text-gold-400 text-sm font-semibold transition-colors"
+            >
+              See all {AREAS.length} service areas <ArrowRight size={14} aria-hidden="true" />
+            </Link>
           </section>
         </div>
       </section>
@@ -239,6 +277,7 @@ export default async function AreaPage({ params }: { params: Promise<{ city: str
           areaServed: {
             "@type": "City",
             name: `${area.city}, WA`,
+            sameAs: citySameAs,
             containedInPlace: { "@type": "AdministrativeArea", name: `${area.county} County, WA` },
           },
           url: `${SITE_URL}/service-areas/${area.slug}`,
@@ -251,7 +290,8 @@ export default async function AreaPage({ params }: { params: Promise<{ city: str
           "@id": `${SITE_URL}/service-areas/${area.slug}`,
           name: `Mobile Car Detailing in ${area.city}, WA`,
           about: { "@id": BUSINESS_ID },
-          mentions: { "@type": "City", name: `${area.city}, WA` },
+          mentions: { "@type": "City", name: `${area.city}, WA`, sameAs: citySameAs },
+          primaryImageOfPage: `${SITE_URL}${area.photo.src}`,
         }}
       />
     </div>
