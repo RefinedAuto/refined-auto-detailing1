@@ -32,11 +32,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: SITE_URL,
+    // No title, description or url here: Next.js fills og:title and og:description from each
+    // page's own metadata, but a value set here would be shared by every page that doesn't set
+    // its own openGraph — that made 12 pages share the homepage's preview and og:url.
     siteName: "Refined Auto Detailing",
-    title: "Refined Auto Detailing | Premium Mobile Detailing — We Come to You",
-    description:
-      "Mobile car detailing, ceramic coating and paint correction at your doorstep across Snohomish & King County, WA. Get a free instant quote.",
     images: [
       {
         url: "/images/og-image.jpg",
@@ -47,12 +46,8 @@ export const metadata: Metadata = {
       },
     ],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Refined Auto Detailing | Premium Mobile Detailing",
-    description: "Premium mobile auto detailing in Snohomish & King County, WA.",
-    images: ["/images/og-image.jpg"],
-  },
+  // Title, description and image come from each page's Open Graph tags.
+  twitter: { card: "summary_large_image" },
   // Google Search Console ownership (the HTML file in /public verifies it too).
   verification: { google: "hWBHodSeWB_KlquYtt7worAcA_jhcLvLxaS1-K7n5bM" },
   robots: {
