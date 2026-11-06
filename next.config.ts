@@ -40,6 +40,10 @@ const nextConfig: NextConfig = {
   // pass their ranking to the matching new pages instead of 404ing.
   async redirects() {
     return [
+      // Short link for asking clients for a Google review (QR cards, email, in person).
+      // Temporary, so the target can change if the listing ever does.
+      { source: "/review", destination: "https://search.google.com/local/writereview?placeid=ChIJB4WFWMfliAYRjvHTdtmxbzM", permanent: false },
+      { source: "/reviews", destination: "/review", permanent: false },
       // One canonical host, so Google doesn't index www and non-www copies.
       // (Search Console is verified via DNS, so this redirect is safe for it.)
       {

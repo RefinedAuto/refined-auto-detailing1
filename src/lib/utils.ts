@@ -37,11 +37,13 @@ export const COMPANY = {
   // Keep in sync with the Google Business Profile hours.
   hours: "Mon–Sat, 6 AM – 8 PM",
   hoursShort: "Open Monday–Saturday",
-  /** Google Business Profile — rating and count checked 2026-09-24; update as reviews come in. */
+  /** Google Business Profile — rating and count checked 2026-11-06; update as reviews come in. */
   google: {
     url: "https://www.google.com/maps?cid=3706376565908828558",
     rating: "5.0",
-    reviewCount: 11,
+    reviewCount: 13,
+    /** Opens Google's "write a review" box for this listing. /review redirects here (next.config.ts). */
+    reviewUrl: "https://search.google.com/local/writereview?placeid=ChIJB4WFWMfliAYRjvHTdtmxbzM",
   },
   /** Paste the Yelp business page URL here to show the Yelp link. */
   yelpUrl: "https://www.yelp.com/biz/refined-auto-detailing-lynnwood",

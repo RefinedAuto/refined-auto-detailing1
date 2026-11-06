@@ -23,7 +23,7 @@ export default function Reviews() {
           </div>
           <p className="text-white/70 text-lg mb-8">
             {google.rating} out of 5 from {google.reviewCount} Google reviews. Clients most often mention our
-            attention to detail and interior detailing.
+            attention to detail, interior detailing and showing up on time.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -47,6 +47,17 @@ export default function Reviews() {
               </a>
             )}
           </div>
+          <p className="text-white/60 text-sm mt-8">
+            Had your car detailed by us?{" "}
+            <a
+              href={google.reviewUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gold-500 underline underline-offset-2"
+            >
+              Leave a Google review<span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          </p>
         </div>
       </div>
     </section>
