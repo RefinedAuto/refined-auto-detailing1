@@ -1,35 +1,40 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Shield, Star, Zap, Heart, ArrowRight } from "lucide-react";
+import { UserCheck, Sparkles, Clock, House, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About Our Mobile Detailing Team",
+  title: "About the Owner — Mobile Detailing in Lynnwood, WA",
   description:
-    "Meet Refined Auto Detailing, a mobile detailing business serving Snohomish & King County, WA — precision work, done in your driveway.",
+    "Meet Nazar, owner of Refined Auto Detailing. Since 2025 he has personally detailed every car, at clients' homes across Snohomish & King County, WA.",
   alternates: { canonical: "/about" },
 };
 
+/**
+ * Owner facts confirmed by the owner (2026-11-06): Nazar runs the business,
+ * started it in 2025 and does every detail himself. Keep this page to facts
+ * he has confirmed — no team, year counts, certifications or insurance claims.
+ */
 const values = [
   {
-    icon: Shield,
-    title: "Obsessive Precision",
-    description: "We don't rush. Every detail is examined, every surface treated, until the result is genuinely excellent.",
+    icon: UserCheck,
+    title: "One Detailer, Start to Finish",
+    description: "I do every detail myself, so the person you book with is the person working on your car.",
   },
   {
-    icon: Star,
-    title: "Premium Products Only",
-    description: "We use professional-grade detailing products and tools. No shortcuts.",
+    icon: Sparkles,
+    title: "No Rushing",
+    description: "I take the time each car needs. Attention to detail is what my clients mention most in their reviews.",
   },
   {
-    icon: Zap,
-    title: "Convenient & Reliable",
-    description: "We show up when we say we will. Mobile service means no drop-offs and no waiting rooms.",
+    icon: Clock,
+    title: "On Time, In Touch",
+    description: "I show up when I say I will and keep you updated, so you're never left wondering.",
   },
   {
-    icon: Heart,
-    title: "Genuine Care",
-    description: "We treat every vehicle as if it were our own. Your car represents your investment — we honor that.",
+    icon: House,
+    title: "At Your Home",
+    description: "No drop-off, no waiting room. All I need is an outdoor water spigot and an outlet near your car.",
   },
 ];
 
@@ -42,16 +47,18 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <span className="text-gold-500 text-xs tracking-[0.3em] uppercase font-medium mb-4 block">
-                Our Story
+                Meet the Owner
               </span>
               <h1 className="text-4xl sm:text-6xl font-black tracking-tight mb-6 leading-tight">
-                About Refined Auto Detailing: <span className="text-gradient-gold">Snohomish County&apos;s Mobile Detailers</span>
+                About Refined Auto Detailing: <span className="text-gradient-gold">Owner-Operated Mobile Detailing</span>
               </h1>
               <p className="text-white/60 text-lg leading-relaxed mb-6">
-                Refined Auto Detailing started with a simple belief: every vehicle owner deserves access to truly exceptional detailing — not just a quick wash, but a complete transformation.
+                Hi, I&apos;m Nazar. I started Refined Auto Detailing in 2025, and I do every detail myself, from
+                booking your appointment to the final wipe-down.
               </p>
               <p className="text-white/50 text-base leading-relaxed mb-8">
-                Operating throughout Snohomish County, WA, we bring professional-grade equipment and expertise directly to our clients. No appointments lost to commutes. No leaving your car at a shop for hours. Just premium results at your door.
+                I&apos;m based in Lynnwood and come to homes across Snohomish and King County. Your car gets detailed
+                in your own driveway while you get on with your day, with no drop-off and no waiting room.
               </p>
               <Link
                 href="/quote"
@@ -80,7 +87,7 @@ export default function AboutPage() {
         <div className="container-custom">
           <div className="text-center max-w-xl mx-auto mb-16">
             <span className="text-gold-500 text-xs tracking-[0.3em] uppercase font-medium mb-4 block">
-              Our Values
+              How I Work
             </span>
             <h2 className="text-4xl font-black tracking-tight">
               Why Clients <span className="text-gradient-gold">Come Back</span>
@@ -132,7 +139,7 @@ export default function AboutPage() {
       <section className="py-20 bg-black text-center">
         <div className="container-custom">
           <h2 className="text-4xl font-black mb-4">Ready to Experience <span className="text-gradient-gold">Refined?</span></h2>
-          <p className="text-white/70 mb-8 max-w-md mx-auto">Professional mobile detailing at your home, anywhere in Snohomish County.</p>
+          <p className="text-white/70 mb-8 max-w-md mx-auto">Mobile detailing at your home, anywhere in Snohomish &amp; King County.</p>
           <Link href="/quote" className="inline-flex items-center gap-3 bg-gold-500 hover:bg-gold-400 text-black font-bold px-8 py-4 rounded-full transition-all shadow-gold">
             Get My Free Quote <ArrowRight size={18} />
           </Link>

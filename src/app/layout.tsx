@@ -85,6 +85,9 @@ const businessJsonLd = {
   telephone: COMPANY.phoneHref,
   email: COMPANY.email,
   priceRange: "$$",
+  // Confirmed by the owner 2026-11-06: started in 2025, does every detail himself.
+  founder: { "@type": "Person", name: "Nazar", jobTitle: "Owner" },
+  foundingDate: "2025",
   image: `${SITE_URL}/images/og-image.jpg`,
   logo: `${SITE_URL}/images/logo.png`,
   address: {
