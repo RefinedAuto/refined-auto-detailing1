@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { MapPin } from "lucide-react";
 import FaqList from "@/components/sections/FaqList";
+import ServiceAreaMap from "@/components/sections/ServiceAreaMap";
 import { AREAS } from "@/lib/areas";
 import { BOOKING_FAQS } from "@/lib/faqs";
 import { COMPANY } from "@/lib/utils";
@@ -39,6 +40,7 @@ export default function BookingInfo() {
               </ul>
             </div>
           ))}
+          <ServiceAreaMap />
         </div>
         <div>
           <h2 className="text-2xl sm:text-3xl font-black tracking-tight mb-8">Booking Questions</h2>

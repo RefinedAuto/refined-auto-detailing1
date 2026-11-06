@@ -18,6 +18,8 @@ const securityHeaders = [
       "img-src 'self' data: blob:",
       "font-src 'self' data:",
       `connect-src 'self' https://formspree.io${isDev ? " ws: http://localhost:*" : ""}`,
+      // Service-area map on /contact (src/components/sections/ServiceAreaMap.tsx).
+      "frame-src https://www.openstreetmap.org",
       "frame-ancestors 'none'",
       "object-src 'none'",
       "base-uri 'self'",
